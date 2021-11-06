@@ -19,8 +19,8 @@ function Header() {
         </li>
       </ul>
       <div className="nav2 mgr-115 mgtb-20">
-        <button className="btn login mgr-5 active">Login</button>
-        <button className="btn sign-up active">Sign up</button>
+        <button className="btn login mgr-5 unactive">Login</button>
+        <button className="btn sign-up unactive">Sign up</button>
       </div>
     </div>
   );
