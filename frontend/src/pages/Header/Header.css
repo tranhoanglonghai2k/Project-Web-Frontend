@@ -1,32 +1,11 @@
-button {
-  border: 1px solid #fff;
-}
-
-.mgl-115 {
-  margin-left: 115px;
-}
-
-.mgr-115 {
-  margin-right: 115px;
-}
-
-.mgr-5 {
-  margin-right: 5px;
-}
-
-.mgt-5 {
-  margin-top: 5px;
-}
-
-.mgtb-20 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.logo {
+  display: inline-block;
 }
 
 .logo-dict {
-  width: 64px;
-  height: 64px;
-  aspect-ratio: auto 64/64;
+  width: 65px;
+  height: 65px;
+  aspect-ratio: auto 65/65;
   vertical-align: middle;
   /* background-color: #3367d6; */
 }
@@ -43,7 +22,7 @@ button {
 
 #header {
   background-color: #3367d6;
-  height: 78px;
+  height: 65px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -52,60 +31,12 @@ button {
   z-index: 1;
 }
 
-#nav {
+.menu {
   display: inline-block;
-  list-style-type: none;
+  background-color: #3367d6 !important;
+  color: #fff !important;
 }
 
-#nav li {
-  position: relative;
-}
-
-#nav > li {
-  display: inline-block;
-}
-
-#nav > li > a {
-  color: #fff;
-  font-size: 24px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#nav li a {
-  text-decoration: none;
-  line-height: 46px;
-  display: block;
-  padding: 0 24px;
-}
-
-#nav > li:hover > a {
-  cursor: pointer;
-  background-color: rgb(134, 177, 247);
-  border-radius: 30px;
-}
-
-#header .nav2 {
-  float: right;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.btn {
-  padding: 10px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: rgb(134, 177, 247);
-}
-
-#components-layout-demo-fixed .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.2);
-}
 .site-layout .site-layout-background {
   background: #fff;
 }

@@ -1,39 +1,33 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import "./Header.css";
 
 function Header() {
-  const { Header, Content, Footer } = Layout;
+  const { Header } = Layout;
 
   return (
     <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
+      <Header
+        id="header"
+        style={{ position: "fixed", zIndex: 1, width: "100%" }}
+      >
+        <div className="logo">
+          <a href="#">
+            <img
+              src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+              alt="logo"
+              className="logo-dict"
+            ></img>
+          </a>
+        </div>
+        <Menu className="menu" mode="horizontal" defaultSelectedKeys={["2"]}>
+          <Menu.Item key="1">Tra Cứu</Menu.Item>
+          <Menu.Item key="2">Dịch</Menu.Item>
+          <Menu.Item key="3">Chính tả</Menu.Item>
+          <Menu.Item key="4">Login</Menu.Item>
+          <Menu.Item key="5">Sign up</Menu.Item>
         </Menu>
       </Header>
-      <Content
-        className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
-      >
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          {/* <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item> */}
-        </Breadcrumb>
-        <div
-          className="site-layout-background"
-          style={{ padding: 24, minHeight: 380 }}
-        >
-          Content
-        </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
     </Layout>
   );
 }
@@ -44,13 +38,16 @@ export default Header;
 //   <div id="header">
 //     <ul id="nav" className="mgl-115  mgt-5">
 //       <li>
-//         <a href="#">
-//           <img
-//             src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
-//             alt="logo"
-//             className="logo-dict"
-//           ></img>
-//         </a>
+{
+  /* <a href="#">
+  <img
+    src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+    alt="logo"
+    className="logo-dict"
+  ></img>
+  //{" "}
+</a>; */
+}
 //       </li>
 //       <li className="active">
 //         <a href="#">Dịch</a>
