@@ -1,5 +1,6 @@
 .logo {
   display: inline-block;
+  float: left;
 }
 
 .logo-dict {
@@ -7,7 +8,6 @@
   height: 65px;
   aspect-ratio: auto 65/65;
   vertical-align: middle;
-  /* background-color: #3367d6; */
 }
 
 .active {
@@ -20,15 +20,32 @@
   border-radius: 30px;
 }
 
+.btn-default {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  border-radius: 30px;
+}
+
+.ant-menu-horizontal {
+  border-bottom: none !important;
+}
+
+.ant-layout-header {
+  text-align: center;
+}
+
 #header {
-  background-color: #3367d6;
+  background-color: #3367d6 !important;
   height: 65px;
-  width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+}
+
+.header-content-default {
+  max-width: 1200px;
+  margin: auto;
 }
 
 .menu {
