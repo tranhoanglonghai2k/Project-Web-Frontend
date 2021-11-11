@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout, Breadcrumb } from "antd";
+import SavedSearch from "../../components/SavedSearch/SavedSearch";
 import "./Content.css";
 
 function Content() {
@@ -20,7 +21,7 @@ function Content() {
           className="site-layout-background"
           style={{ padding: 24, minHeight: 380 }}
         >
-          Content
+          <SavedSearch />
         </div>
       </Content>
     </Layout>
