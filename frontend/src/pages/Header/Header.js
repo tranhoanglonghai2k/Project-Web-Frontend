@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { HomeFilled, ZhihuSquareFilled } from "@ant-design/icons";
 import "./Header.css";
 
-function Header() {
+function Header({ currentKey }) {
   const { Header } = Layout;
+
+  // const [selectKey, setSelectKey] = useState(1);
+
+  // const handleClick = (e) => {
+  //   console.log("click ", e);
+  //   setSelectKey(e.target.key);
+  // };
 
   return (
     <Layout>
@@ -23,7 +30,12 @@ function Header() {
             </a>
           </div>
 
-          <Menu className="menu" mode="horizontal" defaultSelectedKeys={["2"]}>
+          <Menu
+            className="menu"
+            mode="horizontal"
+            // onClick={handleClick}
+            // selectedKeys={[selectKey]}
+          >
             <Menu.Item key="1" icon={<HomeFilled />}>
               <a href="/home">Tra cứu</a>
             </Menu.Item>

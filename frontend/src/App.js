@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer";
@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
           <Route path="/translate" element={<Translate />}></Route>
           <Route path="/grammar" element={<Grammar />}></Route>
           {/* <Route path="/" component={Home} />
