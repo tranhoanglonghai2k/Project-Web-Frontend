@@ -1,8 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { GoSearch } from "react-icons/go";
+import React, { useState } from "react";
+import { Form, Select, Input } from "antd";
+import { AudioOutlined } from "@ant-design/icons";
+import "../../App.css";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
+
+  const { Option } = Select;
+  const { Search } = Input;
+
+  const suffix = (
+    <AudioOutlined
+      style={{
+        fontSize: 16,
+        color: "#1890ff",
+      }}
+    />
+  );
+
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("Đây là phần dịch");
   const check = localStorage.getItem("his")
@@ -29,25 +44,32 @@ function Search() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="search-form">
+    <div className="container mglr-100 mgtb-25">
+      <Form onSubmit={handleSubmit} className="search-form">
         <div className="select">
-          <select name="languages" className="switch-language">
-            <option value="vietanh">Việt-Anh</option>
-            <option value="anhviet">Anh-Việt</option>
-          </select>
+          <Select
+            style={{ width: 120 }}
+            name="languages"
+            className="switch-language"
+          >
+            <Option value="vietanh">Việt-Anh</Option>
+            <Option value="anhviet">Anh-Việt</Option>
+          </Select>
         </div>
 
-        <input
+        <Search
           placeholder="Search"
           value={input}
           onChange={handleChange}
+          onClick={handleSubmit}
           name="text"
+          enterButton="Search"
+          size="large"
+          suffix={suffix}
           className="search-input"
-        ></input>
-        <GoSearch onClick={handleSubmit} className="search-btn" />
+        />
         <div>{output}</div>
-      </form>
+      </Form>
     </div>
   );
 }

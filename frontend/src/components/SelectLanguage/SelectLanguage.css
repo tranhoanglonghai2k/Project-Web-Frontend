@@ -1,17 +1,3 @@
-.mgt-10 {
-  margin-top: 10px;
-}
-
-.mgtb-25 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.mglr-100 {
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
 textarea.ant-input {
   min-height: 250px !important;
 }

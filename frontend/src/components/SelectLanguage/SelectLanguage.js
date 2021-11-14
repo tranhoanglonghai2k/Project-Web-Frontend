@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import { Form, Select, Input } from "antd";
 import { ZhihuSquareFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./SelectLanguage.css";
+import "../../App.css";
 
 export const SelectLanguage = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const { Option } = Select;
   const { TextArea } = Input;
+
   const [lang1, setLang1] = useState("Anh");
   const [lang2, setLang2] = useState("Việt");
   const [input, setInput] = useState("Plese input");
