@@ -1,28 +1,31 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { GoSearch } from "react-icons/go";
 
-function Search(props) {
+function Search() {
+  localStorage.clear(); // NOTE: khi nào public thì xóa
   const [input, setInput] = useState("");
-
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  });
+  const [output, setOutput] = useState("Đây là phần dịch");
+  const check = localStorage.getItem("his")
+    ? JSON.stringify(localStorage.getItem("his"))
+    : [];
+  const [his, setHis] = useState(check);
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
+    input.trim();
+    var check_Flash = 0;
     e.preventDefault();
-
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: "Day la nghia cua tu",
+    if (/\S/.test(input)) {
+      check_Flash = 1;
+    }
+    const update = { word: input, flash: check_Flash };
+    setHis((pre) => {
+      return [...pre, update];
     });
-
-    setInput("");
+    console.log(his);
   };
 
   return (
@@ -41,9 +44,9 @@ function Search(props) {
           onChange={handleChange}
           name="text"
           className="search-input"
-          ref={inputRef}
         ></input>
         <GoSearch onClick={handleSubmit} className="search-btn" />
+        <div>{output}</div>
       </form>
     </div>
   );
