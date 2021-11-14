@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Layout, Menu, Typography } from "antd";
+import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { HomeFilled, ZhihuSquareFilled } from "@ant-design/icons";
 import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
+
   const [selectKey, setSelectKey] = useState("1");
 
   return (
@@ -16,7 +17,7 @@ function Header() {
       >
         <div className="header-content-default">
           <div className="logo">
-            <Link to="/home">
+            <Link to="/">
               <img
                 src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
                 alt="logo"
@@ -27,7 +28,7 @@ function Header() {
 
           <Menu className="menu" mode="horizontal" selectedKeys={[selectKey]}>
             <Menu.Item key="1" icon={<HomeFilled />}>
-              <Link to="/home">Tra cứu</Link>
+              <Link to="/">Tra cứu</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<ZhihuSquareFilled />}>
               <Link to="/translate">Dịch</Link>

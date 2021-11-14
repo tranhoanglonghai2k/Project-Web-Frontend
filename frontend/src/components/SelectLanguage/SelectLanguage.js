@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Form, Select, Input } from "antd";
-import { useState } from "react";
+import { ZhihuSquareFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
+import "./SelectLanguage.css";
 
 export const SelectLanguage = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
@@ -23,6 +24,7 @@ export const SelectLanguage = () => {
     event.preventDefault();
     setInput(event.target.value);
   }
+
   function handleChangelang1(value) {
     value === "Anh" ? setLang2("Việt") : setLang2("Anh");
     setLang1(value);
@@ -43,13 +45,14 @@ export const SelectLanguage = () => {
         setOutput(res.data.param);
       });
   }
+
   return (
-    <div className="container">
+    <div className="container mglr-100 mgtb-25">
       <div>
         <Form onSubmit={handleSubmit}>
-          <div className="Container-language">
+          <div className="container-language">
             <Select
-              style={{ width: 120 }}
+              style={{ width: 160 }}
               className="language-input"
               name="lang1"
               value={lang1}
@@ -58,13 +61,13 @@ export const SelectLanguage = () => {
               <Option value="Anh">Anh</Option>
               <Option value="Việt">Việt</Option>
             </Select>
-            <Select style={{ width: 120 }} name="lang2" value={lang2}>
+            <Select style={{ width: 160 }} name="lang2" value={lang2}>
               <Option value="Việt">Việt</Option>
               <Option value="Anh">Anh</Option>
             </Select>
           </div>
           <div className="container-translate">
-            <div>
+            <div className="mgt-10">
               <TextArea
                 rows={4}
                 showCount
@@ -72,11 +75,17 @@ export const SelectLanguage = () => {
                 allowClear
                 name="input"
                 onChange={handleChangeinput}
+                className="textarea"
               />
             </div>
-            <div>{output}</div>
+            <div className="output-translate">{output}</div>
           </div>
-          <Input type="submit" value="Dịch" />
+          <Input
+            className="input"
+            icon={<ZhihuSquareFilled />}
+            type="submit"
+            value="Dịch"
+          />
         </Form>
         <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
       </div>
