@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer";
-import "./App.css";
 import Home from "./pages/Home/Home";
 import Translate from "./pages/Translate/Translate";
 import Grammar from "./pages/Grammar/Grammar";
-// import Error from "./pages/Error/Error";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Sign up/Signup";
+import "./App.css";
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/home" element={<Home />}></Route>
-          <Route path="/translate" element={<Translate />}></Route>
-          <Route path="/grammar" element={<Grammar />}></Route>
-          <Route path="/" component={Home} />
-          <Route path="/" component={Home} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/translate" element={<Translate />} />
+          <Route path="/grammar" element={<Grammar />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </Router>
