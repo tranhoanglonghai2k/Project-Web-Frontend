@@ -17,8 +17,8 @@ function App() {
           <Route exact path="/home" element={<Home />}></Route>
           <Route path="/translate" element={<Translate />}></Route>
           <Route path="/grammar" element={<Grammar />}></Route>
-          {/* <Route path="/" component={Home} />
-        <Route path="/" component={Home} /> */}
+          <Route path="/" component={Home} />
+          <Route path="/" component={Home} />
         </Routes>
         <Footer />
       </Router>

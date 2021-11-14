@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Typography } from "antd";
+import { Link } from "react-router-dom";
 import { HomeFilled, ZhihuSquareFilled } from "@ant-design/icons";
 import "./Header.css";
 
-function Header({ currentKey }) {
+function Header() {
   const { Header } = Layout;
-
-  // const [selectKey, setSelectKey] = useState(1);
-
-  // const handleClick = (e) => {
-  //   console.log("click ", e);
-  //   setSelectKey(e.target.key);
-  // };
+  const [selectKey, setSelectKey] = useState("1");
 
   return (
     <Layout>
@@ -21,35 +16,30 @@ function Header({ currentKey }) {
       >
         <div className="header-content-default">
           <div className="logo">
-            <a href="/home">
+            <Link to="/home">
               <img
                 src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
                 alt="logo"
                 className="logo-dict"
               ></img>
-            </a>
+            </Link>
           </div>
 
-          <Menu
-            className="menu"
-            mode="horizontal"
-            // onClick={handleClick}
-            // selectedKeys={[selectKey]}
-          >
+          <Menu className="menu" mode="horizontal" selectedKeys={[selectKey]}>
             <Menu.Item key="1" icon={<HomeFilled />}>
-              <a href="/home">Tra cứu</a>
+              <Link to="/home">Tra cứu</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<ZhihuSquareFilled />}>
-              <a href="/translate">Dịch</a>
+              <Link to="/translate">Dịch</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <a href="/grammar">Ngữ pháp</a>
+              <Link to="/grammar">Ngữ pháp</Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </Menu.Item>
             <Menu.Item key="5">
-              <a href="/signup">Sign up</a>
+              <Link to="/signup">Sign up</Link>
             </Menu.Item>
           </Menu>
         </div>
