@@ -1,0 +1,42 @@
+.mgt-10 {
+  margin-top: 10px;
+}
+
+.mgtb-25 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.mglr-100 {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* .mglr-506 {
+  margin-left: 506px;
+  margin-right: 506px;
+} */
+
+textarea.ant-input {
+  min-height: 250px !important;
+}
+
+.container-language {
+  text-align: center;
+  margin: auto;
+}
+
+.anticon.ant-input-clear-icon {
+  font-size: 20px !important;
+}
+
+.input {
+  background-color: #3367d6 !important;
+  color: white !important;
+  border-radius: 30px !important;
+  font-size: 20px !important;
+}
+
+.textarea {
+  max-width: 50%;
+}
