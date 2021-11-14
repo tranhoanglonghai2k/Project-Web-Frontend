@@ -66,18 +66,16 @@ export const SelectLanguage = () => {
               <Option value="Anh">Anh</Option>
             </Select>
           </div>
-          <div className="container-translate">
-            <div className="mgt-10">
-              <TextArea
-                rows={4}
-                showCount
-                maxLength={5000}
-                allowClear
-                name="input"
-                onChange={handleChangeinput}
-                className="textarea"
-              />
-            </div>
+          <div className="container-translate mgt-10">
+            <TextArea
+              rows={4}
+              showCount
+              maxLength={5000}
+              allowClear
+              name="input"
+              onChange={handleChangeinput}
+              className="textarea"
+            />
             <div className="output-translate">{output}</div>
           </div>
           <Input

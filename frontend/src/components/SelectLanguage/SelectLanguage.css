@@ -12,11 +12,6 @@
   margin-right: 100px;
 }
 
-/* .mglr-506 {
-  margin-left: 506px;
-  margin-right: 506px;
-} */
-
 textarea.ant-input {
   min-height: 250px !important;
 }
@@ -39,4 +34,11 @@ textarea.ant-input {
 
 .textarea {
   max-width: 50%;
+}
+
+.output-translate {
+  /* display: inline-block; */
+  max-width: 50%;
+  min-height: 250px !important;
+  border: 1px solid #d9d9d9;
 }
