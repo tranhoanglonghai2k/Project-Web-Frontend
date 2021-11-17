@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Select, Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
+import "./Search.css";
 import "../../App.css";
 
 function Search() {
@@ -46,28 +47,31 @@ function Search() {
   return (
     <div className="container mglr-100 mgtb-25">
       <Form onSubmit={handleSubmit} className="search-form">
-        <div className="select">
-          <Select
-            style={{ width: 120 }}
-            name="languages"
-            className="switch-language"
-          >
-            <Option value="vietanh">Việt-Anh</Option>
-            <Option value="anhviet">Anh-Việt</Option>
-          </Select>
-        </div>
+        <div>
+          <div className="select">
+            <Select
+              style={{ width: 120 }}
+              name="languages"
+              className="switch-language"
+            >
+              <Option value="vietanh">Việt-Anh</Option>
+              <Option value="anhviet">Anh-Việt</Option>
+            </Select>
+          </div>
 
-        <Search
-          placeholder="Search"
-          value={input}
-          onChange={handleChange}
-          onClick={handleSubmit}
-          name="text"
-          enterButton="Search"
-          size="large"
-          suffix={suffix}
-          className="search-input"
-        />
+          <Search
+            placeholder="Search"
+            value={input}
+            onChange={handleChange}
+            onClick={handleSubmit}
+            name="text"
+            enterButton="Search"
+            size="large"
+            suffix={suffix}
+            allowClear
+            className="search"
+          />
+        </div>
         <div>{output}</div>
       </Form>
     </div>

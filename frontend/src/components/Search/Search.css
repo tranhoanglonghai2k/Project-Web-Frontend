@@ -1,8 +1,10 @@
-.select {
+.search-form .select {
   text-align: center;
-  margin: auto;
+  max-width: 120px !important;
+  display: inline-block;
+  position: relative;
 }
 
-.search-form {
-    margin: auto;
+.search {
+  max-width: 720px;
 }
