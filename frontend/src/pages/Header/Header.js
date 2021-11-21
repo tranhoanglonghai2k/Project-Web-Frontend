@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
-import { HomeFilled, ZhihuSquareFilled } from "@ant-design/icons";
+import {
+  HomeFilled,
+  ZhihuSquareFilled,
+  CheckCircleFilled,
+  EditFilled,
+  BookFilled,
+} from "@ant-design/icons";
 import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
 
+  // const keys = [1, 2, 3, 4, 5, 6, 7];
+
   const [selectKey, setSelectKey] = useState("1");
 
-  // const handleClick = (key) => {
-  //   setSelectKey = key;
+  // const handleClick = (keys, props) => {
+  //   const numbers = props.keys;
+  //   const key = numbers.map((number) => {
+  //     setSelectKey = number;
+  //   });
+
+  //   return selectKey;
   // };
 
   return (
@@ -36,25 +49,37 @@ function Header() {
             // onClick={handleClick}
             selectedKeys={[selectKey]}
           >
-            <Menu.Item key="1" icon={<HomeFilled />}>
+            <Menu.Item key="1" icon={<HomeFilled className="icon-default" />}>
               <Link to="/">Tra cứu</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<ZhihuSquareFilled />}>
+            <Menu.Item
+              key="2"
+              icon={<ZhihuSquareFilled className="icon-default" />}
+            >
               <Link to="/translate">Dịch</Link>
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item
+              key="3"
+              icon={<CheckCircleFilled className="icon-default" />}
+            >
               <Link to="/grammar">Ngữ pháp</Link>
             </Menu.Item>
-            <Menu.Item key="4">
+            <Menu.Item key="4" icon={<EditFilled className="icon-default" />}>
               <Link to="/newword">Từ mới</Link>
             </Menu.Item>
-            <Menu.Item key="5">
+            <Menu.Item key="5" icon={<BookFilled className="icon-default" />}>
               <Link to="/myword">Từ của tôi</Link>
             </Menu.Item>
-            <Menu.Item key="6">
+            <Menu.Item
+              key="6"
+              // icon={}
+            >
               <Link to="/login">Login</Link>
             </Menu.Item>
-            <Menu.Item key="7">
+            <Menu.Item
+              key="7"
+              // icon={}
+            >
               <Link to="/signup">Sign up</Link>
             </Menu.Item>
           </Menu>
