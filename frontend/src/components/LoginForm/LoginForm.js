@@ -7,6 +7,7 @@ import {
   EyeInvisibleOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const onFinish = (values) => {
@@ -60,8 +61,7 @@ const LoginForm = () => {
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
-
-        <a className="login-form-forgot" href="">
+        <a href="https://www.google.com/" className="link-css">
           Forgot password
         </a>
       </Form.Item>
@@ -70,7 +70,10 @@ const LoginForm = () => {
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <Link to="/signup">register now!</Link>
+        Or{" "}
+        <Link to="/signup" className="link-css">
+          register now!
+        </Link>
       </Form.Item>
     </Form>
   );
