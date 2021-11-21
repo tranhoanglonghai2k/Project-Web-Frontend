@@ -31,13 +31,13 @@ export const SelectLanguage = () => {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     setHis((data) => [...data, input]);
 
     localStorage.setItem("his", his);
     const request_lang = lang1 === "Việt" ? "en" : "vi";
     axios
-      .post(END_POINT + "/api/translate-paragraph", {
+      .get(END_POINT + "/api/translate-paragraph", {
         type: request_lang,
         param: input,
       })
