@@ -9,6 +9,10 @@ function Header() {
 
   const [selectKey, setSelectKey] = useState("1");
 
+  // const handleClick = (key) => {
+  //   setSelectKey = key;
+  // };
+
   return (
     <Layout>
       <Header
@@ -26,7 +30,12 @@ function Header() {
             </Link>
           </div>
 
-          <Menu className="menu" mode="horizontal" selectedKeys={[selectKey]}>
+          <Menu
+            className="menu"
+            mode="horizontal"
+            // onClick={handleClick}
+            selectedKeys={[selectKey]}
+          >
             <Menu.Item key="1" icon={<HomeFilled />}>
               <Link to="/">Tra cứu</Link>
             </Menu.Item>
@@ -37,9 +46,15 @@ function Header() {
               <Link to="/grammar">Ngữ pháp</Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <Link to="/login">Login</Link>
+              <Link to="/newword">Từ mới</Link>
             </Menu.Item>
             <Menu.Item key="5">
+              <Link to="/myword">Từ của tôi</Link>
+            </Menu.Item>
+            <Menu.Item key="6">
+              <Link to="/login">Login</Link>
+            </Menu.Item>
+            <Menu.Item key="7">
               <Link to="/signup">Sign up</Link>
             </Menu.Item>
           </Menu>
