@@ -14,40 +14,6 @@ import {
 
 const { Option } = Select;
 
-const residences = [
-  {
-    value: "zhejiang",
-    label: "Zhejiang",
-    children: [
-      {
-        value: "hangzhou",
-        label: "Hangzhou",
-        children: [
-          {
-            value: "xihu",
-            label: "West Lake",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: "jiangsu",
-    label: "Jiangsu",
-    children: [
-      {
-        value: "nanjing",
-        label: "Nanjing",
-        children: [
-          {
-            value: "zhonghuamen",
-            label: "Zhong Hua Men",
-          },
-        ],
-      },
-    ],
-  },
-];
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -86,46 +52,6 @@ const RegistrationForm = () => {
     console.log("Received values of form: ", values);
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-  const suffixSelector = (
-    <Form.Item name="suffix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="USD">$</Option>
-        <Option value="CNY">¥</Option>
-      </Select>
-    </Form.Item>
-  );
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
-    }
-  };
-
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website,
-  }));
   return (
     <Form
       {...formItemLayout}
@@ -152,7 +78,7 @@ const RegistrationForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item
@@ -166,7 +92,7 @@ const RegistrationForm = () => {
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password allowClear />
       </Form.Item>
 
       <Form.Item
@@ -192,12 +118,12 @@ const RegistrationForm = () => {
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password allowClear />
       </Form.Item>
 
       <Form.Item
-        name="nickname"
-        label="Nickname"
+        name="name"
+        label="Name"
         tooltip="What do you want others to call you?"
         rules={[
           {
@@ -207,89 +133,7 @@ const RegistrationForm = () => {
           },
         ]}
       >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="residence"
-        label="Habitual Residence"
-        rules={[
-          {
-            type: "array",
-            required: true,
-            message: "Please select your habitual residence!",
-          },
-        ]}
-      >
-        <Cascader options={residences} />
-      </Form.Item>
-
-      <Form.Item
-        name="phone"
-        label="Phone Number"
-        rules={[
-          {
-            required: true,
-            message: "Please input your phone number!",
-          },
-        ]}
-      >
-        <Input
-          addonBefore={prefixSelector}
-          style={{
-            width: "100%",
-          }}
-        />
-      </Form.Item>
-
-      <Form.Item
-        name="donation"
-        label="Donation"
-        rules={[
-          {
-            required: true,
-            message: "Please input donation amount!",
-          },
-        ]}
-      >
-        <InputNumber
-          addonAfter={suffixSelector}
-          style={{
-            width: "100%",
-          }}
-        />
-      </Form.Item>
-
-      <Form.Item
-        name="website"
-        label="Website"
-        rules={[
-          {
-            required: true,
-            message: "Please input website!",
-          },
-        ]}
-      >
-        <AutoComplete
-          options={websiteOptions}
-          onChange={onWebsiteChange}
-          placeholder="website"
-        >
-          <Input />
-        </AutoComplete>
-      </Form.Item>
-
-      <Form.Item
-        name="intro"
-        label="Intro"
-        rules={[
-          {
-            required: true,
-            message: "Please input Intro",
-          },
-        ]}
-      >
-        <Input.TextArea showCount maxLength={100} />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item
@@ -309,7 +153,7 @@ const RegistrationForm = () => {
         </Select>
       </Form.Item>
 
-      <Form.Item
+      {/* <Form.Item
         label="Captcha"
         extra="We must make sure that your are a human."
       >
@@ -332,7 +176,7 @@ const RegistrationForm = () => {
             <Button>Get captcha</Button>
           </Col>
         </Row>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item
         name="agreement"
@@ -353,7 +197,7 @@ const RegistrationForm = () => {
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+          Sign up
         </Button>
       </Form.Item>
     </Form>
