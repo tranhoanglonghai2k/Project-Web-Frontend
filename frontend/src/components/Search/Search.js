@@ -47,10 +47,10 @@ function Search() {
   return (
     <div className="container mglr-100 mgtb-25">
       <Form onSubmit={handleSubmit} className="search-form">
-        <div>
-          <div className="select">
+        <div className="container-search">
+          <div className="select mglr-20">
             <Select
-              style={{ width: 120 }}
+              style={{ width: 160 }}
               name="languages"
               className="switch-language"
             >
@@ -69,10 +69,10 @@ function Search() {
             size="large"
             suffix={suffix}
             allowClear
-            className="search"
+            className="search mglr-20"
           />
         </div>
-        <div>{output}</div>
+        <div className="container-output">{output}</div>
       </Form>
     </div>
   );
