@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Select, Checkbox, Button } from "antd";
+import { Form, Input, Select, Button } from "antd";
 
 const { Option } = Select;
 
@@ -123,23 +123,6 @@ const RegistrationForm = () => {
         ]}
       >
         <Input allowClear />
-      </Form.Item>
-
-      <Form.Item
-        name="gender"
-        label="Gender"
-        rules={[
-          {
-            required: true,
-            message: "Please select gender!",
-          },
-        ]}
-      >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
-        </Select>
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
