@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
 import { SelectLanguage } from "../../components/SelectLanguage/SelectLanguage";
-import { Test } from "../../components/Test/Test";
 
 function Translate() {
   const { Content } = Layout;
@@ -11,14 +10,13 @@ function Translate() {
       <Layout>
         <Content
           className="site-layout"
-          style={{ padding: "0 50px", marginTop: 64 }}
+          style={{ padding: "0 50px", marginTop: "64px" }}
         >
           <div
             className="site-layout-background"
-            style={{ padding: 24, minHeight: 2400, marginTop: 54 }}
+            style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
           >
             <SelectLanguage />
-            {/* <Test /> */}
           </div>
         </Content>
       </Layout>

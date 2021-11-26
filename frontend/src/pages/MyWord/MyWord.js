@@ -21,11 +21,11 @@ function MyWord() {
     <Layout>
       <Content
         className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
+        style={{ padding: "0 50px", marginTop: "64px" }}
       >
         <div
           className="site-layout-background"
-          style={{ padding: 24, minHeight: 2400, marginTop: 54 }}
+          style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
         >
           <FlashcardComponent dataSource={cardData} />
         </div>
