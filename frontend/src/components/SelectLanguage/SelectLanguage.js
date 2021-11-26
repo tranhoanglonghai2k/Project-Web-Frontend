@@ -91,19 +91,20 @@ export const SelectLanguage = () => {
                 onChange={handleChangeinput}
                 className="textarea"
               />
-              <div className="output-translate">{output}</div>
+
+              <Form.Item>
+                <Button
+                  className="btn-submit"
+                  onSubmit={handleSubmit}
+                  icon={<ZhihuSquareFilled />}
+                >
+                  Dịch
+                </Button>
+              </Form.Item>
+
+              <div className="output-translate mgt-30">{output}</div>
             </Form.Item>
           </div>
-
-          <Form.Item>
-            <Button
-              className="btn-submit"
-              onSubmit={handleSubmit}
-              icon={<ZhihuSquareFilled />}
-            >
-              Dịch
-            </Button>
-          </Form.Item>
         </Form>
 
         <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
