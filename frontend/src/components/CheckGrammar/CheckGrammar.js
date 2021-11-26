@@ -3,10 +3,10 @@ import axios from "axios";
 import { Form, Select, Input, Button } from "antd";
 import { ZhihuSquareFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
-import "./SelectLanguage.css";
+import "./CheckGrammar.css";
 import "../../App.css";
 
-export const SelectLanguage = () => {
+export const CheckGrammar = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const { Option } = Select;
@@ -34,16 +34,6 @@ export const SelectLanguage = () => {
     setLang1(value);
   }
 
-  // function handleSubmit(event) {
-  //   // event.preventDefault();
-  //   setHis((data) => [...data, input]);
-
-  //   localStorage.setItem("his", his);
-  //   const request_lang = lang1 === "Việt" ? "en" : "vi";
-  //   axios
-  //     .get(END_POINT + "/api/translate-paragraph", {
-  //       type: request_lang,
-  //       param: input,
   function handleSubmit(values) {
     // setHis((data) => [...data, input]);
 
@@ -72,24 +62,6 @@ export const SelectLanguage = () => {
     <div className="container mglr-100 mgtb-25">
       <div>
         <Form form={form} onSubmit={handleSubmit}>
-          <div className="container-language">
-            <Form.Item>
-              <Select
-                style={{ width: 160 }}
-                className="language-input"
-                name="lang1"
-                value={lang1}
-                onChange={handleChangelang1}
-              >
-                <Option value="Anh">Anh</Option>
-                <Option value="Việt">Việt</Option>
-              </Select>
-              <Select style={{ width: 160 }} name="lang2" value={lang2}>
-                <Option value="Việt">Việt</Option>
-                <Option value="Anh">Anh</Option>
-              </Select>
-            </Form.Item>
-          </div>
           <div className="container-translate mgt-10">
             <Form.Item>
               <TextArea

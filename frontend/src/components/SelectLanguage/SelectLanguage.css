@@ -1,24 +1,6 @@
-.mgt-10 {
-  margin-top: 10px;
-}
-
-.mgtb-25 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.mglr-100 {
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-/* .mglr-506 {
-  margin-left: 506px;
-  margin-right: 506px;
-} */
-
 textarea.ant-input {
   min-height: 250px !important;
+  vertical-align: none;
 }
 
 .container-language {
@@ -37,6 +19,28 @@ textarea.ant-input {
   font-size: 20px !important;
 }
 
+.container-translate {
+  position: relative;
+  width: 100%;
+}
+
 .textarea {
+  /* display: inline-block; */
   max-width: 50%;
+}
+
+.output-translate {
+  /* display: inline-block; */
+  max-width: 50%;
+  min-height: 250px !important;
+  border: 1px solid #d9d9d9;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #3367d6 !important;
+  color: white !important;
+  border-radius: 30px !important;
+  font-size: 20px !important;
+  text-align: center !important;
 }

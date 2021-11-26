@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import { Layout } from "antd";
-// import Content from "../Content/Content";
+import { CheckGrammar } from "../../components/CheckGrammar/CheckGrammar";
 
 function Grammar() {
   const { Content } = Layout;
@@ -17,7 +17,7 @@ function Grammar() {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 2400, marginTop: 54 }}
           >
-            Grammar
+            <CheckGrammar />
           </div>
         </Content>
       </Layout>

@@ -1,35 +1,12 @@
-a {
-  text-decoration: none;
-  color: #fff !important;
-}
-
 .logo {
   display: inline-block;
   float: left;
 }
 
 .logo-dict {
-  width: 65px;
-  height: 65px;
-  aspect-ratio: auto 65/65;
+  width: 80px;
+  height: 80px;
   vertical-align: middle;
-}
-
-.active {
-  background-color: rgb(134, 177, 247);
-  border-radius: 30px;
-}
-
-.unactive {
-  background-color: #3367d6;
-  border-radius: 30px;
-}
-
-.btn-default {
-  display: inline-block;
-  float: right;
-  vertical-align: middle;
-  border-radius: 30px;
 }
 
 .ant-menu-horizontal {
@@ -42,10 +19,21 @@ a {
 
 #header {
   background-color: #3367d6 !important;
-  height: 65px;
+  height: 80px;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 9;
+}
+
+#header .header-content-default a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+#header .header-content-default a:hover {
+  color: #1a90ff;
 }
 
 .header-content-default {
@@ -57,8 +45,13 @@ a {
   display: inline-block;
   background-color: #3367d6 !important;
   color: #fff !important;
+  height: 80px;
 }
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+.ant-menu-item-icon {
+  font-size: 20px !important;
 }
