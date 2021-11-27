@@ -150,7 +150,7 @@ function Search() {
             className="search"
           />
         </div>
-        <div>{output}</div>
+        <div>{output.word}</div>
       </Form>
     </div>
   );

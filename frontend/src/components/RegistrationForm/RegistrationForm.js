@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form, Input, Select, Checkbox, Button } from "antd";
-
+import { Form, Input, Select, Button } from "antd";
+import AuthService from "../AuthService/AuthService ";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -35,8 +35,26 @@ const tailFormItemLayout = {
 };
 
 const RegistrationForm = () => {
-  const [form] = Form.useForm();
+  const [regis, setRegis] = useState({
+    username: "",
+    email: "",
+    password: "",
+    // confirm: "",
+  });
 
+  function handleChange(e) {
+    const value = e.target.value;
+    setRegis({
+      ...regis,
+      [e.target.name]: value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDedault();
+    AuthService.register(regis.username, regis.email, regis.password);
+  }
+  const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -55,6 +73,7 @@ const RegistrationForm = () => {
     >
       <Form.Item
         name="email"
+        onChange={handleChange}
         label="E-mail"
         rules={[
           {
@@ -72,6 +91,7 @@ const RegistrationForm = () => {
 
       <Form.Item
         name="password"
+        onChange={handleChange}
         label="Password"
         rules={[
           {
@@ -111,13 +131,14 @@ const RegistrationForm = () => {
       </Form.Item>
 
       <Form.Item
-        name="name"
+        name="username"
+        onChange={handleChange}
         label="Name"
         tooltip="What do you want others to call you?"
         rules={[
           {
             required: true,
-            message: "Please input your nickname!",
+            message: "Please input your nickn1ame!",
             whitespace: true,
           },
         ]}
@@ -125,25 +146,8 @@ const RegistrationForm = () => {
         <Input allowClear />
       </Form.Item>
 
-      <Form.Item
-        name="gender"
-        label="Gender"
-        rules={[
-          {
-            required: true,
-            message: "Please select gender!",
-          },
-        ]}
-      >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
-        </Select>
-      </Form.Item>
-
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onSubmit={handleSubmit}>
           Sign up
         </Button>
       </Form.Item>

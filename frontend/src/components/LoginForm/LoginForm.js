@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from "antd";
 import {
@@ -9,11 +9,24 @@ import {
 } from "@ant-design/icons";
 import "./LoginForm.css";
 
+import AuthService from "../AuthService/AuthService ";
+
 const LoginForm = () => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
 
+  function handleChange(e) {
+    const value = e.target.value;
+    setLogin({
+      ...login,
+      [e.target.name]: value,
+    });
+  }
   return (
     <Form
       name="normal_login"
