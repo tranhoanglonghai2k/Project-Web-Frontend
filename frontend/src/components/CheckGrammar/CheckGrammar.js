@@ -4,7 +4,6 @@ import { Form, Input, Button, Typography } from "antd";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./CheckGrammar.css";
-import "../../App.css";
 
 export const CheckGrammar = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
@@ -60,7 +59,7 @@ export const CheckGrammar = () => {
 
   return (
     <div className="container mglr-100 mgtb-25">
-      <Title className="title-grammar">Kiểm tra ngữ pháp</Title>
+      <Title className="title">Kiểm tra ngữ pháp</Title>
 
       <Form form={form} onSubmit={handleSubmit}>
         <div className="container-translate mgt-10">

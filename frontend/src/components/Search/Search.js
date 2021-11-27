@@ -7,7 +7,6 @@ import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
-import "../../App.css";
 
 function Search() {
   const word = {
