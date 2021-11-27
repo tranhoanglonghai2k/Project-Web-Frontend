@@ -1,13 +1,19 @@
 import axios from "axios";
 import { END_POINT } from "../../config";
-// const API_URL = "http://localhost:8080/api/auth/";
 
 class AuthService {
-  login(name, password) {
-    return axios.post(END_POINT + "/users/login", {
-      // email,
-      password,
-    });
+  login(email, password) {
+    return axios
+      .post(END_POINT + "/users/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        if (response.data.token) {
+          console.log(response.data.token);
+          localStorage.setItem("token", JSON.stringify(response.data.token));
+        }
+      });
   }
 
   logout() {
@@ -17,15 +23,14 @@ class AuthService {
   register(name, email, password) {
     return axios
       .post(END_POINT + "/users", {
-        name,
-        email,
-        password,
+        name: name,
+        email: email,
+        password: password,
       })
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
-
         return response.data;
       });
   }

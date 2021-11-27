@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Select, Input, Button } from "antd";
-import { ZhihuSquareFilled } from "@ant-design/icons";
+import { Form, Input, Button, Typography } from "antd";
+import { CheckCircleFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./CheckGrammar.css";
 import "../../App.css";
@@ -9,8 +9,8 @@ import "../../App.css";
 export const CheckGrammar = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
-  const { Option } = Select;
   const { TextArea } = Input;
+  const { Title } = Typography;
 
   const [form] = Form.useForm();
 
@@ -60,36 +60,37 @@ export const CheckGrammar = () => {
 
   return (
     <div className="container mglr-100 mgtb-25">
-      <div>
-        <Form form={form} onSubmit={handleSubmit}>
-          <div className="container-translate mgt-10">
-            <Form.Item>
-              <TextArea
-                rows={4}
-                showCount
-                maxLength={5000}
-                allowClear
-                name="input"
-                onChange={handleChangeinput}
-                className="textarea"
-              />
-              <div className="output-translate">{output}</div>
-            </Form.Item>
-          </div>
+      <Title className="title-grammar">Kiểm tra ngữ pháp</Title>
 
+      <Form form={form} onSubmit={handleSubmit}>
+        <div className="container-translate mgt-10">
           <Form.Item>
-            <Button
-              className="btn-submit"
-              onSubmit={handleSubmit}
-              icon={<ZhihuSquareFilled />}
-            >
-              Dịch
-            </Button>
-          </Form.Item>
-        </Form>
+            <TextArea
+              rows={4}
+              showCount
+              maxLength={5000}
+              allowClear
+              name="input"
+              onChange={handleChangeinput}
+              className="textarea"
+            />
 
-        <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
-      </div>
+            <Form.Item>
+              <Button
+                className="btn-submit"
+                onSubmit={handleSubmit}
+                icon={<CheckCircleFilled />}
+              >
+                Kiểm tra
+              </Button>
+            </Form.Item>
+
+            <div className="output-translate mgt-30">{output}</div>
+          </Form.Item>
+        </div>
+      </Form>
+
+      <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
     </div>
   );
 };

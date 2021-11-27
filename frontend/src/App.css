@@ -4,13 +4,33 @@
   box-sizing: border-box;
 }
 
+.mga {
+  margin: auto;
+}
+
 .mgt-10 {
   margin-top: 10px;
+}
+
+.mgt-30 {
+  margin-top: 30px;
 }
 
 .mgtb-25 {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.mgr-20 {
+  margin-right: 20px;
+}
+
+.mgl-20 {
+  margin-left: 20px;
+}
+
+.mglr-20 {
+  margin: 0 20px;
 }
 
 .mglr-100 {

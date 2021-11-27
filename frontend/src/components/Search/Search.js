@@ -60,8 +60,8 @@ function Search() {
     setInput(e.target.value);
   };
 
-  function handleChangelang(value) {
-    value === "Anh-Việt" ? setLang("Anh-Việt") : setLang("Việt-Anh");
+  function handleChangelang(e) {
+    setLang(e);
   }
   const handleSubmit = (e) => {
     input.trim();
@@ -125,10 +125,12 @@ function Search() {
 
     <div className="container mglr-100 mgtb-25">
       <Form onSubmit={handleSubmit} className="search-form">
-        <div>
-          <div className="select">
+        <div className="container-search">
+          <div className="select mglr-20">
             <Select
-              style={{ width: 120 }}
+              onChange={handleChangelang}
+              value={lang}
+              style={{ width: 160 }}
               name="languages"
               className="switch-language"
             >
@@ -147,10 +149,20 @@ function Search() {
             size="large"
             suffix={suffix}
             allowClear
-            className="search"
+            className="search mglr-20"
           />
         </div>
-        <div>{output.word}</div>
+        <div>
+          <ul>
+            <li>{output.word}</li>
+            <Speech text="hello" />
+            <li>{output.wType}</li>
+            <li>{output.means}</li>
+            <li>{output.examples}</li>
+            <li>{output.examplesVn}</li>
+            <li>{output.spell}</li>
+          </ul>
+        </div>
       </Form>
     </div>
   );

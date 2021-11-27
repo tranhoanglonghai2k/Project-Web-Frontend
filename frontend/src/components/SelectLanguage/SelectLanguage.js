@@ -24,9 +24,8 @@ export const SelectLanguage = () => {
 
   const [his, setHis] = useState(check);
 
-  function handleChangeinput(values) {
-    setInput(values);
-    // console.log(values);
+  function handleChangeinput(e) {
+    setInput(e.target.value);
   }
 
   function handleChangelang1(value) {
@@ -34,21 +33,12 @@ export const SelectLanguage = () => {
     setLang1(value);
   }
 
-  // function handleSubmit(event) {
-  //   // event.preventDefault();
-  //   setHis((data) => [...data, input]);
-
-  //   localStorage.setItem("his", his);
-  //   const request_lang = lang1 === "Việt" ? "en" : "vi";
-  //   axios
-  //     .get(END_POINT + "/api/translate-paragraph", {
-  //       type: request_lang,
-  //       param: input,
   function handleSubmit(values) {
-    // setHis((data) => [...data, input]);
+    setHis((data) => [...data, input]);
+    console.log(input);
+    localStorage.setItem("his", his);
+    const request_lang = lang1 === "Việt" ? "en" : "vi";
 
-    // localStorage.setItem("his", his);
-    // const request_lang = lang1 === "Việt" ? "en" : "vi";
     // axios
     //   .post(END_POINT + "/api/translate-paragraph", {
     //     type: request_lang,
@@ -61,8 +51,6 @@ export const SelectLanguage = () => {
     form
       .validateFields()
       .then((values) => {
-        // Submit values
-        // submitValues(values);
         console.log(values);
       })
       .catch((errorInfo) => {});
@@ -71,7 +59,7 @@ export const SelectLanguage = () => {
   return (
     <div className="container mglr-100 mgtb-25">
       <div>
-        <Form form={form} onSubmit={handleSubmit}>
+        <Form form={form}>
           <div className="container-language">
             <Form.Item>
               <Select
@@ -101,19 +89,20 @@ export const SelectLanguage = () => {
                 onChange={handleChangeinput}
                 className="textarea"
               />
-              <div className="output-translate">{output}</div>
+
+              <Form.Item>
+                <Button
+                  className="btn-submit"
+                  onClick={handleSubmit}
+                  icon={<ZhihuSquareFilled />}
+                >
+                  Dịch
+                </Button>
+              </Form.Item>
+
+              <div className="output-translate mgt-30">{output}</div>
             </Form.Item>
           </div>
-
-          <Form.Item>
-            <Button
-              className="btn-submit"
-              onSubmit={handleSubmit}
-              icon={<ZhihuSquareFilled />}
-            >
-              Dịch
-            </Button>
-          </Form.Item>
         </Form>
 
         <ul>{his && his.map((item) => <li>{item} </li>)}</ul>

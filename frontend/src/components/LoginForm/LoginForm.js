@@ -20,15 +20,32 @@ const LoginForm = () => {
     password: "",
   });
 
-  function handleChange(e) {
-    const value = e.target.value;
+  // function handleChange(e) {
+  //   const value = e.target.value;
+  //   setLogin({
+  //     ...login,
+  //     [e.target.name]: value,
+  //   });
+  // }
+  const [form] = Form.useForm();
+  function handleChange(values) {
+    // console.log("data");
+    // console.log(values.target);
+    const id = values.target.id;
+    const array = id.split("_");
+    console.log(array);
     setLogin({
       ...login,
-      [e.target.name]: value,
+      [array[2]]: values.target.value,
     });
+  }
+  function handleSubmit(e) {
+    console.log(login);
+    AuthService.login(login.username, login.password);
   }
   return (
     <Form
+      form={form}
       name="normal_login"
       className="login-form"
       initialValues={{
@@ -38,6 +55,7 @@ const LoginForm = () => {
     >
       <Form.Item
         name="username"
+        onChange={handleChange}
         rules={[
           {
             required: true,
@@ -53,6 +71,7 @@ const LoginForm = () => {
       </Form.Item>
       <Form.Item
         name="password"
+        onChange={handleChange}
         rules={[
           {
             required: true,
@@ -80,7 +99,12 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          onClick={handleSubmit}
+        >
           Log in
         </Button>
         Or{" "}

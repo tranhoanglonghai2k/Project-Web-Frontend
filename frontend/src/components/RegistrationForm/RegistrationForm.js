@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Select, Button } from "antd";
 import AuthService from "../AuthService/AuthService ";
+
 const { Option } = Select;
 
 const formItemLayout = {
@@ -42,16 +43,17 @@ const RegistrationForm = () => {
     // confirm: "",
   });
 
-  function handleChange(e) {
-    const value = e.target.value;
+  function handleChange(values) {
+    const id = values.target.id;
+    const array = id.split("_");
+
     setRegis({
       ...regis,
-      [e.target.name]: value,
+      [array[1]]: values.target.value,
     });
   }
 
   function handleSubmit(e) {
-    e.preventDedault();
     AuthService.register(regis.username, regis.email, regis.password);
   }
   const [form] = Form.useForm();
@@ -147,7 +149,7 @@ const RegistrationForm = () => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" onSubmit={handleSubmit}>
+        <Button type="primary" htmlType="submit" onClick={handleSubmit}>
           Sign up
         </Button>
       </Form.Item>
