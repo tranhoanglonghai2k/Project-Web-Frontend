@@ -6,6 +6,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
+import Comment from "../../components/Comment/Comment";
 // import "./MyInfo.css";
 
 function MyComment() {
@@ -36,7 +37,7 @@ function MyComment() {
                   style={{ height: "100%" }}
                 >
                   <Menu.Item key="1" icon={<UserOutlined />}>
-                    <Link to="/myinfo/info">Thông tin</Link>
+                    <Link to="/myinfo">Thông tin</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
                     <Link to="/myinfo/mycomment">Đóng góp</Link>
@@ -49,6 +50,7 @@ function MyComment() {
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
                 Bình luận của tôi
+                <Comment />
               </Content>
             </Layout>
           </div>

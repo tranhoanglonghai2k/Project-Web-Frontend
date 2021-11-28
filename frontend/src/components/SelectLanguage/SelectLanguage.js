@@ -56,7 +56,7 @@ export const SelectLanguage = () => {
   }
 
   return (
-    <div className="container mglr-100 mgtb-25">
+    <div className="container mglr-200 mgtb-25">
       <div>
         <Form form={form}>
           <div className="container-language">
