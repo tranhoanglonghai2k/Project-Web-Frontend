@@ -9,6 +9,8 @@ import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
 
 function Search() {
+  localStorage.clear(); // NOTE: khi nào public thì xóa
+
   const word = {
     _id: "61567a020ce0462cf081947b",
     wType: ["  thán từ", "  danh từ", "  nội động từ"],
@@ -29,10 +31,10 @@ function Search() {
     spell: "hə'lou",
     __v: 0,
   };
+
   const word1 = {
     _id: "61567a020ce0462cf081947b",
   };
-  localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const [lang, setLang] = useState("Anh-Việt");
 
@@ -154,12 +156,12 @@ function Search() {
         <div>
           <ul>
             <li>{output.word}</li>
+            <li>{output.spell}</li>
             <Speech text="hello" />
             <li>{output.wType}</li>
             <li>{output.means}</li>
             <li>{output.examples}</li>
             <li>{output.examplesVn}</li>
-            <li>{output.spell}</li>
           </ul>
         </div>
       </Form>
