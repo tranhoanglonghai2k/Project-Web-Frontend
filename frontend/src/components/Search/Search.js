@@ -66,7 +66,7 @@ function Search() {
           let data = res.data;
 
           setList((list) => {
-            return { ...list, ...data.word };
+            return [...list, ...data.word];
           });
         });
     console.log(input);

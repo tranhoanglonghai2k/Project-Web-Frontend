@@ -30,13 +30,16 @@ function SuggestedList(props) {
   return (
     <List
       itemLayout="horizontal"
-      dataSource={items}
+      dataSource={data}
       renderItem={(item) => (
         <List.Item>
           <List.Item.Meta
-            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-            title={<a href="https://ant.design">{item.title}</a>}
-            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+            title={
+              <a href="https://ant.design">
+                {item.word},{item.spell}
+              </a>
+            }
+            description={item.means}
           />
         </List.Item>
       )}
