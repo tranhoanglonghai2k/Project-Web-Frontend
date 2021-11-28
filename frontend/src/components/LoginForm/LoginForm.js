@@ -20,20 +20,11 @@ const LoginForm = () => {
     password: "",
   });
 
-  // function handleChange(e) {
-  //   const value = e.target.value;
-  //   setLogin({
-  //     ...login,
-  //     [e.target.name]: value,
-  //   });
-  // }
   const [form] = Form.useForm();
   function handleChange(values) {
-    // console.log("data");
-    // console.log(values.target);
     const id = values.target.id;
     const array = id.split("_");
-    console.log(array);
+
     setLogin({
       ...login,
       [array[2]]: values.target.value,
