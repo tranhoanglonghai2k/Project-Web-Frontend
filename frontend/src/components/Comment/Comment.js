@@ -1,114 +1,70 @@
-import React from "react";
-import { List, Avatar, Button, Skeleton } from "antd";
-import reqwest from "reqwest";
+import React, { useState, useEffect } from "react";
+import { List, message, Avatar, Skeleton, Divider } from "antd";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
-class Comment extends React.Component {
-  state = {
-    initLoading: true,
-    loading: false,
-    data: [],
-    list: [],
-  };
+const Comment = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
 
-  componentDidMount() {
-    this.getData((res) => {
-      this.setState({
-        initLoading: false,
-        data: res.results,
-        list: res.results,
+  const loadMoreData = () => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    fetch(
+      "https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo"
+    )
+      .then((res) => res.json())
+      .then((body) => {
+        setData([...data, ...body.results]);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
       });
-    });
-  }
-
-  getData = (callback) => {
-    reqwest({
-      url: fakeDataUrl,
-      type: "json",
-      method: "get",
-      contentType: "application/json",
-      success: (res) => {
-        callback(res);
-      },
-    });
   };
 
-  onLoadMore = () => {
-    this.setState({
-      loading: true,
-      list: this.state.data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        }))
-      ),
-    });
-    this.getData((res) => {
-      const data = this.state.data.concat(res.results);
-      this.setState(
-        {
-          data,
-          list: data,
-          loading: false,
-        },
-        () => {
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event("resize"));
-        }
-      );
-    });
-  };
+  useEffect(() => {
+    loadMoreData();
+  }, []);
 
-  render() {
-    const { initLoading, loading, list } = this.state;
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: 12,
-            height: 32,
-            lineHeight: "32px",
-          }}
-        >
-          <Button onClick={this.onLoadMore}>loading more</Button>
-        </div>
-      ) : null;
-
-    return (
-      <List
-        className="demo-loadmore-list"
-        loading={initLoading}
-        itemLayout="horizontal"
-        loadMore={loadMore}
-        dataSource={list}
-        renderItem={(item) =>
-          console.log(item) || (
-            <List.Item
-              actions={[
-                <a key="list-loadmore-edit">edit</a>,
-                <a key="list-loadmore-more">more</a>,
-              ]}
-            >
-              <Skeleton avatar title={false} loading={item.loading} active>
-                <List.Item.Meta
-                  avatar={<Avatar src={item.picture.large} />}
-                  title={<a href="https://ant.design">{item.name.last}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-                <div>content</div>
-              </Skeleton>
+  return (
+    <div
+      id="scrollableDiv"
+      style={{
+        height: 400,
+        overflow: "auto",
+        padding: "0 16px",
+        border: "1px solid rgba(140, 140, 140, 0.35)",
+      }}
+    >
+      <InfiniteScroll
+        dataLength={data.length}
+        next={loadMoreData}
+        hasMore={data.length < 50}
+        loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
+        endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
+        scrollableTarget="scrollableDiv"
+      >
+        <List
+          dataSource={data}
+          renderItem={(item) => (
+            <List.Item key={item.id}>
+              <List.Item.Meta
+                avatar={<Avatar src={item.picture.large} />}
+                title={<a href="https://ant.design">{item.name.last}</a>}
+                description={item.email}
+              />
+              <div>Content</div>
             </List.Item>
-          )
-        }
-      />
-    );
-  }
-}
+          )}
+        />
+      </InfiniteScroll>
+    </div>
+  );
+};
 
 export default Comment;
