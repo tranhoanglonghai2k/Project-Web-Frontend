@@ -4,7 +4,6 @@ import { Form, Select, Input, Button } from "antd";
 import { ZhihuSquareFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./SelectLanguage.css";
-import "../../App.css";
 
 export const SelectLanguage = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa

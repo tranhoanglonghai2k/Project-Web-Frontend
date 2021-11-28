@@ -7,9 +7,10 @@ import axios from "axios";
 import { Form, Select, Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
-import "../../App.css";
 
 function Search() {
+  localStorage.clear(); // NOTE: khi nào public thì xóa
+
   const word = {
     _id: "",
     wType: [],
