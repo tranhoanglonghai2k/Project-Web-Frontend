@@ -49,7 +49,6 @@ function MyComment() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                Bình luận của tôi
                 <Comment />
               </Content>
             </Layout>

@@ -6,7 +6,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
-// import "./MyInfo.css";
+import Comment from "../../components/Comment/Comment";
 
 function MyContribute() {
   const { Content, Sider } = Layout;
@@ -48,7 +48,7 @@ function MyContribute() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                Từ tôi đóng góp
+                <Comment />
               </Content>
             </Layout>
           </div>

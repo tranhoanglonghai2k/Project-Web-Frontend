@@ -3,27 +3,39 @@ import { GoSearch } from "react-icons/go";
 import Speech from "react-speech";
 import { END_POINT } from "../../config";
 import axios from "axios";
-// import SpeechRecognition from "../../components/SpeechRecognition/SpeechRecognition";
+import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
-import SuggestedList from "../ SuggestedList/ SuggestedList";
+import SuggestedList from "../SuggestedList/SuggestedList";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const word = {
-    _id: "",
-    wType: [],
-    means: [],
+    _id: "61567a020ce0462cf081947b",
+    wType: ["  thán từ", "  danh từ", "  nội động từ"],
+    means: [
+      " chào anh!, chào chị!",
+      " này, này",
+      " ô này! (tỏ ý ngạc nhiên)",
+      " tiếng chào",
+      ' tiếng gọi "này, này" !',
+      ' tiếng kêu ô này "! (tỏ ý ngạc nhiên)',
+      " chào",
+      ' gọi "này, này" ',
+      ' kêu "ô này" (tỏ ý ngạc nhiên)',
+    ],
     examples: [],
     examplesVn: [],
-    word: "",
-    spell: "",
+    word: "hello",
+    spell: "hə'lou",
     __v: 0,
   };
 
-  localStorage.clear(); // NOTE: khi nào public thì xóa
+  const word1 = {
+    _id: "61567a020ce0462cf081947b",
+  };
 
   const [lang, setLang] = useState("Anh-Việt");
 
@@ -53,32 +65,27 @@ function Search() {
   function handleChangelang(e) {
     setLang(e);
   }
-  useEffect(() => {
-    console.log(output);
-  }, [output]);
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
     var check_Flash = 0;
-
+    e.preventDefault();
     const update = { word: input, flash: check_Flash };
     setHis((pre) => {
       return [...pre, update];
     });
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
-    console.log(request_lang, input);
-    axios
-      .get(END_POINT + "/api/search-word", {
-        params: { lang: request_lang, word: input },
-      })
-      .then((res) => {
-        let data = res.data;
-        console.log(res.data);
+    // const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    // console.log(request_lang, input);
+    // axios
+    //   .post(END_POINT + "/api/search-word", {
+    //     lang: request_lang,
+    //     word: input,
+    //   })
 
-        setOutput((output) => {
-          return { ...output, ...data.word };
-        });
-      });
+    //   .then((res) => {
+    //     console.log(res.data.word);
+    //     setOutput({...output, res.data.word });
+    //   });
   };
 
   return (
@@ -102,7 +109,7 @@ function Search() {
             placeholder="Search"
             value={input}
             onChange={handleChange}
-            onSearch={handleSubmit}
+            onClick={handleSubmit}
             name="text"
             enterButton="Search"
             size="large"
@@ -113,12 +120,13 @@ function Search() {
         </div>
         <div>
           <ul>
-            <li>word:{output.word}</li>
-            <li>spell:{output.spell}</li>
-            <li>type:{output.wType}</li>
-            <li>means:{output.means}</li>
-            <li>examples:{output.examples}</li>
-            <li>mean of examples:{output.examplesVn}</li>
+            <li>{output.word}</li>
+            <li>{output.spell}</li>
+            <Speech text="hello" />
+            <li>{output.wType}</li>
+            <li>{output.means}</li>
+            <li>{output.examples}</li>
+            <li>{output.examplesVn}</li>
           </ul>
         </div>
 
