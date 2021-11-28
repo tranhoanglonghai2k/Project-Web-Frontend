@@ -38,14 +38,14 @@ export const SelectLanguage = () => {
     localStorage.setItem("his", his);
     const request_lang = lang1 === "Việt" ? "en" : "vi";
 
-    // axios
-    //   .post(END_POINT + "/api/translate-paragraph", {
-    //     type: request_lang,
-    //     param: input,
-    //   })
-    //   .then((res) => {
-    //     setOutput(res.data.param);
-    //   });
+    axios
+      .post(END_POINT + "/api/translate-paragraph", {
+        type: request_lang,
+        param: input,
+      })
+      .then((res) => {
+        setOutput(res.data.param);
+      });
 
     form
       .validateFields()
