@@ -6,9 +6,9 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
-import "./MyInfo.css";
+// import "./MyInfo.css";
 
-function MyInfo() {
+function MyComment() {
   const { Content, Sider } = Layout;
   const { Title } = Typography;
 
@@ -23,7 +23,7 @@ function MyInfo() {
             className="site-layout-background"
             style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
           >
-            <Title className="title">Thông tin</Title>
+            <Title className="title">Bình luận của tôi</Title>
 
             <Layout
               className="site-layout-background mglr-100"
@@ -32,7 +32,7 @@ function MyInfo() {
               <Sider className="site-layout-background" width={200}>
                 <Menu
                   mode="inline"
-                  // defaultSelectedKeys={["1"]}
+                  defaultSelectedKeys={["2"]}
                   style={{ height: "100%" }}
                 >
                   <Menu.Item key="1" icon={<UserOutlined />}>
@@ -48,7 +48,7 @@ function MyInfo() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                Bấm vào để hiện thông tin
+                Bình luận của tôi
               </Content>
             </Layout>
           </div>
@@ -58,4 +58,4 @@ function MyInfo() {
   );
 }
 
-export default MyInfo;
+export default MyComment;

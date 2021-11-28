@@ -10,6 +10,9 @@ import MyWord from "./pages/MyWord/MyWord";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Sign up/Signup";
 import MyInfo from "./pages/MyInfo/MyInfo";
+import Info from "./pages/Info/Info";
+import MyComment from "./pages/MyComment/MyComment";
+import MyContribute from "./pages/MyContribute/MyContribute";
 import "./App.css";
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/myinfo" element={<MyInfo />} />
+          <Route path="/myinfo/info" element={<Info />} />
+          <Route path="/myinfo/mycomment" element={<MyComment />} />
+          <Route path="/myinfo/mycontribute" element={<MyContribute />} />
         </Routes>
         <Footer />
       </Router>
