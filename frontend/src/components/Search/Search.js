@@ -23,28 +23,14 @@ function Search() {
   const [list, setList] = useState(list_word);
 
   const word = {
-    _id: "61567a020ce0462cf081947b",
-    wType: ["  thán từ", "  danh từ", "  nội động từ"],
-    means: [
-      " chào anh!, chào chị!",
-      " này, này",
-      " ô này! (tỏ ý ngạc nhiên)",
-      " tiếng chào",
-      ' tiếng gọi "này, này" !',
-      ' tiếng kêu ô này "! (tỏ ý ngạc nhiên)',
-      " chào",
-      ' gọi "này, này" ',
-      ' kêu "ô này" (tỏ ý ngạc nhiên)',
-    ],
+    _id: "",
+    wType: [],
+    means: [],
     examples: [],
     examplesVn: [],
-    word: "hello",
-    spell: "hə'lou",
+    word: "",
+    spell: "",
     __v: 0,
-  };
-
-  const word1 = {
-    _id: "61567a020ce0462cf081947b",
   };
 
   const [lang, setLang] = useState("Anh-Việt");
@@ -96,7 +82,7 @@ function Search() {
     input.trim();
     input.toLowerCase();
     var check_Flash = 0;
-    e.preventDefault();
+
     const update = { word: input, flash: check_Flash };
     setHis((pre) => {
       return [...pre, update];
@@ -108,11 +94,9 @@ function Search() {
       })
       .then((res) => {
         let data = res.data;
-
-        //   .then((res) => {
-        //     console.log(res.data.word);
-        //     setOutput({...output, res.data.word });
-        //   });
+        setOutput((output) => {
+          return { ...output, ...data.word };
+        });
       });
   };
   return (
@@ -136,7 +120,7 @@ function Search() {
             placeholder="Search"
             value={input}
             onChange={handleChange}
-            onClick={handleSubmit}
+            onSearch={handleSubmit}
             name="text"
             enterButton="Search"
             size="large"
@@ -149,7 +133,6 @@ function Search() {
           <ul>
             <li>{output.word}</li>
             <li>{output.spell}</li>
-            <Speech text="hello" />
             <li>{output.wType}</li>
             <li>{output.means}</li>
             <li>{output.examples}</li>
