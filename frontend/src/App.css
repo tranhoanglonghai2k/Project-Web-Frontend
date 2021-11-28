@@ -38,6 +38,16 @@
   margin-right: 100px;
 }
 
+.mglr-200 {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.mglr-300 {
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
 .title {
   text-transform: uppercase;
   margin: auto;

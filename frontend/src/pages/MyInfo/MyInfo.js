@@ -23,7 +23,7 @@ function MyInfo() {
             className="site-layout-background"
             style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
           >
-            <Title className="title">Thông tin</Title>
+            <Title className="title">Thông tin cá nhân</Title>
 
             <Layout
               className="site-layout-background mglr-100"
@@ -32,11 +32,11 @@ function MyInfo() {
               <Sider className="site-layout-background" width={200}>
                 <Menu
                   mode="inline"
-                  // defaultSelectedKeys={["1"]}
+                  defaultSelectedKeys={["1"]}
                   style={{ height: "100%" }}
                 >
                   <Menu.Item key="1" icon={<UserOutlined />}>
-                    <Link to="/myinfo/info">Thông tin</Link>
+                    <Link to="/myinfo">Thông tin</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
                     <Link to="/myinfo/mycomment">Đóng góp</Link>
@@ -48,7 +48,7 @@ function MyInfo() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                Bấm vào để hiện thông tin
+                Thông tin cá nhân Tên: email: Mật khẩu:
               </Content>
             </Layout>
           </div>

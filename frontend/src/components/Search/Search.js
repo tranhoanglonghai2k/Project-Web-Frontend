@@ -7,6 +7,7 @@ import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
+import SuggestedList from "../ SuggestedList/ SuggestedList";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
@@ -164,6 +165,8 @@ function Search() {
             <li>{output.examplesVn}</li>
           </ul>
         </div>
+
+        <SuggestedList />
       </Form>
     </div>
   );

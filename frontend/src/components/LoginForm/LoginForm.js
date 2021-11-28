@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AuthService from "../AuthService/AuthService ";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import {
@@ -8,8 +9,6 @@ import {
   EyeTwoTone,
 } from "@ant-design/icons";
 import "./LoginForm.css";
-
-import AuthService from "../AuthService/AuthService ";
 
 const LoginForm = () => {
   const { Title } = Typography;
@@ -47,13 +46,13 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="mglr-100">
+    <div className="mglr-300 mgt-10">
       <Title className="title">Đăng nhập</Title>
 
       <Form
         form={form}
         name="normal_login"
-        className="login-form"
+        className="login-form mgt-30"
         initialValues={{
           remember: true,
         }}

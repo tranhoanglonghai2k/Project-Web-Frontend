@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../Header/Header";
 import { Layout } from "antd";
 import { CheckGrammar } from "../../components/CheckGrammar/CheckGrammar";
 
