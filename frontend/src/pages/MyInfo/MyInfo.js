@@ -7,6 +7,7 @@ import {
   NotificationOutlined,
 } from "@ant-design/icons";
 import "./MyInfo.css";
+import UserInfo from "../../components/UserInfo/UserInfo";
 
 function MyInfo() {
   const { Content, Sider } = Layout;
@@ -48,7 +49,7 @@ function MyInfo() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                Thông tin cá nhân Tên: email: Mật khẩu:
+                <UserInfo />
               </Content>
             </Layout>
           </div>
