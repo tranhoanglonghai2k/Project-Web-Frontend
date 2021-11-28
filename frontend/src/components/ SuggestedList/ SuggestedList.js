@@ -1,7 +1,6 @@
 import React from "react";
 import { List, Avatar } from "antd";
-
-const data = [
+const items = [
   {
     title: "Ant Design Title 1",
   },
@@ -25,11 +24,13 @@ const data = [
   },
 ];
 
-function SuggestedList() {
+function SuggestedList(props) {
+  const data = props.word;
+  console.log("data", data);
   return (
     <List
       itemLayout="horizontal"
-      dataSource={data}
+      dataSource={items}
       renderItem={(item) => (
         <List.Item>
           <List.Item.Meta

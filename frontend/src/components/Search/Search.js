@@ -11,6 +11,16 @@ import SuggestedList from "../ SuggestedList/ SuggestedList";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
+  const list_word = [
+    {
+      _id: "",
+      means: [],
+      word: "",
+      spell: "",
+    },
+  ];
+
+  const [list, setList] = useState(list_word);
 
   const word = {
     _id: "",
@@ -45,6 +55,22 @@ function Search() {
     ? JSON.stringify(localStorage.getItem("his"))
     : [];
   const [his, setHis] = useState(check);
+  useEffect(() => {
+    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    if (input.length > 0)
+      axios
+        .get(END_POINT + "/api/recommend-search", {
+          params: { lang: request_lang, word: input },
+        })
+        .then((res) => {
+          let data = res.data;
+
+          setList((list) => {
+            return { ...list, ...data.word };
+          });
+        });
+    console.log(input);
+  }, [input]);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -53,9 +79,9 @@ function Search() {
   function handleChangelang(e) {
     setLang(e);
   }
-  useEffect(() => {
-    console.log(output);
-  }, [output]);
+  // useEffect(() => {
+  // //   console.log(output);
+  // // }, [output]);
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
@@ -66,14 +92,12 @@ function Search() {
       return [...pre, update];
     });
     const request_lang = lang === "Anh-Việt" ? "en" : "vi";
-    console.log(request_lang, input);
     axios
       .get(END_POINT + "/api/search-word", {
         params: { lang: request_lang, word: input },
       })
       .then((res) => {
         let data = res.data;
-        console.log(res.data);
 
         setOutput((output) => {
           return { ...output, ...data.word };
@@ -122,7 +146,7 @@ function Search() {
           </ul>
         </div>
 
-        <SuggestedList />
+        <SuggestedList word={list} />
       </Form>
     </div>
   );
