@@ -131,12 +131,12 @@ function Search() {
         </div>
         <div>
           <ul>
-            <li>{output.word}</li>
-            <li>{output.spell}</li>
-            <li>{output.wType}</li>
-            <li>{output.means}</li>
-            <li>{output.examples}</li>
-            <li>{output.examplesVn}</li>
+            <li>Word: {output.word}</li>
+            <li>Spell: {output.spell}</li>
+            <li>Type: {output.wType}</li>
+            <li>Means: {output.means}</li>
+            <li>Example: {output.examples}</li>
+            <li>Mean of example: {output.examplesVn}</li>
           </ul>
         </div>
 
