@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BackTop } from "antd";
 import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/translate" element={<Translate />} />
@@ -31,6 +33,9 @@ function App() {
           <Route path="/myinfo/mycomment" element={<MyComment />} />
           <Route path="/myinfo/mycontribute" element={<MyContribute />} />
         </Routes>
+
+        <BackTop />
+
         <Footer />
       </Router>
     </div>
