@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { GoSearch } from "react-icons/go";
 import Speech from "react-speech";
 import { END_POINT } from "../../config";
 import axios from "axios";
@@ -11,6 +10,7 @@ import SuggestedList from "../SuggestedList/SuggestedList";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
+
   const list_word = [
     {
       _id: "",
@@ -99,6 +99,7 @@ function Search() {
         });
       });
   };
+
   return (
     <div className="container mglr-100 mgtb-25">
       <Form onSubmit={handleSubmit} className="search-form">
@@ -130,13 +131,13 @@ function Search() {
           />
         </div>
         <div>
-          <ul>
-            <li>Word: {output.word}</li>
-            <li>Spell: {output.spell}</li>
-            <li>Type: {output.wType}</li>
-            <li>Means: {output.means}</li>
-            <li>Example: {output.examples}</li>
-            <li>Mean of example: {output.examplesVn}</li>
+          <ul className="list-word">
+            <li className="mg-20">Word: {output.word}</li>
+            <li className="mg-20">Spell: {output.spell}</li>
+            <li className="mg-20">Type: {output.wType}</li>
+            <li className="mg-20">Means: {output.means}</li>
+            <li className="mg-20">Example: {output.examples}</li>
+            <li className="mg-20">Mean of example: {output.examplesVn}</li>
           </ul>
         </div>
 

@@ -17,8 +17,7 @@
 }
 
 .mgtb-25 {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 25px 0;
 }
 
 .mgr-20 {
@@ -34,18 +33,19 @@
 }
 
 .mglr-100 {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 0 100px;
 }
 
 .mglr-200 {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin: 0 200px;
 }
 
 .mglr-300 {
-  margin-left: 300px;
-  margin-right: 300px;
+  margin: 0 300px;
+}
+
+.mg-20 {
+  margin: 20px;
 }
 
 .title {
