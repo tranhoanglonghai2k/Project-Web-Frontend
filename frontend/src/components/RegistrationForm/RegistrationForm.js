@@ -109,7 +109,9 @@ const RegistrationForm = () => {
             },
           ]}
           hasFeedback
-        ></Form.Item>
+        >
+          <Input.Password allowClear />
+        </Form.Item>
 
         <Form.Item
           name="confirm"

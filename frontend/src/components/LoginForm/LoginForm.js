@@ -20,8 +20,8 @@ const LoginForm = () => {
     username: "",
     password: "",
   });
-
   const [form] = Form.useForm();
+
   function handleChange(values) {
     const id = values.target.id;
     const array = id.split("_");
