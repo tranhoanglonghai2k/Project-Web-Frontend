@@ -58,7 +58,7 @@ export const CheckGrammar = () => {
   }
 
   return (
-    <div className="container mglr-200 mgtb-25">
+    <div>
       <Title className="title">Kiểm tra ngữ pháp</Title>
 
       <Form form={form} onSubmit={handleSubmit}>

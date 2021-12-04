@@ -15,7 +15,9 @@ function Signup() {
           className="site-layout-background"
           style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
         >
-          <RegistrationForm />
+          <div className="container">
+            <RegistrationForm />
+          </div>
         </div>
       </Content>
     </Layout>

@@ -16,7 +16,9 @@ function Translate() {
             className="site-layout-background"
             style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
           >
-            <SelectLanguage />
+            <div className="container">
+              <SelectLanguage />
+            </div>
           </div>
         </Content>
       </Layout>

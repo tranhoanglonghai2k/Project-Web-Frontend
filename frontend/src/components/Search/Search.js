@@ -101,7 +101,7 @@ function Search() {
   };
 
   return (
-    <div className="container mglr-100 mgtb-25">
+    <div>
       <Form onSubmit={handleSubmit} className="search-form">
         <div className="container-search">
           <div className="select mglr-20">

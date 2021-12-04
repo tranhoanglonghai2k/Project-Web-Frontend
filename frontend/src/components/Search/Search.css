@@ -27,3 +27,25 @@
 .list-word {
   list-style-type: none;
 }
+
+/* PC */
+@media screen and (min-width: 64em) {
+}
+
+/* Tablet & Mobile */
+/* 63.9375em = 1023em */
+@media screen and (max-width: 63.9375em) {
+}
+
+/* Tablet */
+/* 46.25em = 740px */
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+}
+
+/* Mobile */
+/* 46.1875em = 739px */
+@media screen and (max-width: 46.1875em) {
+  .logo {
+    display: none;
+  }
+}

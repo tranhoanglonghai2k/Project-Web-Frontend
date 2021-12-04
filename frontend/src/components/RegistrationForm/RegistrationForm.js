@@ -66,7 +66,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="mglr-100">
+    <div>
       <Title className="title">Đăng ký</Title>
 
       <Form
@@ -78,6 +78,7 @@ const RegistrationForm = () => {
           residence: ["zhejiang", "hangzhou", "xihu"],
           prefix: "86",
         }}
+        style={{ alignItems: "center" }}
         scrollToFirstError
       >
         <Form.Item

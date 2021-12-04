@@ -28,22 +28,24 @@ function SuggestedList(props) {
   const data = props.word;
   console.log("data", data);
   return (
-    <List
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={(item) => (
-        <List.Item>
-          <List.Item.Meta
-            title={
-              <a href="https://ant.design">
-                {item.word},{item.spell}
-              </a>
-            }
-            description={item.means}
-          />
-        </List.Item>
-      )}
-    />
+    <div>
+      <List
+        itemLayout="horizontal"
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <List.Item.Meta
+              title={
+                <a href="https://ant.design">
+                  {item.word},{item.spell}
+                </a>
+              }
+              description={item.means}
+            />
+          </List.Item>
+        )}
+      />
+    </div>
   );
 }
 

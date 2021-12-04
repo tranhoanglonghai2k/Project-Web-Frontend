@@ -16,7 +16,9 @@ function Grammar() {
             className="site-layout-background"
             style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
           >
-            <CheckGrammar />
+            <div className="container">
+              <CheckGrammar />
+            </div>
           </div>
         </Content>
       </Layout>

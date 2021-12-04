@@ -14,7 +14,7 @@ function NewWord() {
           className="site-layout-background"
           style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
         >
-          Từ mới
+          <div className="container">Từ mới</div>
         </div>
       </Content>
     </Layout>

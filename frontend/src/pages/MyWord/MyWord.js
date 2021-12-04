@@ -27,7 +27,9 @@ function MyWord() {
           className="site-layout-background"
           style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
         >
-          <FlashcardComponent dataSource={cardData} />
+          <div className="container">
+            <FlashcardComponent dataSource={cardData} />
+          </div>
         </div>
       </Content>
     </Layout>
