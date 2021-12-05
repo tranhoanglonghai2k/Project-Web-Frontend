@@ -104,7 +104,7 @@ function Search() {
     <div>
       <Form onSubmit={handleSubmit} className="search-form">
         <div className="container-search">
-          <div className="select mglr-20">
+          <div className="select">
             <Select
               onChange={handleChangelang}
               value={lang}
@@ -130,8 +130,8 @@ function Search() {
             className="search mglr-20"
           />
         </div>
-        <div>
-          <ul className="list-word">
+        <div style={{ margin: "20px" }}>
+          <ul className="word">
             <li className="mg-20">Word: {output.word}</li>
             <li className="mg-20">Spell: {output.spell}</li>
             <li className="mg-20">Type: {output.wType}</li>

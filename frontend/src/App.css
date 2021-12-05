@@ -8,44 +8,10 @@
   margin: auto;
 }
 
-.mgt-10 {
-  margin-top: 10px;
-}
-
-.mgt-30 {
-  margin-top: 30px;
-}
-
-.mgtb-25 {
-  margin: 25px 0;
-}
-
-.mgr-20 {
-  margin-right: 20px;
-}
-
-.mgl-20 {
-  margin-left: 20px;
-}
-
-.mglr-20 {
-  margin: 0 20px;
-}
-
-.mglr-100 {
-  margin: 0 100px;
-}
-
-.mglr-200 {
-  margin: 0 200px;
-}
-
-.mglr-300 {
-  margin: 0 300px;
-}
-
-.mg-20 {
-  margin: 20px;
+.site-layout-background {
+  min-height: 1000px;
+  padding: 24px;
+  margin-top: 54px;
 }
 
 .container {
@@ -56,4 +22,18 @@
   text-transform: uppercase;
   margin: auto;
   text-align: center;
+}
+
+@media screen and (max-width: 1150px) {
+  .site-layout-background {
+    min-height: 700px;
+  }
+
+  .container {
+    margin: 20px 20px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
 }

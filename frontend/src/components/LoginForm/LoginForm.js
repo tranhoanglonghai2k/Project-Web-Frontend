@@ -39,6 +39,7 @@ const LoginForm = () => {
   return (
     <div className="login-form">
       <Title className="title">Đăng nhập</Title>
+
       <div
         style={{
           marginTop: "40px",
@@ -47,7 +48,7 @@ const LoginForm = () => {
         <Form
           form={form}
           name="normal_login"
-          className="login-form mgt-30"
+          className="login-form"
           initialValues={{
             remember: true,
           }}
@@ -94,7 +95,11 @@ const LoginForm = () => {
             <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
-            <a href="https://www.google.com/" className="link-css">
+
+            <a
+              href="https://www.google.com/"
+              className="link-css login-form-forgot"
+            >
               Forgot password
             </a>
           </Form.Item>
@@ -107,10 +112,17 @@ const LoginForm = () => {
             >
               Log in
             </Button>
-            Or{" "}
-            <Link to="/signup" className="link-css">
-              register now!
-            </Link>
+
+            <div style={{ marginLeft: "15px", fontSize: "20px" }}>
+              Or
+              <Link
+                to="/signup"
+                style={{ marginLeft: "15px" }}
+                className="link-css"
+              >
+                Register now!
+              </Link>
+            </div>
           </Form.Item>
         </Form>
       </div>

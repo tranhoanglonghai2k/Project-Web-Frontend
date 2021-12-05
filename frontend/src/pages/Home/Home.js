@@ -6,21 +6,20 @@ function Home() {
   const { Content } = Layout;
 
   return (
-    <Layout>
-      <Content
-        className="site-layout"
-        style={{ padding: "0 50px", marginTop: "64px" }}
-      >
-        <div
-          className="site-layout-background"
-          style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
+    <div>
+      <Layout>
+        <Content
+          className="site-layout"
+          style={{ padding: "0 50px", marginTop: "64px" }}
         >
-          <div className="container">
-            <Search />
+          <div className="site-layout-background">
+            <div className="container">
+              <Search />
+            </div>
           </div>
-        </div>
-      </Content>
-    </Layout>
+        </Content>
+      </Layout>
+    </div>
   );
 }
 

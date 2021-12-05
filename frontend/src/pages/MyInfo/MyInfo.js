@@ -20,17 +20,11 @@ function MyInfo() {
           className="site-layout"
           style={{ padding: "0 50px", marginTop: "64px" }}
         >
-          <div
-            className="site-layout-background"
-            style={{ padding: "24px", minHeight: "2400px", marginTop: "54px" }}
-          >
+          <div className="site-layout-background">
             <Title className="title">Thông tin cá nhân</Title>
 
-            <Layout
-              className="site-layout-background mglr-100"
-              style={{ padding: "24px 0" }}
-            >
-              <Sider className="site-layout-background" width={200}>
+            <Layout style={{ padding: "24px 0", backgroundColor: "#fff" }}>
+              <Sider style={{ backgroundColor: "#fff" }} width={200}>
                 <Menu
                   mode="inline"
                   defaultSelectedKeys={["1"]}

@@ -34,50 +34,66 @@ function Header() {
 
             <Menu className="menu" mode="horizontal">
               <Menu.Item key="1" icon={<HomeFilled className="icon-default" />}>
-                <Link to="/">Tra cứu</Link>
+                <Link to="/">
+                  <span>Tra cứu</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item
                 key="2"
                 icon={<ZhihuSquareFilled className="icon-default" />}
               >
-                <Link to="/translate">Dịch</Link>
+                <Link to="/translate">
+                  <span>Dịch</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item
                 key="3"
                 icon={<CheckCircleFilled className="icon-default" />}
               >
-                <Link to="/grammar">Ngữ pháp</Link>
+                <Link to="/grammar">
+                  <span>Ngữ pháp</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item key="4" icon={<EditFilled className="icon-default" />}>
-                <Link to="/newword">Từ mới</Link>
+                <Link to="/newword">
+                  <span>Từ mới</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item key="5" icon={<BookFilled className="icon-default" />}>
-                <Link to="/myword">Từ của tôi</Link>
+                <Link to="/myword">
+                  <span>Từ của tôi</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item
                 key="6"
                 // icon={}
               >
-                <Link to="/login">Login</Link>
+                <Link to="/login">
+                  <span>Đăng nhập</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item
                 key="7"
                 // icon={}
               >
-                <Link to="/signup">Sign up</Link>
+                <Link to="/signup">
+                  <span>Đăng ký</span>
+                </Link>
               </Menu.Item>
 
               <Menu.Item
                 key="8"
                 icon={<ProfileFilled className="icon-default" />}
               >
-                <Link to="/myinfo">Thông tin</Link>
+                <Link to="/myinfo">
+                  <span>Thông tin</span>
+                </Link>
               </Menu.Item>
             </Menu>
           </div>
