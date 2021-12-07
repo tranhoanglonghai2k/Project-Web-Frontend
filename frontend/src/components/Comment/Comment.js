@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { List, message, Avatar, Skeleton, Divider } from "antd";
+import { List, Avatar, Skeleton, Divider } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
-
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
 const Comment = () => {
   const [loading, setLoading] = useState(false);

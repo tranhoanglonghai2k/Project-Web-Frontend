@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Popconfirm, message } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeFilled,
@@ -13,17 +13,29 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
+
   let array;
-  let check = false;
+  let check = true;
+
   if (localStorage.getItem("token_res")) {
     array = localStorage.getItem("token_res").split(":");
-    if (array[0] == "token") check = true;
+    if (array[0] === "token") check = true;
   }
   if (localStorage.getItem("token")) {
     array = localStorage.getItem("token").split(":");
-    if (array[0] == "token") check = true;
+    if (array[0] === "token") check = true;
   }
-  console.log(check);
+
+  function confirm(e) {
+    console.log(e);
+    message.success("Đăng xuất thành công!!!");
+  }
+
+  function cancel(e) {
+    console.log(e);
+    message.error("Đăng xuất thất bại!!!");
+  }
+
   return (
     <div>
       <Layout>
@@ -48,49 +60,69 @@ function Header() {
                   key="1"
                   icon={<HomeFilled className="icon-default" />}
                 >
-                  <Link to="/">Tra cứu</Link>
+                  <Link to="/">
+                    <span>Tra cứu</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="2"
                   icon={<ZhihuSquareFilled className="icon-default" />}
                 >
-                  <Link to="/translate">Dịch</Link>
+                  <Link to="/translate">
+                    <span>Dịch</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="3"
                   icon={<CheckCircleFilled className="icon-default" />}
                 >
-                  <Link to="/grammar">Ngữ pháp</Link>
+                  <Link to="/grammar">
+                    <span>Ngữ pháp</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="4"
                   icon={<EditFilled className="icon-default" />}
                 >
-                  <Link to="/newword">Từ mới</Link>
+                  <Link to="/newword">
+                    <span>Từ mới</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="5"
                   icon={<BookFilled className="icon-default" />}
                 >
-                  <Link to="/myword">Từ của tôi</Link>
+                  <Link to="/myword">
+                    <span>Từ của tôi</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="6"
                   icon={<ProfileFilled className="icon-default" />}
                 >
-                  <Link to="/myinfo">Thông tin</Link>
+                  <Link to="/myinfo">
+                    <span>Thông tin</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="7"
                   // icon={}
                 >
-                  <Link to="/">Log out</Link>
+                  <Popconfirm
+                    title="Bạn chắc chưa?"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    <Link to="/">Đăng xuất</Link>
+                  </Popconfirm>
                 </Menu.Item>
               </Menu>
             </div>
