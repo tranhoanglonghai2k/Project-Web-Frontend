@@ -20,7 +20,6 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/translate" element={<Translate />} />
@@ -33,11 +32,10 @@ function App() {
           <Route path="/myinfo/mycomment" element={<MyComment />} />
           <Route path="/myinfo/mycontribute" element={<MyContribute />} />
         </Routes>
-
         <BackTop />
-
         <Footer />
       </Router>
+      )
     </div>
   );
 }
