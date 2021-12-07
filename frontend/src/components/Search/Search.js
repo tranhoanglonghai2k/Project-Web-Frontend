@@ -3,23 +3,14 @@ import React, { useState, useEffect } from "react";
 import { END_POINT } from "../../config";
 import axios from "axios";
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
-import { Form, Select, Input } from "antd";
+import { Form, Select, Input, AutoComplete } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
-  const list_word = [
-    {
-      _id: "",
-      means: [],
-      word: "",
-      spell: "",
-    },
-  ];
-
-  const [list, setList] = useState(list_word);
+  const [list, setList] = useState([]);
 
   const word = {
     _id: "",
@@ -35,7 +26,6 @@ function Search() {
   const [lang, setLang] = useState("Anh-Việt");
 
   const { Option } = Select;
-  const { Search } = Input;
 
   const suffix = (
     <AudioOutlined
@@ -52,9 +42,11 @@ function Search() {
     ? JSON.stringify(localStorage.getItem("his"))
     : [];
   const [his, setHis] = useState(check);
+
   useEffect(() => {
     const request_lang = lang === "Anh-Việt" ? "en" : "vi";
-    if (input.length > 0)
+    if (input.length > 0) {
+      setList([]);
       axios
         .get(END_POINT + "/api/recommend-search", {
           params: { lang: request_lang, word: input },
@@ -62,15 +54,33 @@ function Search() {
         .then((res) => {
           let data = res.data;
 
-          setList((list) => {
-            return [...list, ...data.word];
-          });
+          let l = data.word;
+
+          l = l
+            .map((word) => {
+              return { value: word.word };
+            })
+            .reverse();
+
+          l.shift();
+
+          setList(l);
+
+          console.log(l);
         });
-    console.log(input);
+    } else {
+      setList([""]);
+    }
+    //console.log(input);
   }, [input]);
 
   const handleChange = (e) => {
+    console.log(e);
     setInput(e.target.value);
+  };
+
+  const handleChangeTmp = (e) => {
+    setInput(e);
   };
 
   function handleChangelang(e) {
@@ -99,6 +109,10 @@ function Search() {
       });
   };
 
+  const onSelect = (data) => {
+    setInput(data);
+  };
+
   return (
     <div>
       <Form onSubmit={handleSubmit} className="search-form">
@@ -116,18 +130,23 @@ function Search() {
             </Select>
           </div>
 
-          <Search
-            placeholder="Search"
+          <AutoComplete
             value={input}
-            onChange={handleChange}
-            onSearch={handleSubmit}
-            name="text"
-            enterButton="Search"
-            size="large"
-            suffix={suffix}
-            allowClear
+            dataSource={list}
+            onSelect={onSelect}
+            onSearch={handleChangeTmp}
             className="search"
-          />
+          >
+            <Input.Search
+              onSearch={handleSubmit}
+              size="large"
+              placeholder="input here"
+              suffix={suffix}
+              allowClear
+              enterButton
+              className="search"
+            />
+          </AutoComplete>
         </div>
 
         <div className="border-word">
