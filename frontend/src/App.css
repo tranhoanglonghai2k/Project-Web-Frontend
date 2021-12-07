@@ -8,6 +8,10 @@
   margin: auto;
 }
 
+.mg-20 {
+  margin: 20px;
+}
+
 .site-layout-background {
   min-height: 1000px;
   padding: 24px;

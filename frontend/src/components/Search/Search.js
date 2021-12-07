@@ -3,7 +3,7 @@ import Speech from "react-speech";
 import { END_POINT } from "../../config";
 import axios from "axios";
 import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
-import { Form, Select, Input } from "antd";
+import { Form, Select, Input, Table } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
 import SuggestedList from "../SuggestedList/SuggestedList";
@@ -127,21 +127,58 @@ function Search() {
             size="large"
             suffix={suffix}
             allowClear
-            className="search mglr-20"
+            className="search"
           />
         </div>
-        <div style={{ margin: "20px" }}>
+
+        <div className="border-word">
           <ul className="word">
-            <li className="mg-20">Word: {output.word}</li>
-            <li className="mg-20">Spell: {output.spell}</li>
-            <li className="mg-20">Type: {output.wType}</li>
-            <li className="mg-20">Means: {output.means}</li>
-            <li className="mg-20">Example: {output.examples}</li>
-            <li className="mg-20">Mean of example: {output.examplesVn}</li>
+            <li className="mg-20">
+              <div>
+                <span>Word:</span>
+                <span className="mg-20">{output.word}</span>
+              </div>
+            </li>
+            <li className="mg-20">
+              <div>
+                <span>Spell:</span>
+                <span className="mg-20">{output.spell}</span>
+              </div>
+            </li>
+            <li className="mg-20">
+              <div>
+                <span>Type:</span>
+                <span className="mg-20">{output.wType}</span>
+              </div>
+            </li>
+            <li className="mg-20">
+              <div>
+                <span>Means:</span>
+                <div>
+                  <span className="mg-20">{output.means}</span>
+                </div>
+              </div>
+            </li>
+            <li className="mg-20">
+              <div>
+                <span>Example:</span>
+                <div>
+                  <span className="mg-20">{output.examples}</span>
+                </div>
+              </div>
+            </li>
+            <li className="mg-20">
+              <div>
+                <span>Mean of example:</span>
+                <div>
+                  <span className="mg-20">{output.examplesVn}</span>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
 
-        <SuggestedList word={list} />
+        {/* <SuggestedList word={list} /> */}
       </Form>
     </div>
   );
