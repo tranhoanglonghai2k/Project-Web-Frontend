@@ -24,95 +24,99 @@ export const CheckGrammar = () => {
   const [his, setHis] = useState(check);
 
   const mockData = {
-    "text": {
-      "software": {
-        "name": "GrammarBot",
-        "version": "4.3.1",
-        "apiVersion": 1,
-        "premium": false,
-        "premiumHint": "You might be missing errors only the Premium version can find. Upgrade to see what you're missing.",
-        "status": ""
+    text: {
+      software: {
+        name: "GrammarBot",
+        version: "4.3.1",
+        apiVersion: 1,
+        premium: false,
+        premiumHint:
+          "You might be missing errors only the Premium version can find. Upgrade to see what you're missing.",
+        status: "",
       },
-      "warnings": {
-        "incompleteResults": false
+      warnings: {
+        incompleteResults: false,
       },
-      "language": {
-        "name": "English (US)",
-        "code": "en-US",
-        "detectedLanguage": {
-          "name": "English (US)",
-          "code": "en-US"
-        }
+      language: {
+        name: "English (US)",
+        code: "en-US",
+        detectedLanguage: {
+          name: "English (US)",
+          code: "en-US",
+        },
       },
-      "matches": [
+      matches: [
         {
-          "message": "This sentence does not start with an uppercase letter",
-          "shortMessage": "",
-          "replacements": [
+          message: "This sentence does not start with an uppercase letter",
+          shortMessage: "",
+          replacements: [
             {
-              "value": "We"
-            }
+              value: "We",
+            },
           ],
-          "offset": 0,
-          "length": 2,
-          "context": {
-            "text": "we is going to be play game",
-            "offset": 0,
-            "length": 2
+          offset: 0,
+          length: 2,
+          context: {
+            text: "we is going to be play game",
+            offset: 0,
+            length: 2,
           },
-          "sentence": "we is going to be play game",
-          "type": {
-            "typeName": "Other"
+          sentence: "we is going to be play game",
+          type: {
+            typeName: "Other",
           },
-          "rule": {
-            "id": "UPPERCASE_SENTENCE_START",
-            "description": "Checks that a sentence starts with an uppercase letter",
-            "issueType": "typographical",
-            "category": {
-              "id": "CASING",
-              "name": "Capitalization"
-            }
-          }
+          rule: {
+            id: "UPPERCASE_SENTENCE_START",
+            description:
+              "Checks that a sentence starts with an uppercase letter",
+            issueType: "typographical",
+            category: {
+              id: "CASING",
+              name: "Capitalization",
+            },
+          },
         },
         {
-          "message": "The pronoun 'we' must be used with a non-third-person form of a verb: \"am\", \"are\", \"aren\"",
-          "shortMessage": "Grammatical problem: agreement error",
-          "replacements": [
+          message:
+            'The pronoun \'we\' must be used with a non-third-person form of a verb: "am", "are", "aren"',
+          shortMessage: "Grammatical problem: agreement error",
+          replacements: [
             {
-              "value": "am"
+              value: "am",
             },
             {
-              "value": "are"
+              value: "are",
             },
             {
-              "value": "aren"
-            }
+              value: "aren",
+            },
           ],
-          "offset": 3,
-          "length": 2,
-          "context": {
-            "text": "we is going to be play game",
-            "offset": 3,
-            "length": 2
+          offset: 3,
+          length: 2,
+          context: {
+            text: "we is going to be play game",
+            offset: 3,
+            length: 2,
           },
-          "sentence": "we is going to be play game",
-          "type": {
-            "typeName": "Other"
+          sentence: "we is going to be play game",
+          type: {
+            typeName: "Other",
           },
-          "rule": {
-            "id": "NON3PRS_VERB",
-            "subId": "2",
-            "description": "Agreement error: Third person verb with a non-third person pronoun",
-            "issueType": "grammar",
-            "category": {
-              "id": "GRAMMAR",
-              "name": "Grammar"
-            }
-          }
-        }
-      ]
-    }
-  }
+          rule: {
+            id: "NON3PRS_VERB",
+            subId: "2",
+            description:
+              "Agreement error: Third person verb with a non-third person pronoun",
+            issueType: "grammar",
+            category: {
+              id: "GRAMMAR",
+              name: "Grammar",
+            },
+          },
+        },
+      ],
+    },
+  };
 
   function handleChangeinput(values) {
     setInput(values);
@@ -145,8 +149,8 @@ export const CheckGrammar = () => {
 
     let string = "we is going to be play game";
 
-    if(mockData.text.matches.length > 0){
-      mockData.text.matches.map((item)=>{
+    if (mockData.text.matches.length > 0) {
+      mockData.text.matches.map((item) => {
         offset.push(item.offset);
         length.push(item.length);
         replacements.push(item.replacements);
@@ -155,35 +159,39 @@ export const CheckGrammar = () => {
     }
 
     let returnString = [];
-    let word = '';
-    let title = '';
+    let word = "";
+    let title = "";
     let replacement = [];
-    for(let i=0;i<string.length;i++){
-      
-      if(i == offset[0]){
-        if(word.length > 0)
-          returnString.push(new Object({"word": word,"title":title,"replacement":replacement}));
-        word = '';
+    for (let i = 0; i < string.length; i++) {
+      if (i == offset[0]) {
+        if (word.length > 0)
+          returnString.push(
+            new Object({ word: word, title: title, replacement: replacement })
+          );
+        word = "";
         title = message.shift();
-        for(let j=i;j<offset[0]+length[0];j++){
+        for (let j = i; j < offset[0] + length[0]; j++) {
           word += string[j];
         }
         i += length[0];
         replacement = replacements.shift();
-        returnString.push(new Object({word: word,title:title,replacement:replacement}));
+        returnString.push(
+          new Object({ word: word, title: title, replacement: replacement })
+        );
         offset.shift();
         length.shift();
-        word = '';
-        title = '';
+        word = "";
+        title = "";
         replacement = [];
-      }
-      else{
+      } else {
         word += string[i];
       }
     }
 
-    if(word.length > 0){
-      returnString.push(new Object({"word": word,"title":title,"replacement":replacement}));
+    if (word.length > 0) {
+      returnString.push(
+        new Object({ word: word, title: title, replacement: replacement })
+      );
     }
 
     setOutput(returnString);
@@ -198,16 +206,20 @@ export const CheckGrammar = () => {
       .catch((errorInfo) => {});
   }
 
-  const content = ((replace)=>{
+  const content = (replace) => {
     console.log(replace);
-    if(replace)
-      {return replace.map((item)=>{
-        return <div><p>{item.value}</p></div>
-      })}
-    else{
-      return ;
+    if (replace) {
+      return replace.map((item) => {
+        return (
+          <div>
+            <p>{item.value}</p>
+          </div>
+        );
+      });
+    } else {
+      return;
     }
-  })
+  };
 
   return (
     <div>
@@ -236,16 +248,24 @@ export const CheckGrammar = () => {
               </Button>
             </Form.Item>
 
-            <div className="output-translate mgt-30">{output.map((item)=>{
-              if(item.title){
-                return <Popover content={content(item.replacement)} title={item.title}>
-              <Button type="primary">{item.word}</Button>
-                  </Popover>
-              }
-              else{
-                return item.word
-              }
-            })}</div>
+            <div className="output-translate mgt-30">
+              <div className="output mg-20">
+                {output.map((item) => {
+                  if (item.title) {
+                    return (
+                      <Popover
+                        content={content(item.replacement)}
+                        title={item.title}
+                      >
+                        <mark className="highlight mg-1">{item.word}</mark>
+                      </Popover>
+                    );
+                  } else {
+                    return item.word;
+                  }
+                })}
+              </div>
+            </div>
           </Form.Item>
         </div>
       </Form>
