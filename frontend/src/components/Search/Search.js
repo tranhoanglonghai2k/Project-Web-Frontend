@@ -130,23 +130,26 @@ function Search() {
             </Select>
           </div>
 
-          <AutoComplete
-            value={input}
-            dataSource={list}
-            onSelect={onSelect}
-            onSearch={handleChangeTmp}
-            className="search"
-          >
-            <Input.Search
-              onSearch={handleSubmit}
-              size="large"
-              placeholder="input here"
-              suffix={suffix}
-              allowClear
-              enterButton
-              className="search"
-            />
-          </AutoComplete>
+          <div className="search">
+            <AutoComplete
+              value={input}
+              dataSource={list}
+              onSelect={onSelect}
+              onSearch={handleChangeTmp}
+              style={{ width: "1000px" }}
+              // className="search"
+            >
+              <Input.Search
+                onSearch={handleSubmit}
+                size="large"
+                placeholder="Tra Từ"
+                suffix={suffix}
+                allowClear
+                enterButton
+                style={{ width: "100%" }}
+              />
+            </AutoComplete>
+          </div>
         </div>
 
         <div className="border-word">

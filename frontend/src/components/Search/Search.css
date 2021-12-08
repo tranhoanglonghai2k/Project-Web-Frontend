@@ -13,8 +13,14 @@
   text-align: center;
 }
 
+.ant-select-single.ant-select-customize-input
+  .ant-select-selector
+  .ant-select-selection-search {
+  position: relative;
+}
+
 .search {
-  max-width: 70%;
+  display: inline-block;
 }
 
 .border-word {
