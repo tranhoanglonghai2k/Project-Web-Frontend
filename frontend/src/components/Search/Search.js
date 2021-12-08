@@ -125,8 +125,8 @@ function Search() {
               name="languages"
               className="switch-language"
             >
-              <Option value="vietanh">Việt-Anh</Option>
               <Option value="anhviet">Anh-Việt</Option>
+              <Option value="vietanh">Việt-Anh</Option>
             </Select>
           </div>
 
@@ -136,8 +136,7 @@ function Search() {
               dataSource={list}
               onSelect={onSelect}
               onSearch={handleChangeTmp}
-              style={{ width: "1000px" }}
-              // className="search"
+              style={{ width: "100%" }}
             >
               <Input.Search
                 onSearch={handleSubmit}
@@ -153,46 +152,50 @@ function Search() {
         </div>
 
         <div className="border-word">
-          <ul className="word">
+          <ul className="word cl-blue">
             <li className="mg-20">
               <div>
-                <span>Word:</span>
-                <span className="mg-20">{output.word}</span>
+                <span className="word-css cl-blue">Word:</span>
+                <span className="font mg-20">{output.word}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Spell:</span>
-                <span className="mg-20">{output.spell}</span>
+                <span className="word-css cl-blue">Spell:</span>
+                <span className="font mg-20">{output.spell}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Type:</span>
-                <span className="mg-20">{output.wType}</span>
+                <span className="word-css cl-blue">Type:</span>
+                <span className="font mg-20">{output.wType}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Means:</span>
+                <span className="word-css cl-blue">Means:</span>
                 <div>
-                  <span className="mg-20">{output.means}</span>
+                  <span className="paragraph font mg-20">{output.means}</span>
                 </div>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Example:</span>
+                <span className=" word-css cl-blue">Example:</span>
                 <div>
-                  <span className="mg-20">{output.examples}</span>
+                  <span className="paragraph font mg-20">
+                    {output.examples}
+                  </span>
                 </div>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Mean of example:</span>
+                <span className="word-css cl-blue">Mean of example:</span>
                 <div>
-                  <span className="mg-20">{output.examplesVn}</span>
+                  <span className="paragraph font mg-20">
+                    {output.examplesVn}
+                  </span>
                 </div>
               </div>
             </li>
