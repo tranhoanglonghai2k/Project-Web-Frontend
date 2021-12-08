@@ -1,6 +1,7 @@
 import React from "react";
 import { FlashcardComponent } from "react-flashcard";
 import { Layout } from "antd";
+import LearnWord from "../../components/LearnWord/LearnWord";
 
 function MyWord() {
   const { Content } = Layout;
@@ -25,6 +26,7 @@ function MyWord() {
       >
         <div className="site-layout-background">
           <div className="container">
+            <LearnWord />
             <FlashcardComponent dataSource={cardData} />
           </div>
         </div>
