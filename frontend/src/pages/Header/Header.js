@@ -85,15 +85,6 @@ function Header() {
 
                 <Menu.Item
                   key="4"
-                  icon={<EditFilled className="icon-default" />}
-                >
-                  <Link to="/newword">
-                    <span>Từ mới</span>
-                  </Link>
-                </Menu.Item>
-
-                <Menu.Item
-                  key="5"
                   icon={<BookFilled className="icon-default" />}
                 >
                   <Link to="/myword">
@@ -102,7 +93,7 @@ function Header() {
                 </Menu.Item>
 
                 <Menu.Item
-                  key="6"
+                  key="5"
                   icon={<ProfileFilled className="icon-default" />}
                 >
                   <Link to="/myinfo">
@@ -111,7 +102,7 @@ function Header() {
                 </Menu.Item>
 
                 <Menu.Item
-                  key="7"
+                  key="6"
                   // icon={}
                 >
                   <Popconfirm
@@ -174,15 +165,6 @@ function Header() {
 
                   <Menu.Item
                     key="4"
-                    icon={<EditFilled className="icon-default" />}
-                  >
-                    <Link to="/newword">
-                      <span>Từ mới</span>
-                    </Link>
-                  </Menu.Item>
-
-                  <Menu.Item
-                    key="5"
                     icon={<BookFilled className="icon-default" />}
                   >
                     <Link to="/myword">
@@ -191,7 +173,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="6"
+                    key="5"
                     // icon={}
                   >
                     <Link to="/login">
@@ -200,7 +182,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="7"
+                    key="6"
                     // icon={}
                   >
                     <Link to="/signup">
@@ -216,4 +198,5 @@ function Header() {
     </div>
   );
 }
+
 export default Header;
