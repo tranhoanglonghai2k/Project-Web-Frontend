@@ -15,7 +15,7 @@ export const SelectLanguage = () => {
 
   const [lang1, setLang1] = useState("Anh");
   const [lang2, setLang2] = useState("Việt");
-  const [input, setInput] = useState("Plese input");
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const check = localStorage.getItem("his")
     ? JSON.stringify(localStorage.getItem("his"))
@@ -33,26 +33,28 @@ export const SelectLanguage = () => {
   }
 
   function handleSubmit(values) {
-    setHis((data) => [...data, input]);
-    console.log(input);
-    localStorage.setItem("his", his);
-    const request_lang = lang1 === "Việt" ? "en" : "vi";
+    if (input.length > 0) {
+      setHis((data) => [...data, input]);
+      console.log(input);
+      localStorage.setItem("his", his);
+      const request_lang = lang1 === "Việt" ? "en" : "vi";
 
-    axios
-      .post(END_POINT + "/api/translate-paragraph", {
-        type: request_lang,
-        param: input,
-      })
-      .then((res) => {
-        setOutput(res.data.param);
-      });
+      axios
+        .post(END_POINT + "/api/translate-paragraph", {
+          type: request_lang,
+          param: input,
+        })
+        .then((res) => {
+          setOutput(res.data.param);
+        });
 
-    form
-      .validateFields()
-      .then((values) => {
-        console.log(values);
-      })
-      .catch((errorInfo) => {});
+      form
+        .validateFields()
+        .then((values) => {
+          console.log(values);
+        })
+        .catch((errorInfo) => {});
+    }
   }
 
   return (
@@ -102,8 +104,19 @@ export const SelectLanguage = () => {
           </Form.Item>
         </div>
       </Form>
-
-      <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
+      <div className="box-history">
+        <div className="list-history">
+          {his &&
+            his.map((item) => (
+              <div className="row no-margin">
+                <div className="content">
+                  <span>{item}</span>
+                  <hr />
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
