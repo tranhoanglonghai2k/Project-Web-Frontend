@@ -151,7 +151,7 @@ function Search() {
           </div>
         </div>
 
-        <div className="border-word">
+        <div className="box-word">
           <ul className="word cl-blue">
             <li className="mg-20">
               <div>

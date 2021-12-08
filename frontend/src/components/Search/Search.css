@@ -33,13 +33,14 @@
   margin: auto;
 }
 
-.border-word {
+.box-word {
   display: block;
   margin: auto;
   border: 1px solid white;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: text;
+  border-radius: 30px;
 }
 
 .word {
@@ -66,7 +67,7 @@
   font-variant: inherit;
 }
 
-.search-form .border-word ul li {
+.search-form .box-word ul li {
   margin: 20px 50px;
 }
 
