@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthService from "../AuthService/AuthService ";
+
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import {
@@ -12,7 +13,6 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
   const { Title } = Typography;
-
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -32,7 +32,6 @@ const LoginForm = () => {
     });
   }
   function handleSubmit(e) {
-    console.log(login);
     AuthService.login(login.username, login.password);
   }
 

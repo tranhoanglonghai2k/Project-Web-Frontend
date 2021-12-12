@@ -1,6 +1,12 @@
 import axios from "axios";
 import { END_POINT } from "../../config";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 class AuthService {
   login(email, password) {
     return axios
@@ -10,8 +16,8 @@ class AuthService {
       })
       .then((response) => {
         if (response.data.token) {
-          console.log(response.data.token);
           localStorage.setItem("token", JSON.stringify(response.data.token));
+          console.log("token", response);
         }
       });
   }
@@ -34,6 +40,7 @@ class AuthService {
             JSON.stringify(response.data.token)
           );
         }
+        console.log("token-res", response);
         return response.data;
       });
   }

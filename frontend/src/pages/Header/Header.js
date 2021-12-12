@@ -1,6 +1,12 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import {
   HomeFilled,
   ZhihuSquareFilled,
@@ -13,15 +19,12 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
-  let array;
   let check = false;
   if (localStorage.getItem("token_res")) {
-    array = localStorage.getItem("token_res").split(":");
-    if (array[0] == "token") check = true;
+    check = true;
   }
   if (localStorage.getItem("token")) {
-    array = localStorage.getItem("token").split(":");
-    if (array[0] == "token") check = true;
+    check = true;
   }
   console.log(check);
   return (

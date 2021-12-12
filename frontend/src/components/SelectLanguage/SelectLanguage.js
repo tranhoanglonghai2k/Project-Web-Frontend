@@ -34,17 +34,16 @@ export const SelectLanguage = () => {
 
   function handleSubmit(values) {
     setHis((data) => [...data, input]);
-    console.log(input);
     localStorage.setItem("his", his);
     const request_lang = lang1 === "Việt" ? "en" : "vi";
 
     axios
-      .post(END_POINT + "/api/translate-paragraph", {
-        type: request_lang,
-        param: input,
+      .get(END_POINT + "/api/translate-paragraph", {
+        params: { type: request_lang, param: input },
       })
       .then((res) => {
         setOutput(res.data.param);
+        console.log("data", output);
       });
 
     form
