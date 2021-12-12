@@ -78,7 +78,7 @@ export const CheckGrammar = () => {
         },
         {
           message:
-            'The pronoun \'we\' must be used with a non-third-person form of a verb: "am", "are", "aren"',
+            'The pronoun \'we\' must be used with a non-third-person form of a verb: "am", "are", "aren\'t"',
           shortMessage: "Grammatical problem: agreement error",
           replacements: [
             {
@@ -88,7 +88,7 @@ export const CheckGrammar = () => {
               value: "are",
             },
             {
-              value: "aren",
+              value: "aren't",
             },
           ],
           offset: 3,
@@ -240,7 +240,7 @@ export const CheckGrammar = () => {
 
             <Form.Item>
               <Button
-                className="btn-submit"
+                className="btn-default btn-submit"
                 htmlType="submit"
                 icon={<CheckCircleFilled />}
               >
@@ -269,8 +269,6 @@ export const CheckGrammar = () => {
           </Form.Item>
         </div>
       </Form>
-
-      <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
     </div>
   );
 };
