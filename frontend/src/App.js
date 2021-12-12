@@ -11,7 +11,6 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Sign up/Signup";
 import MyInfo from "./pages/MyInfo/MyInfo";
 import MyComment from "./pages/MyComment/MyComment";
-import MyContribute from "./pages/MyContribute/MyContribute";
 import "./App.css";
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/myinfo" element={<MyInfo />} />
           <Route exact path="/myinfo/mycomment" element={<MyComment />} />
-          <Route exact path="/myinfo/mycontribute" element={<MyContribute />} />
         </Routes>
         <BackTop />
         <Footer />
