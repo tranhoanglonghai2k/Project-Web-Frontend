@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { END_POINT } from "../../config";
 import axios from "axios";
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
-import { Form, Select, Input, AutoComplete } from "antd";
+import { Form, Select, Input, AutoComplete, Table } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
 
@@ -22,6 +22,33 @@ function Search() {
     spell: "",
     __v: 0,
   };
+
+  const columns = [
+    {
+      title: "Example",
+      dataIndex: "examples",
+      key: "examples",
+    },
+    {
+      title: "Mean of Example",
+      dataIndex: "examplesVn",
+      key: "examplesVn",
+    },
+  ];
+
+  const columnsMean = [
+    {
+      title: "Means",
+      dataIndex: "mean",
+      key: "mean",
+    }
+  ];
+
+  const [table, setTable] = useState({
+    loading: false,
+    data: [],
+    means: [],
+  });
 
   const [lang, setLang] = useState("Anh-Việt");
 
@@ -97,12 +124,36 @@ function Search() {
       return [...pre, update];
     });
     const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    setTable({ loading: true });
     axios
       .get(END_POINT + "/api/search-word", {
         params: { lang: request_lang, word: input },
       })
       .then((res) => {
         let data = res.data;
+        const dataSource = [];
+        const meanSource = [];
+        if (data.word.examples.length > 0) {
+          for (let i = 0; i < data.word.examples.length; i++) {
+            dataSource.push(
+              new Object({
+                key: i + "",
+                examples: data.word.examples[i],
+                examplesVn: data.word.examplesVn[i],
+              })
+            );
+          }
+          for (let i = 0; i < data.word.means.length; i++) {
+            meanSource.push(
+              new Object({
+                key: i + "",
+                mean: data.word.means[i],
+              })
+            );
+          }
+          console.log(dataSource, meanSource);
+        }
+        setTable({ loading: false, data: dataSource, mean: meanSource });
         setOutput((output) => {
           return { ...output, ...data.word };
         });
@@ -151,58 +202,72 @@ function Search() {
           </div>
         </div>
 
-        {output.word.length > 0 && 
-        <div className="box-word">
-          <ul className="word cl-blue">
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Word:</span>
-                <span className="font mg-20">{output.word}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Spell:</span>
-                <span className="font mg-20">{output.spell}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Type:</span>
-                <span className="font mg-20">{output.wType}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Means:</span>
+        {output.word.length > 0 && (
+          <div className="box-word">
+            <ul className="word cl-blue">
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">{output.means}</span>
+                  <span className="word-css cl-blue">Word:</span>
+                  <span className="font mg-20">{output.word}</span>
                 </div>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className=" word-css cl-blue">Example:</span>
+              </li>
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">
-                    {output.examples}
-                  </span>
+                  <span className="word-css cl-blue">Spell:</span>
+                  <span className="font mg-20">{output.spell}</span>
                 </div>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Mean of example:</span>
+              </li>
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">
-                    {output.examplesVn}
-                  </span>
+                  <span className="word-css cl-blue">Type:</span>
+                  <span className="font mg-20">{output.wType}</span>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        }
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className="word-css cl-blue">Means:</span>
+                  <div>
+                    <span className="paragraph font mg-20">{output.means}</span>
+                  </div>
+                </div>
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className=" word-css cl-blue">Example:</span>
+                  <div>
+                    <span className="paragraph font mg-20">
+                      {output.examples}
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className="word-css cl-blue">Mean of example:</span>
+                  <div>
+                    <span className="paragraph font mg-20">
+                      {output.examplesVn}
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li className="mg-20">
+                <Table
+                  dataSource={table.data}
+                  columns={columns}
+                  loading={table.loading}
+                />
+              </li>
+              <li className="mg-20">
+                <Table
+                  dataSource={table.mean}
+                  columns={columnsMean}
+                  loading={table.loading}
+                />
+              </li>
+            </ul>
+          </div>
+        )}
       </Form>
     </div>
   );
