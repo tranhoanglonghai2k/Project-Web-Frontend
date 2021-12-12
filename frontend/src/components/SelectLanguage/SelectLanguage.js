@@ -92,7 +92,7 @@ export const SelectLanguage = () => {
 
             <Form.Item>
               <Button
-                className="btn-submit"
+                className="btn-default btn-submit"
                 onClick={handleSubmit}
                 icon={<ZhihuSquareFilled />}
               >
@@ -105,13 +105,13 @@ export const SelectLanguage = () => {
         </div>
       </Form>
 
-      <div className="btn-history">
+      <div className="box-history-btn">
         <Button
           type="primary"
           shape="round"
           icon={<HistoryOutlined className="icon-default" />}
           size="large"
-          className="btn mga"
+          className="btn-default btn-history mga"
         />
       </div>
 

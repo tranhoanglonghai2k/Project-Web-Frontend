@@ -151,58 +151,58 @@ function Search() {
           </div>
         </div>
 
-        {output.word.length > 0 && 
-        <div className="box-word">
-          <ul className="word cl-blue">
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Word:</span>
-                <span className="font mg-20">{output.word}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Spell:</span>
-                <span className="font mg-20">{output.spell}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Type:</span>
-                <span className="font mg-20">{output.wType}</span>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Means:</span>
+        {output.word.length > 0 && (
+          <div className="box-word">
+            <ul className="word cl-blue">
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">{output.means}</span>
+                  <span className="word-css cl-blue">Word:</span>
+                  <span className="font mg-20">{output.word}</span>
                 </div>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className=" word-css cl-blue">Example:</span>
+              </li>
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">
-                    {output.examples}
-                  </span>
+                  <span className="word-css cl-blue">Spell:</span>
+                  <span className="font mg-20">{output.spell}</span>
                 </div>
-              </div>
-            </li>
-            <li className="mg-20">
-              <div>
-                <span className="word-css cl-blue">Mean of example:</span>
+              </li>
+              <li className="mg-20">
                 <div>
-                  <span className="paragraph font mg-20">
-                    {output.examplesVn}
-                  </span>
+                  <span className="word-css cl-blue">Type:</span>
+                  <span className="font mg-20">{output.wType}</span>
                 </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        }
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className="word-css cl-blue">Means:</span>
+                  <div>
+                    <span className="paragraph font mg-20">{output.means}</span>
+                  </div>
+                </div>
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className=" word-css cl-blue">Example:</span>
+                  <div>
+                    <span className="paragraph font mg-20">
+                      {output.examples}
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li className="mg-20">
+                <div>
+                  <span className="word-css cl-blue">Mean of example:</span>
+                  <div>
+                    <span className="paragraph font mg-20">
+                      {output.examplesVn}
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        )}
       </Form>
     </div>
   );
