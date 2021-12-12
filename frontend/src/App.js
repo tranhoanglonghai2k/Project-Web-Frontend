@@ -24,11 +24,11 @@ function App() {
           <Route path="/translate" element={<Translate />} />
           <Route path="/grammar" element={<Grammar />} />
           <Route path="/myword" element={<MyWord />} />
+          <Route path="/myword/card" element={<Card />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/myinfo" element={<MyInfo />} />
           <Route path="/myinfo/mycomment" element={<MyComment />} />
-          <Route path ="/card" element={<Card />}/>
         </Routes>
         <BackTop />
         <Footer />
