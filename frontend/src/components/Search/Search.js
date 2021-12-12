@@ -151,6 +151,7 @@ function Search() {
           </div>
         </div>
 
+        {output.word.length > 0 && 
         <div className="box-word">
           <ul className="word cl-blue">
             <li className="mg-20">
@@ -201,6 +202,7 @@ function Search() {
             </li>
           </ul>
         </div>
+        }
       </Form>
     </div>
   );
