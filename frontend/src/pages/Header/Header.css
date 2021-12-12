@@ -1,6 +1,7 @@
 .logo {
   display: inline-block;
   float: left;
+  margin-right: 15px;
 }
 
 .logo-dict {
@@ -23,7 +24,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9;
+  z-index: 10;
 }
 
 #header .header-content-default a {
@@ -46,6 +47,10 @@
   background-color: #3367d6 !important;
   color: #fff !important;
   height: 80px;
+}
+
+.icon-default {
+  font-size: 20px !important;
 }
 
 .site-layout .site-layout-background {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Select, Input, Button } from "antd";
-import { ZhihuSquareFilled } from "@ant-design/icons";
+import { ZhihuSquareFilled, HistoryOutlined } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./SelectLanguage.css";
 
@@ -104,17 +104,48 @@ export const SelectLanguage = () => {
           </Form.Item>
         </div>
       </Form>
-      <div className="box-history">
-        <div className="list-history">
-          {his &&
-            his.map((item) => (
-              <div className="row no-margin">
-                <div className="content">
-                  <span>{item}</span>
-                  <hr />
+
+      <div className="btn-history">
+        <Button
+          type="primary"
+          shape="round"
+          icon={<HistoryOutlined className="icon-default" />}
+          size="large"
+          className="btn mga"
+        />
+      </div>
+
+      <div className="history-container">
+        <div className="box-history">
+          <div className="list-history">
+            {his &&
+              his.map((item) => (
+                <div className="row no-margin">
+                  <div className="content-history">
+                    <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                    <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                    <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                    <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                    <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
       </div>
     </div>
