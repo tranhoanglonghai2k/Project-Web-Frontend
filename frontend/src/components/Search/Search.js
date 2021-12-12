@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Speech from "react-speech";
+// import Speech from "react-speech";
 import { END_POINT } from "../../config";
 import axios from "axios";
-import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
-import { Form, Select, Input, Table } from "antd";
+// import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
+import { Form, Select, Input, AutoComplete } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
-import SuggestedList from "../SuggestedList/SuggestedList";
 
 function Search() {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
-  const list_word = [
-    {
-      _id: "",
-      means: [],
-      word: "",
-      spell: "",
-    },
-  ];
-
-  const [list, setList] = useState(list_word);
+  const [list, setList] = useState([]);
 
   const word = {
     _id: "",
@@ -36,7 +26,6 @@ function Search() {
   const [lang, setLang] = useState("Anh-Việt");
 
   const { Option } = Select;
-  const { Search } = Input;
 
   const suffix = (
     <AudioOutlined
@@ -53,9 +42,11 @@ function Search() {
     ? JSON.stringify(localStorage.getItem("his"))
     : [];
   const [his, setHis] = useState(check);
+
   useEffect(() => {
     const request_lang = lang === "Anh-Việt" ? "en" : "vi";
-    if (input.length > 0)
+    if (input.length > 0) {
+      setList([]);
       axios
         .get(END_POINT + "/api/recommend-search", {
           params: { lang: request_lang, word: input },
@@ -63,15 +54,33 @@ function Search() {
         .then((res) => {
           let data = res.data;
 
-          setList((list) => {
-            return [...list, ...data.word];
-          });
+          let l = data.word;
+
+          l = l
+            .map((word) => {
+              return { value: word.word };
+            })
+            .reverse();
+
+          l.shift();
+
+          setList(l);
+
+          console.log(l);
         });
-    console.log(input);
+    } else {
+      setList([""]);
+    }
+    //console.log(input);
   }, [input]);
 
   const handleChange = (e) => {
+    console.log(e);
     setInput(e.target.value);
+  };
+
+  const handleChangeTmp = (e) => {
+    setInput(e);
   };
 
   function handleChangelang(e) {
@@ -100,6 +109,10 @@ function Search() {
       });
   };
 
+  const onSelect = (data) => {
+    setInput(data);
+  };
+
   return (
     <div>
       <Form onSubmit={handleSubmit} className="search-form">
@@ -112,73 +125,82 @@ function Search() {
               name="languages"
               className="switch-language"
             >
-              <Option value="vietanh">Việt-Anh</Option>
               <Option value="anhviet">Anh-Việt</Option>
+              <Option value="vietanh">Việt-Anh</Option>
             </Select>
           </div>
 
-          <Search
-            placeholder="Search"
-            value={input}
-            onChange={handleChange}
-            onSearch={handleSubmit}
-            name="text"
-            enterButton="Search"
-            size="large"
-            suffix={suffix}
-            allowClear
-            className="search"
-          />
+          <div className="search">
+            <AutoComplete
+              value={input}
+              dataSource={list}
+              onSelect={onSelect}
+              onSearch={handleChangeTmp}
+              style={{ width: "100%" }}
+            >
+              <Input.Search
+                onSearch={handleSubmit}
+                size="large"
+                placeholder="Tra Từ"
+                suffix={suffix}
+                allowClear
+                enterButton
+                style={{ width: "100%" }}
+              />
+            </AutoComplete>
+          </div>
         </div>
 
-        <div className="border-word">
-          <ul className="word">
+        <div className="box-word">
+          <ul className="word cl-blue">
             <li className="mg-20">
               <div>
-                <span>Word:</span>
-                <span className="mg-20">{output.word}</span>
+                <span className="word-css cl-blue">Word:</span>
+                <span className="font mg-20">{output.word}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Spell:</span>
-                <span className="mg-20">{output.spell}</span>
+                <span className="word-css cl-blue">Spell:</span>
+                <span className="font mg-20">{output.spell}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Type:</span>
-                <span className="mg-20">{output.wType}</span>
+                <span className="word-css cl-blue">Type:</span>
+                <span className="font mg-20">{output.wType}</span>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Means:</span>
+                <span className="word-css cl-blue">Means:</span>
                 <div>
-                  <span className="mg-20">{output.means}</span>
+                  <span className="paragraph font mg-20">{output.means}</span>
                 </div>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Example:</span>
+                <span className=" word-css cl-blue">Example:</span>
                 <div>
-                  <span className="mg-20">{output.examples}</span>
+                  <span className="paragraph font mg-20">
+                    {output.examples}
+                  </span>
                 </div>
               </div>
             </li>
             <li className="mg-20">
               <div>
-                <span>Mean of example:</span>
+                <span className="word-css cl-blue">Mean of example:</span>
                 <div>
-                  <span className="mg-20">{output.examplesVn}</span>
+                  <span className="paragraph font mg-20">
+                    {output.examplesVn}
+                  </span>
                 </div>
               </div>
             </li>
           </ul>
         </div>
-
-        {/* <SuggestedList word={list} /> */}
       </Form>
     </div>
   );

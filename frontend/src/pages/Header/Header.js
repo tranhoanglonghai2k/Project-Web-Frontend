@@ -1,12 +1,7 @@
 import React from "react";
-import { Layout, Menu } from "antd";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+
+import { Layout, Menu, Popconfirm, message } from "antd";
+import { Link } from "react-router-dom";
 import {
   HomeFilled,
   ZhihuSquareFilled,
@@ -26,7 +21,16 @@ function Header() {
   if (localStorage.getItem("token")) {
     check = true;
   }
-  console.log(check);
+  function confirm(e) {
+    console.log(e);
+    message.success("Đăng xuất thành công!!!");
+  }
+
+  function cancel(e) {
+    console.log(e);
+    message.error("Đăng xuất thất bại!!!");
+  }
+
   return (
     <div>
       <Layout>
@@ -51,49 +55,60 @@ function Header() {
                   key="1"
                   icon={<HomeFilled className="icon-default" />}
                 >
-                  <Link to="/">Tra cứu</Link>
+                  <Link to="/">
+                    <span>Tra cứu</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="2"
                   icon={<ZhihuSquareFilled className="icon-default" />}
                 >
-                  <Link to="/translate">Dịch</Link>
+                  <Link to="/translate">
+                    <span>Dịch</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="3"
                   icon={<CheckCircleFilled className="icon-default" />}
                 >
-                  <Link to="/grammar">Ngữ pháp</Link>
+                  <Link to="/grammar">
+                    <span>Ngữ pháp</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="4"
-                  icon={<EditFilled className="icon-default" />}
+                  icon={<BookFilled className="icon-default" />}
                 >
-                  <Link to="/newword">Từ mới</Link>
+                  <Link to="/myword">
+                    <span>Từ của tôi</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="5"
-                  icon={<BookFilled className="icon-default" />}
+                  icon={<ProfileFilled className="icon-default" />}
                 >
-                  <Link to="/myword">Từ của tôi</Link>
+                  <Link to="/myinfo">
+                    <span>Thông tin</span>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item
                   key="6"
-                  icon={<ProfileFilled className="icon-default" />}
-                >
-                  <Link to="/myinfo">Thông tin</Link>
-                </Menu.Item>
-
-                <Menu.Item
-                  key="7"
                   // icon={}
                 >
-                  <Link to="/">Log out</Link>
+                  <Popconfirm
+                    title="Bạn chắc chưa?"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    <Link to="/">Đăng xuất</Link>
+                  </Popconfirm>
                 </Menu.Item>
               </Menu>
             </div>
@@ -145,15 +160,6 @@ function Header() {
 
                   <Menu.Item
                     key="4"
-                    icon={<EditFilled className="icon-default" />}
-                  >
-                    <Link to="/newword">
-                      <span>Từ mới</span>
-                    </Link>
-                  </Menu.Item>
-
-                  <Menu.Item
-                    key="5"
                     icon={<BookFilled className="icon-default" />}
                   >
                     <Link to="/myword">
@@ -162,7 +168,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="6"
+                    key="5"
                     // icon={}
                   >
                     <Link to="/login">
@@ -171,7 +177,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="7"
+                    key="6"
                     // icon={}
                   >
                     <Link to="/signup">
@@ -187,4 +193,5 @@ function Header() {
     </div>
   );
 }
+
 export default Header;

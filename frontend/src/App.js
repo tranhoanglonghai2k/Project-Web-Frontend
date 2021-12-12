@@ -6,7 +6,6 @@ import Footer from "./pages/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Translate from "./pages/Translate/Translate";
 import Grammar from "./pages/Grammar/Grammar";
-import NewWord from "./pages/NewWord/NewWord";
 import MyWord from "./pages/MyWord/MyWord";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Sign up/Signup";
@@ -24,7 +23,6 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/translate" element={<Translate />} />
           <Route path="/grammar" element={<Grammar />} />
-          <Route path="/newword" element={<NewWord />} />
           <Route path="/myword" element={<MyWord />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

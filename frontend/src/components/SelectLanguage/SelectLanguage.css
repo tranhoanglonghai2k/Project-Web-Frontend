@@ -44,3 +44,41 @@ textarea.ant-input {
   /* align-items: center !important; */
   margin: auto;
 }
+
+.box-history {
+  display: block;
+  background-color: white;
+  border: 1px solid white;
+  padding: 10px 25px;
+  margin-top: 8px;
+  border-radius: 30px;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: text;
+}
+
+.box-history .list-history {
+  list-style: none;
+}
+
+.content {
+  margin-left: 15px;
+  width: 100%;
+  position: relative;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
