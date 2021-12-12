@@ -33,20 +33,6 @@ export const SelectLanguage = () => {
   }
 
   function handleSubmit(values) {
-<<<<<<< HEAD
-    setHis((data) => [...data, input]);
-    localStorage.setItem("his", his);
-    const request_lang = lang1 === "Việt" ? "en" : "vi";
-
-    axios
-      .get(END_POINT + "/api/translate-paragraph", {
-        params: { type: request_lang, param: input },
-      })
-      .then((res) => {
-        setOutput(res.data.param);
-        console.log("data", output);
-      });
-=======
     if (input.length > 0) {
       setHis((data) => [...data, input]);
       console.log(input);
@@ -61,7 +47,6 @@ export const SelectLanguage = () => {
         .then((res) => {
           setOutput(res.data.param);
         });
->>>>>>> 3e8dfac009aed4773375cd5830312665d6e9893e
 
       form
         .validateFields()

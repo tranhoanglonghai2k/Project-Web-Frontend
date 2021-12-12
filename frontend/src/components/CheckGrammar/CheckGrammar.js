@@ -13,15 +13,8 @@ export const CheckGrammar = () => {
 
   const [form] = Form.useForm();
 
-  const [lang1, setLang1] = useState("Anh");
-  const [lang2, setLang2] = useState("Việt");
   const [input, setInput] = useState("Plese input");
   const [output, setOutput] = useState([]);
-  const check = localStorage.getItem("his")
-    ? JSON.stringify(localStorage.getItem("his"))
-    : [];
-
-  const [his, setHis] = useState(check);
 
   const mockData = {
     text: {
@@ -118,14 +111,9 @@ export const CheckGrammar = () => {
     },
   };
 
-  function handleChangeinput(values) {
-    setInput(values);
+  function handleChangeinput(e) {
+    setInput(e);
     // console.log(values);
-  }
-
-  function handleChangelang1(value) {
-    value === "Anh" ? setLang2("Việt") : setLang2("Anh");
-    setLang1(value);
   }
 
   function handleSubmit() {
@@ -269,8 +257,6 @@ export const CheckGrammar = () => {
           </Form.Item>
         </div>
       </Form>
-
-      <ul>{his && his.map((item) => <li>{item} </li>)}</ul>
     </div>
   );
 };

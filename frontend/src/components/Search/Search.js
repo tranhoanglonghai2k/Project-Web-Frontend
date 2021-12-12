@@ -65,8 +65,6 @@ function Search() {
           l.shift();
 
           setList(l);
-
-          console.log(l);
         });
     } else {
       setList([""]);
@@ -75,7 +73,6 @@ function Search() {
   }, [input]);
 
   const handleChange = (e) => {
-    console.log(e);
     setInput(e.target.value);
   };
 
@@ -107,6 +104,8 @@ function Search() {
           return { ...output, ...data.word };
         });
       });
+    localStorage.setItem("his", JSON.stringify(his));
+    console.log("his", his);
   };
 
   const onSelect = (data) => {
@@ -202,6 +201,15 @@ function Search() {
           </ul>
         </div>
       </Form>
+      <div>
+        {his &&
+          his.map((item) => (
+            <div>
+              <span>{item}</span>
+              <hr />
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
