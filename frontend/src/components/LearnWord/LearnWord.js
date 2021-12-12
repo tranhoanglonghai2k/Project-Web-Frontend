@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { List, Avatar, Button, Skeleton, Checkbox } from "antd";
 import reqwest from "reqwest";
 
@@ -6,28 +6,41 @@ const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
 function onChange(e) {
-  console.log(`checked = ${e.target.checked}`);
+  console.log(`checked = ${e.target.value}`);
 }
 
-class LearnWord extends React.Component {
-  state = {
+function onDelete(e){
+  console.log(`deleted = ${e.target.value}`);
+}
+
+const LearnWord = ()=> {
+  const [state,setState] = useState({
     initLoading: true,
     loading: false,
     data: [],
     list: [],
-  };
-
-  componentDidMount() {
-    this.getData((res) => {
-      this.setState({
+  });
+  const check = localStorage.getItem("his")
+    ? JSON.stringify(localStorage.getItem("his"))
+    : [];
+  const arr = [];
+  useEffect(()=>{
+    if(check.length > 0)
+    {
+      for(let i=0;i<check.length && i < 3;i++){
+        arr.push(check[i]);
+      }
+    }
+    getData((res) => {
+      setState({
         initLoading: false,
         data: res.results,
-        list: res.results,
+        list: res.results, // init 3 data 
       });
     });
-  }
+  },[])
 
-  getData = (callback) => {
+  const getData = (callback) => { // use axios replace reqwest
     reqwest({
       url: fakeDataUrl,
       type: "json",
@@ -39,10 +52,10 @@ class LearnWord extends React.Component {
     });
   };
 
-  onLoadMore = () => {
-    this.setState({
+  const onLoadMore = () => {
+    setState({
       loading: true,
-      list: this.state.data.concat(
+      list: state.data.concat(
         [...new Array(count)].map(() => ({
           loading: true,
           name: {},
@@ -50,26 +63,22 @@ class LearnWord extends React.Component {
         }))
       ),
     });
-    this.getData((res) => {
-      const data = this.state.data.concat(res.results);
-      this.setState(
+    getData((res) => {
+      const data = state.data.concat(res.results);
+      setState(
         {
           data,
           list: data,
           loading: false,
         },
         () => {
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
           window.dispatchEvent(new Event("resize"));
         }
       );
     });
   };
 
-  render() {
-    const { initLoading, loading, list } = this.state;
+    const { initLoading, loading, list } = state;
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -80,11 +89,12 @@ class LearnWord extends React.Component {
             lineHeight: "32px",
           }}
         >
-          <Button onClick={this.onLoadMore}>loading more</Button>
+          <Button onClick={onLoadMore}>loading more</Button>
         </div>
       ) : null;
 
     return (
+      <div>
       <List
         className="demo-loadmore-list"
         loading={initLoading}
@@ -95,14 +105,14 @@ class LearnWord extends React.Component {
           console.log(item) || (
             <List.Item
               actions={[
-                <Checkbox onChange={onChange}>Checkbox</Checkbox>,
-                <a key="list-loadmore-more">delete</a>,
+                <Checkbox onChange={onChange}>Choose</Checkbox>,
+                <Button onClick={onDelete}>Delete</Button>,
               ]}
             >
               <Skeleton avatar title={false} loading={item.loading} active>
                 <List.Item.Meta
                   avatar={<Avatar src={item.picture.large} />}
-                  title={<a href="https://ant.design">{item.name.last}</a>}
+                  title={item.name.last}
                   description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                 />
               </Skeleton>
@@ -110,8 +120,9 @@ class LearnWord extends React.Component {
           )
         }
       />
+      <Button type="submit" href="/card" >Submit</Button>
+      </div>
     );
   }
-}
 
 export default LearnWord;
