@@ -36,9 +36,6 @@ function MyInfo() {
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
                     <Link to="/myinfo/mycomment">Đóng góp</Link>
                   </Menu.Item>
-                  <Menu.Item key="3" icon={<NotificationOutlined />}>
-                    <Link to="/myinfo/mycontribute">Từ đã góp</Link>
-                  </Menu.Item>
                 </Menu>
               </Sider>
 
