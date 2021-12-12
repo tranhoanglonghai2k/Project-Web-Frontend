@@ -21,14 +21,14 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/translate" element={<Translate />} />
-          <Route path="/grammar" element={<Grammar />} />
-          <Route path="/myword" element={<MyWord />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/myinfo" element={<MyInfo />} />
-          <Route path="/myinfo/mycomment" element={<MyComment />} />
-          <Route path="/myinfo/mycontribute" element={<MyContribute />} />
+          <Route exact path="/translate" element={<Translate />} />
+          <Route exact path="/grammar" element={<Grammar />} />
+          <Route exact path="/myword" element={<MyWord />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/myinfo" element={<MyInfo />} />
+          <Route exact path="/myinfo/mycomment" element={<MyComment />} />
+          <Route exact path="/myinfo/mycontribute" element={<MyContribute />} />
         </Routes>
         <BackTop />
         <Footer />
