@@ -1,12 +1,7 @@
 import axios from "axios";
 import { END_POINT } from "../../config";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 class AuthService {
   login(email, password) {
     return axios
@@ -35,12 +30,11 @@ class AuthService {
       })
       .then((response) => {
         if (response.data.token) {
-          localStorage.setItem(
-            "token_res",
-            JSON.stringify(response.data.token)
-          );
+          localStorage.setItem("token", JSON.stringify(response.data.token));
+          window.history.push("/");
         }
-        console.log("token-res", response);
+
+        console.log("token", response);
         return response.data;
       });
   }

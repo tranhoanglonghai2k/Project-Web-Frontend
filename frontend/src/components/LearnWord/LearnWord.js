@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { List, Avatar, Button, Skeleton, Checkbox } from "antd";
 import reqwest from "reqwest";
 
@@ -9,25 +9,23 @@ function onChange(e) {
   console.log(`checked = ${e.target.value}`);
 }
 
-function onDelete(e){
+function onDelete(e) {
   console.log(`deleted = ${e.target.value}`);
 }
 
-const LearnWord = ()=> {
-  const [state,setState] = useState({
+const LearnWord = () => {
+  const [state, setState] = useState({
     initLoading: true,
     loading: false,
     data: [],
     list: [],
   });
-  const check = localStorage.getItem("his")
-    ? JSON.stringify(localStorage.getItem("his"))
-    : [];
+  const check = localStorage.getItem("his") ? localStorage.getItem("his") : [];
+  console.log(check);
   const arr = [];
-  useEffect(()=>{
-    if(check.length > 0)
-    {
-      for(let i=0;i<check.length && i < 3;i++){
+  useEffect(() => {
+    if (check.length > 0) {
+      for (let i = 0; i < check.length && i < 3; i++) {
         arr.push(check[i]);
       }
     }
@@ -35,12 +33,13 @@ const LearnWord = ()=> {
       setState({
         initLoading: false,
         data: res.results,
-        list: res.results, // init 3 data 
+        list: res.results, // init 3 data
       });
     });
-  },[])
+  }, []);
 
-  const getData = (callback) => { // use axios replace reqwest
+  const getData = (callback) => {
+    // use axios replace reqwest
     reqwest({
       url: fakeDataUrl,
       type: "json",
@@ -78,23 +77,23 @@ const LearnWord = ()=> {
     });
   };
 
-    const { initLoading, loading, list } = state;
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: 12,
-            height: 32,
-            lineHeight: "32px",
-          }}
-        >
-          <Button onClick={onLoadMore}>loading more</Button>
-        </div>
-      ) : null;
+  const { initLoading, loading, list } = state;
+  const loadMore =
+    !initLoading && !loading ? (
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: 12,
+          height: 32,
+          lineHeight: "32px",
+        }}
+      >
+        <Button onClick={onLoadMore}>loading more</Button>
+      </div>
+    ) : null;
 
-    return (
-      <div>
+  return (
+    <div>
       <List
         className="demo-loadmore-list"
         loading={initLoading}
@@ -120,9 +119,11 @@ const LearnWord = ()=> {
           )
         }
       />
-      <Button type="submit" href="/card" >Submit</Button>
-      </div>
-    );
-  }
+      <Button type="submit" href="/card">
+        Submit
+      </Button>
+    </div>
+  );
+};
 
 export default LearnWord;

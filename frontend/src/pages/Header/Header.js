@@ -1,5 +1,6 @@
 import React from "react";
-
+import { browserHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { Layout, Menu, Popconfirm, message } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -15,15 +16,14 @@ import "./Header.css";
 function Header() {
   const { Header } = Layout;
   let check = false;
-  if (localStorage.getItem("token_res")) {
-    check = true;
-  }
   if (localStorage.getItem("token")) {
     check = true;
   }
   function confirm(e) {
+    localStorage.removeItem("token");
     console.log(e);
     message.success("Đăng xuất thành công!!!");
+    window.history.push("/");
   }
 
   function cancel(e) {
@@ -107,7 +107,7 @@ function Header() {
                     okText="Yes"
                     cancelText="No"
                   >
-                    <Link to="/">Đăng xuất</Link>
+                    Đăng xuất
                   </Popconfirm>
                 </Menu.Item>
               </Menu>
