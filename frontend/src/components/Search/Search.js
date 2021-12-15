@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { END_POINT } from "../../config";
 import axios from "axios";
-import { Form, Select, Input, AutoComplete } from "antd";
+
+// import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
+import { Form, Select, Input, AutoComplete, Table } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "./Search.css";
 
@@ -20,6 +22,33 @@ function Search() {
     spell: "",
     __v: 0,
   };
+
+  const columns = [
+    {
+      title: "Example",
+      dataIndex: "examples",
+      key: "examples",
+    },
+    {
+      title: "Mean of Example",
+      dataIndex: "examplesVn",
+      key: "examplesVn",
+    },
+  ];
+
+  const columnsMean = [
+    {
+      title: "Means",
+      dataIndex: "mean",
+      key: "mean",
+    },
+  ];
+
+  const [table, setTable] = useState({
+    loading: false,
+    data: [],
+    means: [],
+  });
 
   const [lang, setLang] = useState("Anh-Việt");
 
@@ -81,13 +110,38 @@ function Search() {
     input.trim();
     input.toLowerCase();
     const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    setTable({ loading: true });
     axios
       .get(END_POINT + "/api/search-word", {
         params: { lang: request_lang, word: input },
       })
       .then(async (res) => {
         let data = res.data;
-        await setOutput((output) => {
+
+        const dataSource = [];
+        const meanSource = [];
+        if (data.word.examples.length > 0) {
+          for (let i = 0; i < data.word.examples.length; i++) {
+            dataSource.push(
+              new Object({
+                key: i + "",
+                examples: data.word.examples[i],
+                examplesVn: data.word.examplesVn[i],
+              })
+            );
+          }
+          for (let i = 0; i < data.word.means.length; i++) {
+            meanSource.push(
+              new Object({
+                key: i + "",
+                mean: data.word.means[i],
+              })
+            );
+          }
+          console.log(dataSource, meanSource);
+        }
+        setTable({ loading: false, data: dataSource, mean: meanSource });
+        setOutput((output) => {
           return { ...output, ...data.word };
         });
         let update = new Object({ word: input, mean: data.word.means });
@@ -164,28 +218,29 @@ function Search() {
               <li className="mg-20">
                 <div>
                   <span className="word-css cl-blue">Means:</span>
-                  <div>
-                    <span className="paragraph font mg-20">{output.means}</span>
+
+                  <div className="table-means">
+                    <Table
+                      dataSource={table.mean}
+                      columns={columnsMean}
+                      loading={table.loading}
+                      size="small"
+                      className="paragraph font mg-20"
+                    />
                   </div>
                 </div>
               </li>
               <li className="mg-20">
                 <div>
-                  <span className=" word-css cl-blue">Example:</span>
-                  <div>
-                    <span className="paragraph font mg-20">
-                      {output.examples}
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li className="mg-20">
-                <div>
-                  <span className="word-css cl-blue">Mean of example:</span>
-                  <div>
-                    <span className="paragraph font mg-20">
-                      {output.examplesVn}
-                    </span>
+                  <span className=" word-css cl-blue">Example && Mean:</span>
+                  <div className="table-example">
+                    <Table
+                      dataSource={table.data}
+                      columns={columns}
+                      loading={table.loading}
+                      size="small"
+                      className="paragraph font mg-20"
+                    />
                   </div>
                 </div>
               </li>

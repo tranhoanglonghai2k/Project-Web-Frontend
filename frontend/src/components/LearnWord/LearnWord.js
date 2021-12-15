@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { List, Avatar, Button, Skeleton, Checkbox } from "antd";
+import { DeleteOutlined, ReloadOutlined } from "@ant-design/icons";
 import reqwest from "reqwest";
+import "./LearnWord.css";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
@@ -88,40 +90,60 @@ const LearnWord = () => {
           lineHeight: "32px",
         }}
       >
-        <Button onClick={onLoadMore}>loading more</Button>
+        <Button className="btn-default" onClick={onLoadMore}>
+          <ReloadOutlined />
+        </Button>
       </div>
     ) : null;
 
   return (
     <div>
-      <List
-        className="demo-loadmore-list"
-        loading={initLoading}
-        itemLayout="horizontal"
-        loadMore={loadMore}
-        dataSource={list}
-        renderItem={(item) =>
-          console.log(item) || (
-            <List.Item
-              actions={[
-                <Checkbox onChange={onChange}>Choose</Checkbox>,
-                <Button onClick={onDelete}>Delete</Button>,
-              ]}
-            >
-              <Skeleton avatar title={false} loading={item.loading} active>
-                <List.Item.Meta
-                  avatar={<Avatar src={item.picture.large} />}
-                  title={item.name.last}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-              </Skeleton>
-            </List.Item>
-          )
-        }
-      />
-      <Button type="submit" href="/card">
-        Submit
-      </Button>
+      <div className="word-list">
+        <h3 class="title-comm">
+          <span class="title-holder title">Chọn từ</span>
+        </h3>
+
+        <List
+          className="demo-loadmore-list"
+          loading={initLoading}
+          itemLayout="horizontal"
+          loadMore={loadMore}
+          dataSource={list}
+          renderItem={(item) =>
+            console.log(item) || (
+              <List.Item
+                actions={[
+                  <Checkbox onChange={onChange}>Chọn</Checkbox>,
+                  <Button
+                    className="btn-default"
+                    type="primary"
+                    onClick={onDelete}
+                  >
+                    <DeleteOutlined />
+                  </Button>,
+                ]}
+              >
+                <Skeleton avatar title={false} loading={item.loading} active>
+                  <List.Item.Meta
+                    title={item.name.last}
+                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  />
+                </Skeleton>
+              </List.Item>
+            )
+          }
+        />
+      </div>
+
+      <div className="btn-learn-word">
+        <Button
+          className="btn-default btn-learn mga"
+          type="primary"
+          href="/myword/card"
+        >
+          Xác nhận
+        </Button>
+      </div>
     </div>
   );
 };

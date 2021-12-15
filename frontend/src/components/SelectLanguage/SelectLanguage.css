@@ -24,10 +24,6 @@ textarea.ant-input {
   width: 100%;
 }
 
-.textarea {
-  /* max-width: 50%; */
-}
-
 .output-translate {
   max-width: 100%;
   min-height: 250px !important;
@@ -38,11 +34,25 @@ textarea.ant-input {
   width: 20%;
   background-color: #3367d6 !important;
   color: white !important;
-  border-radius: 30px !important;
   font-size: 15px !important;
   text-align: center !important;
-  /* align-items: center !important; */
-  margin: auto;
+  margin-top: 7px !important;
+}
+
+.box-history-btn {
+  display: flex;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.btn-history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-container {
+  margin-top: 50px;
 }
 
 .box-history {
@@ -50,7 +60,6 @@ textarea.ant-input {
   background-color: white;
   border: 1px solid white;
   padding: 10px 25px;
-  margin-top: 8px;
   border-radius: 30px;
   margin: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -61,10 +70,11 @@ textarea.ant-input {
   list-style: none;
 }
 
-.content {
+.content-history {
   margin-left: 15px;
   width: 100%;
   position: relative;
+  font-size: 16px;
 }
 
 .row {
@@ -82,3 +92,31 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
 }
+
+.truncate-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 95%;
+}
+
+/* .custom-scrollbar {
+  height: 70px;
+  overflow-y: scroll;
+} */
+
+/* To style the document scrollbar, remove `.custom-scrollbar` */
+
+/* .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+} */
