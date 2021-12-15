@@ -17,8 +17,8 @@ function MyComment() {
           style={{ padding: "0 50px", marginTop: "64px" }}
         >
           <div className="site-layout-background">
-            <h3 class="title-comm">
-              <span class="title-holder title">Bình luận của tôi</span>
+            <h3 className="title-comm">
+              <span className="title-holder title">Bình luận của tôi</span>
             </h3>
 
             <Layout style={{ padding: "24px 0", backgroundColor: "#fff" }}>

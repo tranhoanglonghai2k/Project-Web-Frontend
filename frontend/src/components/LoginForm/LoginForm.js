@@ -37,11 +37,13 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
-      <Title className="title">Đăng nhập</Title>
+      <h3 className="title-comm">
+        <span className="title-holder title">Đăng nhập</span>
+      </h3>
 
       <div
         style={{
-          marginTop: "40px",
+          margin: "50px 0",
         }}
       >
         <Form

@@ -255,11 +255,6 @@ function Search() {
                 </div>
               </div>
             ))}
-          {/* <div className="history-container">
-            <div className="box-history">
-              <div className="list-history "></div>
-            </div>
-          </div> */}
         </Modal>
 
         {output.word.length > 0 && (

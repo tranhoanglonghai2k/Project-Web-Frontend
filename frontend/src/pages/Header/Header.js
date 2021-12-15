@@ -39,7 +39,7 @@ function Header() {
               <div className="logo">
                 <Link to="/">
                   <img
-                    src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+                    src="../../../public/cropped-logo-3.png"
                     alt="logo"
                     className="logo-dict"
                   ></img>

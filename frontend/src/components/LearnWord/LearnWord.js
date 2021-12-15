@@ -99,8 +99,8 @@ const LearnWord = () => {
   return (
     <div>
       <div className="word-list">
-        <h3 class="title-comm">
-          <span class="title-holder title">Chọn từ</span>
+        <h3 className="title-comm">
+          <span className="title-holder title">Chọn từ</span>
         </h3>
 
         <List
