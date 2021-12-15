@@ -1,6 +1,4 @@
-import React from "react";
-import { browserHistory } from "react-router";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { Layout, Menu, Popconfirm, message } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -18,11 +16,10 @@ function Header() {
   if (localStorage.getItem("token")) {
     check = true;
   }
+
   function confirm(e) {
     localStorage.removeItem("token");
-    console.log(e);
     message.success("Đăng xuất thành công!!!");
-    window.history.push("/");
   }
 
   function cancel(e) {
@@ -42,7 +39,7 @@ function Header() {
               <div className="logo">
                 <Link to="/">
                   <img
-                    src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+                    src="../../../public/cropped-logo-3.png"
                     alt="logo"
                     className="logo-dict"
                   ></img>

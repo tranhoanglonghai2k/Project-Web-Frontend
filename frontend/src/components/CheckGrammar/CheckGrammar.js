@@ -211,8 +211,8 @@ export const CheckGrammar = () => {
 
   return (
     <div>
-      <h3 class="title-comm">
-        <span class="title-holder title">Kiểm tra ngữ pháp</span>
+      <h3 className="title-comm">
+        <span className="title-holder title">Kiểm tra ngữ pháp</span>
       </h3>
 
       <Form form={form} onFinish={handleSubmit}>
