@@ -21,7 +21,9 @@ function MyInfo() {
           style={{ padding: "0 50px", marginTop: "64px" }}
         >
           <div className="site-layout-background">
-            <Title className="title">Thông tin cá nhân</Title>
+            <h3 class="title-comm">
+              <span class="title-holder title">Thông tin cá nhân</span>
+            </h3>
 
             <Layout style={{ padding: "24px 0", backgroundColor: "#fff" }}>
               <Sider style={{ backgroundColor: "#fff" }} width={200}>

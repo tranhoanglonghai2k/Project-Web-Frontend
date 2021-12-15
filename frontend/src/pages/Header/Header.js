@@ -162,17 +162,17 @@ function Header() {
                     </Link>
                   </Menu.Item>
 
-                  <Menu.Item
+                  {/* <Menu.Item
                     key="4"
                     icon={<BookFilled className="icon-default" />}
                   >
                     <Link to="/myword">
                       <span>Từ của tôi</span>
                     </Link>
-                  </Menu.Item>
+                  </Menu.Item> */}
 
                   <Menu.Item
-                    key="5"
+                    key="4"
                     // icon={}
                   >
                     <Link to="/login">
@@ -181,7 +181,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="6"
+                    key="5"
                     // icon={}
                   >
                     <Link to="/signup">

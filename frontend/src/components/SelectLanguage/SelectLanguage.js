@@ -117,12 +117,16 @@ export const SelectLanguage = () => {
 
       <div className="history-container">
         <div className="box-history">
-          <div className="list-history">
+          <div className="list-history ">
             {his &&
               his.map((item) => (
                 <div className="row no-margin">
-                  <div className="content-history">
+                  <div className="content-history ">
                     <p className="truncate-text">
+                      <span>{item}</span>
+                    </p>
+                    <hr />
+                    {/* <p className="truncate-text">
                       <span>{item}</span>
                     </p>
                     <hr />
@@ -137,11 +141,7 @@ export const SelectLanguage = () => {
                     <p className="truncate-text">
                       <span>{item}</span>
                     </p>
-                    <hr />
-                    <p className="truncate-text">
-                      <span>{item}</span>
-                    </p>
-                    <hr />
+                    <hr /> */}
                   </div>
                 </div>
               ))}

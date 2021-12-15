@@ -41,7 +41,7 @@ function Search() {
       title: "Means",
       dataIndex: "mean",
       key: "mean",
-    }
+    },
   ];
 
   const [table, setTable] = useState({
@@ -226,44 +226,30 @@ function Search() {
               <li className="mg-20">
                 <div>
                   <span className="word-css cl-blue">Means:</span>
-                  <div>
-                    <span className="paragraph font mg-20">{output.means}</span>
+                  <div className="table-means">
+                    <Table
+                      dataSource={table.mean}
+                      columns={columnsMean}
+                      loading={table.loading}
+                      size="small"
+                      className="paragraph font mg-20"
+                    />
                   </div>
                 </div>
               </li>
               <li className="mg-20">
                 <div>
-                  <span className=" word-css cl-blue">Example:</span>
-                  <div>
-                    <span className="paragraph font mg-20">
-                      {output.examples}
-                    </span>
+                  <span className=" word-css cl-blue">Example && Mean:</span>
+                  <div className="table-example">
+                    <Table
+                      dataSource={table.data}
+                      columns={columns}
+                      loading={table.loading}
+                      size="small"
+                      className="paragraph font mg-20"
+                    />
                   </div>
                 </div>
-              </li>
-              <li className="mg-20">
-                <div>
-                  <span className="word-css cl-blue">Mean of example:</span>
-                  <div>
-                    <span className="paragraph font mg-20">
-                      {output.examplesVn}
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li className="mg-20">
-                <Table
-                  dataSource={table.data}
-                  columns={columns}
-                  loading={table.loading}
-                />
-              </li>
-              <li className="mg-20">
-                <Table
-                  dataSource={table.mean}
-                  columns={columnsMean}
-                  loading={table.loading}
-                />
               </li>
             </ul>
           </div>

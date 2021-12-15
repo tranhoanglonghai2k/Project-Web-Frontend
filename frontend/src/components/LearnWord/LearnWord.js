@@ -91,49 +91,19 @@ const LearnWord = () => {
           lineHeight: "32px",
         }}
       >
-<<<<<<< HEAD
-        <Button onClick={onLoadMore}>loading more</Button>
-=======
         <Button className="btn-default" onClick={onLoadMore}>
           <ReloadOutlined />
         </Button>
->>>>>>> 298829f6aae84b4a264e00121c190629aebecda4
       </div>
     ) : null;
 
   return (
     <div>
-<<<<<<< HEAD
-      <List
-        className="demo-loadmore-list"
-        loading={initLoading}
-        itemLayout="horizontal"
-        loadMore={loadMore}
-        dataSource={list}
-        renderItem={(item) =>
-          console.log(item) || (
-            <List.Item
-              actions={[
-                <Checkbox onChange={onChange}>Choose</Checkbox>,
-                <Button onClick={onDelete}>Delete</Button>,
-              ]}
-            >
-              <Skeleton avatar title={false} loading={item.loading} active>
-                <List.Item.Meta
-                  avatar={<Avatar src={item.picture.large} />}
-                  title={item.name.last}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-              </Skeleton>
-            </List.Item>
-          )
-        }
-      />
-      <Button type="submit" href="/card">
-        Submit
-      </Button>
-=======
       <div className="word-list">
+        <h3 class="title-comm">
+          <span class="title-holder title">Chọn từ</span>
+        </h3>
+
         <List
           className="demo-loadmore-list"
           loading={initLoading}
@@ -156,7 +126,6 @@ const LearnWord = () => {
               >
                 <Skeleton avatar title={false} loading={item.loading} active>
                   <List.Item.Meta
-                    avatar={<Avatar src={item.picture.large} />}
                     title={item.name.last}
                     description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                   />
@@ -176,7 +145,6 @@ const LearnWord = () => {
           Xác nhận
         </Button>
       </div>
->>>>>>> 298829f6aae84b4a264e00121c190629aebecda4
     </div>
   );
 };

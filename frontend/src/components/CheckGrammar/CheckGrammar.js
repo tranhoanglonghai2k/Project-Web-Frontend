@@ -9,7 +9,7 @@ export const CheckGrammar = () => {
   localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const { TextArea } = Input;
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
 
   const [form] = Form.useForm();
 
@@ -223,7 +223,9 @@ export const CheckGrammar = () => {
 
   return (
     <div>
-      <Title className="title">Kiểm tra ngữ pháp</Title>
+      <h3 class="title-comm">
+        <span class="title-holder title">Kiểm tra ngữ pháp</span>
+      </h3>
 
       <Form form={form} onFinish={handleSubmit}>
         <div className="container-translate mgt-10">
