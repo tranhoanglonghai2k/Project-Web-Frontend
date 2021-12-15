@@ -39,67 +39,6 @@ textarea.ant-input {
   margin-top: 7px !important;
 }
 
-.box-history-btn {
-  display: flex;
-  width: 100%;
-  margin-top: 50px;
-}
-
-.btn-history {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.history-container {
-  margin-top: 50px;
-}
-
-.box-history {
-  display: block;
-  background-color: white;
-  border: 1px solid white;
-  padding: 10px 25px;
-  border-radius: 30px;
-  margin: auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  cursor: text;
-}
-
-.box-history .list-history {
-  list-style: none;
-}
-
-.content-history {
-  margin-left: 15px;
-  width: 100%;
-  position: relative;
-  font-size: 16px;
-}
-
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.no-margin {
-  margin: 0;
-}
-
-hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 0;
-  border-top: 1px solid #eee;
-}
-
-.truncate-text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 95%;
-}
-
 /* .custom-scrollbar {
   height: 70px;
   overflow-y: scroll;
