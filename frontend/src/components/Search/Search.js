@@ -36,6 +36,19 @@ function Search() {
     },
   ];
 
+  const columnsEn = [
+    {
+      title: "Example",
+      dataIndex: "examples",
+      key: "examples",
+    },
+    {
+      title: "Mean of Example",
+      dataIndex: "examplesEn",
+      key: "examplesEn",
+    },
+  ];
+
   const columnsMean = [
     {
       title: "Means",
@@ -137,10 +150,17 @@ function Search() {
         if (data.word.examples.length > 0) {
           for (let i = 0; i < data.word.examples.length; i++) {
             dataSource.push(
+              lang === "Anh-Việt" ?
               new Object({
                 key: i + "",
                 examples: data.word.examples[i],
                 examplesVn: data.word.examplesVn[i],
+              })
+              :
+              new Object({
+                key: i + "",
+                examples: data.word.examples[i],
+                examplesEn: data.word.examplesEn[i],
               })
             );
           }
@@ -285,7 +305,7 @@ function Search() {
                   <div className="table-example">
                     <Table
                       dataSource={table.data}
-                      columns={columns}
+                      columns={lang === "Anh-Việt" ? columns : columnsEn}
                       loading={table.loading}
                       size="small"
                       className="paragraph font mg-20"
