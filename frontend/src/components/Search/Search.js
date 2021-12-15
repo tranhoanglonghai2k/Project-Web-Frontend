@@ -3,8 +3,8 @@ import { END_POINT } from "../../config";
 import axios from "axios";
 
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
-import { Form, Select, Input, AutoComplete, Table } from "antd";
-import { AudioOutlined } from "@ant-design/icons";
+import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
+import { AudioOutlined, HistoryOutlined } from "@ant-design/icons";
 import "./Search.css";
 
 function Search() {
@@ -49,6 +49,20 @@ function Search() {
     data: [],
     means: [],
   });
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const [lang, setLang] = useState("Anh-Việt");
 
@@ -194,6 +208,41 @@ function Search() {
           </div>
         </div>
 
+        <div className="box-history-btn">
+          <Button
+            type="primary"
+            shape="round"
+            icon={<HistoryOutlined className="icon-default" />}
+            size="large"
+            onClick={showModal}
+            className="btn-default btn-history mga"
+          />
+        </div>
+
+        <Modal
+          title="Lịch sử tra cứu"
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          {his &&
+            his.map((item) => (
+              <div className="row no-margin">
+                <div className="content-history">
+                  <p className="truncate-text">
+                    <span>{item.word}</span>
+                  </p>
+                  <hr />
+                </div>
+              </div>
+            ))}
+          {/* <div className="history-container">
+            <div className="box-history">
+              <div className="list-history "></div>
+            </div>
+          </div> */}
+        </Modal>
+
         {output.word.length > 0 && (
           <div className="box-word">
             <ul className="word cl-blue">
@@ -248,15 +297,6 @@ function Search() {
           </div>
         )}
       </Form>
-      <div>
-        {his &&
-          his.map((item) => (
-            <div>
-              <span>{item.word}</span>
-              <hr />
-            </div>
-          ))}
-      </div>
     </div>
   );
 }
