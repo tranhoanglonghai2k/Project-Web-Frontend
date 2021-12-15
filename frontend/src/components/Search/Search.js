@@ -64,7 +64,7 @@ function Search() {
     setIsModalVisible(false);
   };
 
-  const [lang, setLang] = useState("Anh-Việt");
+  const [lang, setLang] = useState("anhviet");
 
   const { Option } = Select;
 
@@ -84,7 +84,7 @@ function Search() {
     : "";
   const [his, setHis] = useState([]);
   useEffect(() => {
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     if (input.length > 0) {
       setList([]);
       axios
@@ -123,7 +123,7 @@ function Search() {
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     setTable({ loading: true });
     axios
       .get(END_POINT + "/api/search-word", {
@@ -236,11 +236,6 @@ function Search() {
                 </div>
               </div>
             ))}
-          {/* <div className="history-container">
-            <div className="box-history">
-              <div className="list-history "></div>
-            </div>
-          </div> */}
         </Modal>
 
         {output.word.length > 0 && (
