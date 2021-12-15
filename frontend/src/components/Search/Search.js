@@ -77,7 +77,7 @@ function Search() {
     setIsModalVisible(false);
   };
 
-  const [lang, setLang] = useState("Anh-Việt");
+  const [lang, setLang] = useState("anhviet");
 
   const { Option } = Select;
 
@@ -97,7 +97,7 @@ function Search() {
     : "";
   const [his, setHis] = useState([]);
   useEffect(() => {
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     if (input.length > 0) {
       setList([]);
       axios
@@ -136,7 +136,7 @@ function Search() {
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     setTable({ loading: true });
     axios
       .get(END_POINT + "/api/search-word", {
@@ -150,18 +150,17 @@ function Search() {
         if (data.word.examples.length > 0) {
           for (let i = 0; i < data.word.examples.length; i++) {
             dataSource.push(
-              lang === "Anh-Việt" ?
-              new Object({
-                key: i + "",
-                examples: data.word.examples[i],
-                examplesVn: data.word.examplesVn[i],
-              })
-              :
-              new Object({
-                key: i + "",
-                examples: data.word.examples[i],
-                examplesEn: data.word.examplesEn[i],
-              })
+              lang === "anhviet"
+                ? new Object({
+                    key: i + "",
+                    examples: data.word.examples[i],
+                    examplesVn: data.word.examplesVn[i],
+                  })
+                : new Object({
+                    key: i + "",
+                    examples: data.word.examples[i],
+                    examplesEn: data.word.examplesEn[i],
+                  })
             );
           }
           for (let i = 0; i < data.word.means.length; i++) {
@@ -305,7 +304,7 @@ function Search() {
                   <div className="table-example">
                     <Table
                       dataSource={table.data}
-                      columns={lang === "Anh-Việt" ? columns : columnsEn}
+                      columns={lang === "anhviet" ? columns : columnsEn}
                       loading={table.loading}
                       size="small"
                       className="paragraph font mg-20"
