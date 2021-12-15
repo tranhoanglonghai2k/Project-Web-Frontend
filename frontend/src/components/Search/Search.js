@@ -5,6 +5,7 @@ import axios from "axios";
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
 import { AudioOutlined, HistoryOutlined } from "@ant-design/icons";
+import ContributionFrom from "../Contribution/ContributionFrom"
 import "./Search.css";
 
 function Search() {
@@ -77,7 +78,7 @@ function Search() {
     setIsModalVisible(false);
   };
 
-  const [lang, setLang] = useState("Anh-Việt");
+  const [lang, setLang] = useState("anhviet");
 
   const { Option } = Select;
 
@@ -97,7 +98,7 @@ function Search() {
     : "";
   const [his, setHis] = useState([]);
   useEffect(() => {
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     if (input.length > 0) {
       setList([]);
       axios
@@ -129,6 +130,7 @@ function Search() {
   };
 
   function handleChangelang(e) {
+    console.log(e);
     setLang(e);
   }
 
@@ -136,7 +138,7 @@ function Search() {
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
-    const request_lang = lang === "Anh-Việt" ? "en" : "vi";
+    const request_lang = lang === "anhviet" ? "en" : "vi";
     setTable({ loading: true });
     axios
       .get(END_POINT + "/api/search-word", {
@@ -147,10 +149,10 @@ function Search() {
 
         const dataSource = [];
         const meanSource = [];
-        if (data.word.examples.length > 0) {
+        if (data.word.examples && data.word.examples.length > 0) {
           for (let i = 0; i < data.word.examples.length; i++) {
             dataSource.push(
-              lang === "Anh-Việt" ?
+              lang === "anhviet" ?
               new Object({
                 key: i + "",
                 examples: data.word.examples[i],
@@ -317,6 +319,12 @@ function Search() {
           </div>
         )}
       </Form>
+      {output._id &&
+      <div>
+        <span>Add example</span>
+          <ContributionFrom word_id={output._id} lang={lang}/>
+      </div>
+      }
     </div>
   );
 }
