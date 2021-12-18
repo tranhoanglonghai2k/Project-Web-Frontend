@@ -39,8 +39,9 @@ function Header() {
               <div className="logo">
                 <Link to="/">
                   <img
-                    src="../../../public/cropped-logo-3.png"
+                    src="./cropped-logo-3.png"
                     alt="logo"
+                    border="0"
                     className="logo-dict"
                   ></img>
                 </Link>
@@ -119,7 +120,8 @@ function Header() {
                 <div className="logo">
                   <Link to="/">
                     <img
-                      src="../../../public/cropped-logo-3.png"
+                      src="./cropped-logo-3.png"
+                      border="0"
                       alt="logo"
                       className="logo-dict"
                     ></img>
