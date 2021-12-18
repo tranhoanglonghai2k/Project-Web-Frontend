@@ -5,7 +5,7 @@ import axios from "axios";
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
 import { AudioOutlined, HistoryOutlined } from "@ant-design/icons";
-import ContributionFrom from "../Contribution/ContributionFrom"
+import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
 
 function Search() {
@@ -152,18 +152,17 @@ function Search() {
         if (data.word.examples && data.word.examples.length > 0) {
           for (let i = 0; i < data.word.examples.length; i++) {
             dataSource.push(
-              lang === "anhviet" ?
-              new Object({
-                key: i + "",
-                examples: data.word.examples[i],
-                examplesVn: data.word.examplesVn[i],
-              })
-              :
-              new Object({
-                key: i + "",
-                examples: data.word.examples[i],
-                examplesEn: data.word.examplesEn[i],
-              })
+              lang === "anhviet"
+                ? new Object({
+                    key: i + "",
+                    examples: data.word.examples[i],
+                    examplesVn: data.word.examplesVn[i],
+                  })
+                : new Object({
+                    key: i + "",
+                    examples: data.word.examples[i],
+                    examplesEn: data.word.examplesEn[i],
+                  })
             );
           }
           for (let i = 0; i < data.word.means.length; i++) {
@@ -314,12 +313,20 @@ function Search() {
           </div>
         )}
       </Form>
-      {output._id &&
-      <div>
-        <span>Add example</span>
-          <ContributionFrom word_id={output._id} lang={lang}/>
-      </div>
-      }
+
+      {output._id && (
+        <div style={{ marginTop: "50px" }}>
+          <div className="box-word">
+            <div>
+              <h3 style={{ textAlign: "center" }}>Add example</h3>
+            </div>
+
+            <div style={{ width: "80%" }}>
+              <ContributionFrom word_id={output._id} lang={lang} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
