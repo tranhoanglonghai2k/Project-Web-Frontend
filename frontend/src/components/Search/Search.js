@@ -246,17 +246,21 @@ function Search() {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          {his &&
-            his.map((item) => (
-              <div className="row no-margin">
-                <div className="content-history">
-                  <p className="truncate-text">
-                    <span>{item.word}</span>
-                  </p>
-                  <hr />
-                </div>
-              </div>
-            ))}
+          <div className="overflow-scroll-gradient">
+            <div className="overflow-scroll-gradient__scroller">
+              {his &&
+                his.map((item) => (
+                  <div className="row no-margin">
+                    <div className="content-history">
+                      <p className="truncate-text">
+                        <span>{item.word}</span>
+                      </p>
+                      <hr />
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </Modal>
 
         {output.word.length > 0 && (
@@ -317,11 +321,11 @@ function Search() {
       {output._id && (
         <div style={{ marginTop: "50px" }}>
           <div className="box-word">
-            <div>
-              <h3 style={{ textAlign: "center" }}>Add example</h3>
+            <div style={{ margin: "10px 0" }}>
+              <h1 style={{ textAlign: "center" }}>Thêm ví dụ</h1>
             </div>
 
-            <div style={{ width: "80%" }}>
+            <div style={{ width: "80%", margin: "10px 0" }}>
               <ContributionFrom word_id={output._id} lang={lang} />
             </div>
           </div>
