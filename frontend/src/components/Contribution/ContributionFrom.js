@@ -53,7 +53,7 @@ const ContributionFrom = ({ word_id, lang }) => {
           },
         ]}
       >
-        <Input />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item
@@ -66,7 +66,7 @@ const ContributionFrom = ({ word_id, lang }) => {
           },
         ]}
       >
-        <Input />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item
@@ -75,7 +75,7 @@ const ContributionFrom = ({ word_id, lang }) => {
           span: 16,
         }}
       >
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" className="btn-default">
           Xác nhận
         </Button>
       </Form.Item>
