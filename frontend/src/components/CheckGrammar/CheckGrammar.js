@@ -16,129 +16,25 @@ export const CheckGrammar = () => {
   const [input, setInput] = useState("Plese input");
   const [output, setOutput] = useState([]);
 
-  const mockData = {
-    text: {
-      software: {
-        name: "GrammarBot",
-        version: "4.3.1",
-        apiVersion: 1,
-        premium: false,
-        premiumHint:
-          "You might be missing errors only the Premium version can find. Upgrade to see what you're missing.",
-        status: "",
-      },
-      warnings: {
-        incompleteResults: false,
-      },
-      language: {
-        name: "English (US)",
-        code: "en-US",
-        detectedLanguage: {
-          name: "English (US)",
-          code: "en-US",
-        },
-      },
-      matches: [
-        {
-          message: "This sentence does not start with an uppercase letter",
-          shortMessage: "",
-          replacements: [
-            {
-              value: "We",
-            },
-          ],
-          offset: 0,
-          length: 2,
-          context: {
-            text: "we is going to be play game",
-            offset: 0,
-            length: 2,
-          },
-          sentence: "we is going to be play game",
-          type: {
-            typeName: "Other",
-          },
-          rule: {
-            id: "UPPERCASE_SENTENCE_START",
-            description:
-              "Checks that a sentence starts with an uppercase letter",
-            issueType: "typographical",
-            category: {
-              id: "CASING",
-              name: "Capitalization",
-            },
-          },
-        },
-        {
-          message:
-            'The pronoun \'we\' must be used with a non-third-person form of a verb: "am", "are", "aren\'t"',
-          shortMessage: "Grammatical problem: agreement error",
-          replacements: [
-            {
-              value: "am",
-            },
-            {
-              value: "are",
-            },
-            {
-              value: "aren't",
-            },
-          ],
-          offset: 3,
-          length: 2,
-          context: {
-            text: "we is going to be play game",
-            offset: 3,
-            length: 2,
-          },
-          sentence: "we is going to be play game",
-          type: {
-            typeName: "Other",
-          },
-          rule: {
-            id: "NON3PRS_VERB",
-            subId: "2",
-            description:
-              "Agreement error: Third person verb with a non-third person pronoun",
-            issueType: "grammar",
-            category: {
-              id: "GRAMMAR",
-              name: "Grammar",
-            },
-          },
-        },
-      ],
-    },
-  };
-
   function handleChangeinput(e) {
-    setInput(e);
-    // console.log(values);
+    setInput(e.target.value);
   }
 
   function handleSubmit() {
-    // setHis((data) => [...data, input]);
-
-    // localStorage.setItem("his", his);
-    // const request_lang = lang1 === "Việt" ? "en" : "vi";
-    // axios
-    //   .post(END_POINT + "/api/translate-paragraph", {
-    //     type: request_lang,
-    //     param: input,
-    //   })
-    //   .then((res) => {
-    //     setOutput(res.data.param);
-    //   });
-    console.log("submit");
+    axios
+      .get(END_POINT + "/api/grammar-check", {
+        params:{text: input}
+      })
+      .then((res) => {
+        
     let offset = [];
     let length = [];
     let replacements = [];
     let message = [];
 
-    let string = "we is going to be play game";
 
-    if (mockData.text.matches.length > 0) {
-      mockData.text.matches.map((item) => {
+    if (res.data.text.matches.length > 0) {
+      res.data.text.matches.map((item) => {
         offset.push(item.offset);
         length.push(item.length);
         replacements.push(item.replacements);
@@ -150,7 +46,7 @@ export const CheckGrammar = () => {
     let word = "";
     let title = "";
     let replacement = [];
-    for (let i = 0; i < string.length; i++) {
+    for (let i = 0; i < input.length; i++) {
       if (i == offset[0]) {
         if (word.length > 0)
           returnString.push(
@@ -159,7 +55,7 @@ export const CheckGrammar = () => {
         word = "";
         title = message.shift();
         for (let j = i; j < offset[0] + length[0]; j++) {
-          word += string[j];
+          word += input[j];
         }
         i += length[0];
         replacement = replacements.shift();
@@ -172,7 +68,7 @@ export const CheckGrammar = () => {
         title = "";
         replacement = [];
       } else {
-        word += string[i];
+        word += input[i];
       }
     }
 
@@ -183,19 +79,16 @@ export const CheckGrammar = () => {
     }
 
     setOutput(returnString);
-
+    });
     form
       .validateFields()
       .then((values) => {
-        // Submit values
-        // submitValues(values);
-        console.log(values);
+
       })
       .catch((errorInfo) => {});
   }
 
   const content = (replace) => {
-    console.log(replace);
     if (replace) {
       return replace.map((item) => {
         return (
