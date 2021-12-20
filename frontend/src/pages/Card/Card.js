@@ -26,8 +26,8 @@ function Card() {
       >
         <div className="site-layout-background">
           <div className="container">
-            <h3 class="title-comm">
-              <span class="title-holder title">Học từ mới</span>
+            <h3 className="title-comm">
+              <span className="title-holder title">Học từ mới</span>
             </h3>
 
             <FlashcardComponent dataSource={cardData} />

@@ -12,7 +12,7 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
-  let check = false;
+  let check = true;
   if (localStorage.getItem("token")) {
     check = true;
   }
@@ -39,8 +39,9 @@ function Header() {
               <div className="logo">
                 <Link to="/">
                   <img
-                    src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+                    src="./cropped-logo-3.png"
                     alt="logo"
+                    border="0"
                     className="logo-dict"
                   ></img>
                 </Link>
@@ -103,7 +104,7 @@ function Header() {
                     okText="Yes"
                     cancelText="No"
                   >
-                    <span className="signup">Đăng xuất</span>
+                    <span className="logout">Đăng xuất</span>
                   </Popconfirm>
                 </Menu.Item>
               </Menu>
@@ -119,7 +120,8 @@ function Header() {
                 <div className="logo">
                   <Link to="/">
                     <img
-                      src="https://jdictblog.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2020/05/18223843/cropped-logo-3.png"
+                      src="./cropped-logo-3.png"
+                      border="0"
                       alt="logo"
                       className="logo-dict"
                     ></img>

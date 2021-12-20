@@ -5,6 +5,7 @@ import axios from "axios";
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
 import { AudioOutlined, HistoryOutlined } from "@ant-design/icons";
+import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
 
 function Search() {
@@ -129,6 +130,7 @@ function Search() {
   };
 
   function handleChangelang(e) {
+    console.log(e);
     setLang(e);
   }
 
@@ -147,7 +149,7 @@ function Search() {
 
         const dataSource = [];
         const meanSource = [];
-        if (data.word.examples.length > 0) {
+        if (data.word.examples && data.word.examples.length > 0) {
           for (let i = 0; i < data.word.examples.length; i++) {
             dataSource.push(
               lang === "anhviet"
@@ -244,17 +246,21 @@ function Search() {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          {his &&
-            his.map((item) => (
-              <div className="row no-margin">
-                <div className="content-history">
-                  <p className="truncate-text">
-                    <span>{item.word}</span>
-                  </p>
-                  <hr />
-                </div>
-              </div>
-            ))}
+          <div className="overflow-scroll-gradient">
+            <div className="overflow-scroll-gradient__scroller">
+              {his &&
+                his.map((item) => (
+                  <div className="row no-margin">
+                    <div className="content-history">
+                      <p className="truncate-text">
+                        <span>{item.word}</span>
+                      </p>
+                      <hr />
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </Modal>
 
         {output.word.length > 0 && (
@@ -311,6 +317,20 @@ function Search() {
           </div>
         )}
       </Form>
+
+      {output._id && (
+        <div style={{ marginTop: "50px" }}>
+          <div className="box-word">
+            <div style={{ margin: "10px 0" }}>
+              <h1 style={{ textAlign: "center" }}>Thêm ví dụ</h1>
+            </div>
+
+            <div style={{ width: "80%", margin: "10px 0" }}>
+              <ContributionFrom word_id={output._id} lang={lang} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

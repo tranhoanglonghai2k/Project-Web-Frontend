@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Switch from "react-router";
 import { BackTop } from "antd";
 import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer";
@@ -12,6 +13,7 @@ import Signup from "./pages/Sign up/Signup";
 import MyInfo from "./pages/MyInfo/MyInfo";
 import MyComment from "./pages/MyComment/MyComment";
 import Card from "./pages/Card/Card";
+import Error from "./pages/Error/Error";
 import "./App.css";
 
 function App() {
@@ -19,17 +21,20 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/translate" element={<Translate />} />
-          <Route path="/grammar" element={<Grammar />} />
-          <Route path="/myword" element={<MyWord />} />
-          <Route path="/myword/card" element={<Card />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/myinfo" element={<MyInfo />} />
-          <Route path="/myinfo/mycomment" element={<MyComment />} />
-        </Routes>
+
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/translate" component={Translate} />
+          <Route path="/grammar" component={Grammar} />
+          <Route path="/myword" component={MyWord} />
+          <Route path="/myword/card" component={Card} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/myinfo" component={MyInfo} />
+          <Route path="/myinfo/mycomment" component={MyComment} />
+          <Route path="/:somestring" component={Error} />
+        </Switch>
+
         <BackTop />
         <Footer />
       </Router>
