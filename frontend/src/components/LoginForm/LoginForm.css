@@ -11,14 +11,8 @@
   float: right;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .login-form {
-    width: 350px;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .login-form {
-    width: 200px;
+    width: 80%;
   }
 }
