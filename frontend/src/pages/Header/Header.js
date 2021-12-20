@@ -12,7 +12,7 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
-  let check = true;
+  let check = false;
   if (localStorage.getItem("token")) {
     check = true;
   }
