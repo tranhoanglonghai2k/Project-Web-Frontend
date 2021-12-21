@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Switch from "react-router";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BackTop } from "antd";
 import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer";

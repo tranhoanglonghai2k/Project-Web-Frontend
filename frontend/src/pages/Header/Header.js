@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Layout, Menu, Popconfirm, message } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   HomeFilled,
   ZhihuSquareFilled,
@@ -12,7 +12,7 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
-  let check = true;
+  let check = false;
   if (localStorage.getItem("token")) {
     check = true;
   }
@@ -155,15 +155,6 @@ function Header() {
                       <span>Ngữ pháp</span>
                     </Link>
                   </Menu.Item>
-
-                  {/* <Menu.Item
-                    key="4"
-                    icon={<BookFilled className="icon-default" />}
-                  >
-                    <Link to="/myword">
-                      <span>Từ của tôi</span>
-                    </Link>
-                  </Menu.Item> */}
 
                   <Menu.Item
                     key="4"
