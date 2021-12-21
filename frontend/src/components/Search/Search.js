@@ -9,7 +9,7 @@ import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
 
 function Search() {
-  localStorage.clear(); // NOTE: khi nào public thì xóa
+  // localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const [list, setList] = useState([]);
 
@@ -93,9 +93,9 @@ function Search() {
 
   const [input, setInput] = useState("");
   const [output, setOutput] = useState(word);
-  const check = localStorage.getItem("his")
-    ? JSON.stringify(localStorage.getItem("his"))
-    : "";
+  // const check =  torage.getItem("his")
+  //   ? JSON.stringify(localStorage.getItem("his"))
+  //   : "";
   const [his, setHis] = useState([]);
   useEffect(() => {
     const request_lang = lang === "anhviet" ? "en" : "vi";
@@ -130,12 +130,12 @@ function Search() {
   };
 
   function handleChangelang(e) {
-    console.log(e);
     setLang(e);
   }
-
-  useEffect(() => {});
-
+  useEffect(() => {
+    localStorage.setItem("his_search", JSON.stringify(his));
+    console.log("his", localStorage.getItem("his_search"));
+  }, [his]);
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
@@ -174,7 +174,6 @@ function Search() {
               })
             );
           }
-          console.log(dataSource, meanSource);
         }
         setTable({ loading: false, data: dataSource, mean: meanSource });
         setOutput((output) => {
@@ -185,7 +184,6 @@ function Search() {
           return [...pre, update];
         });
       });
-    localStorage.setItem("his", JSON.stringify(his));
   };
 
   const onSelect = (data) => {

@@ -16,29 +16,35 @@ function onDelete(e) {
 }
 
 const LearnWord = () => {
+  let arr = [];
   const [state, setState] = useState({
     initLoading: true,
     loading: false,
     data: [],
     list: [],
   });
-  const check = localStorage.getItem("his") ? localStorage.getItem("his") : [];
-  console.log(check);
-  const arr = [];
+  let m = 0;
+  const check = localStorage.getItem("his_search")
+    ? JSON.parse(localStorage.getItem("his_search"))
+    : [];
+  console.log("check", check);
   useEffect(() => {
     if (check.length > 0) {
       for (let i = 0; i < check.length && i < 3; i++) {
         arr.push(check[i]);
+        m++;
       }
     }
+    console.log("m", m);
     getData((res) => {
       setState({
         initLoading: false,
-        data: res.results,
-        list: res.results, // init 3 data
+        data: arr,
+        list: arr, // init 3 data
       });
+      console.log("Res", res);
     });
-  }, []);
+  }, [""]);
 
   const getData = (callback) => {
     // use axios replace reqwest
@@ -52,15 +58,22 @@ const LearnWord = () => {
       },
     });
   };
-
+  console.log("m", m);
   const onLoadMore = () => {
+    console.log("m", m);
+    if (check.length > m) {
+      for (let i = 0; m < check.length && i < 3; i++) {
+        arr.push(check[i]);
+        m++;
+      }
+    }
     setState({
       loading: true,
       list: state.data.concat(
         [...new Array(count)].map(() => ({
           loading: true,
           name: {},
-          picture: {},
+          // picture: {},
         }))
       ),
     });
@@ -78,7 +91,6 @@ const LearnWord = () => {
       );
     });
   };
-
   const { initLoading, loading, list } = state;
   const loadMore =
     !initLoading && !loading ? (
@@ -124,10 +136,7 @@ const LearnWord = () => {
                 ]}
               >
                 <Skeleton avatar title={false} loading={item.loading} active>
-                  <List.Item.Meta
-                    title={item.name.last}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                  />
+                  <List.Item.Meta title={item.word} description={item.mean} />
                 </Skeleton>
               </List.Item>
             )

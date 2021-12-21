@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Form, Select, Input, Button } from "antd";
 import { ZhihuSquareFilled, HistoryOutlined } from "@ant-design/icons";
@@ -6,7 +6,7 @@ import { END_POINT } from "../../config";
 import "./SelectLanguage.css";
 
 export const SelectLanguage = () => {
-  localStorage.clear(); // NOTE: khi nào public thì xóa
+  // localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const { Option } = Select;
   const { TextArea } = Input;
@@ -31,11 +31,10 @@ export const SelectLanguage = () => {
     value === "Anh" ? setLang2("Việt") : setLang2("Anh");
     setLang1(value);
   }
-
   function handleSubmit(values) {
     if (input.length > 0) {
       setHis((data) => [...data, input]);
-      console.log(input);
+
       localStorage.setItem("his", his);
       const request_lang = lang1 === "Việt" ? "en" : "vi";
 
@@ -49,9 +48,7 @@ export const SelectLanguage = () => {
 
       form
         .validateFields()
-        .then((values) => {
-          console.log(values);
-        })
+        .then((values) => {})
         .catch((errorInfo) => {});
     }
   }
