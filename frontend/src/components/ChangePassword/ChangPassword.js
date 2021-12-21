@@ -13,17 +13,17 @@ function ChangPassword() {
   return (
     <div
       style={{
-        width: "80%",
+        width: "100%",
         margin: "50px 0",
       }}
     >
       <Form
         name="basic"
         labelCol={{
-          span: 8,
+          span: 5,
         }}
         wrapperCol={{
-          span: 16,
+          span: 10,
         }}
         initialValues={{
           remember: true,
