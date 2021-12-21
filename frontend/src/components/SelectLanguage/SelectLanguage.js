@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useSpeechSynthesis } from "react-speech-kit";
 import axios from "axios";
 import { Form, Select, Input, Button } from "antd";
-import { ZhihuSquareFilled, HistoryOutlined } from "@ant-design/icons";
+import { ZhihuSquareFilled, SoundFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./SelectLanguage.css";
 
@@ -12,6 +13,7 @@ export const SelectLanguage = () => {
   const { TextArea } = Input;
 
   const [form] = Form.useForm();
+  const { speak } = useSpeechSynthesis();
 
   const [lang1, setLang1] = useState("Anh");
   const [lang2, setLang2] = useState("Việt");
@@ -98,6 +100,14 @@ export const SelectLanguage = () => {
                 Dịch
               </Button>
             </Form.Item>
+            {/* <Form.Item>
+              <Button
+                className="btn-default"
+                onClick={() => speak({ text: input.value })}
+              >
+                Speech
+              </Button>
+            </Form.Item> */}
 
             <div className="output-translate mgt-30">{output}</div>
           </Form.Item>
