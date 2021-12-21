@@ -201,6 +201,12 @@ function Search() {
 
   return (
     <div>
+      <div>
+        <h3 className="title-comm">
+          <span className="title-holder title">Tra từ</span>
+        </h3>
+      </div>
+
       <Form onSubmit={handleSubmit} className="search-form">
         <div className="container-search">
           <div className="select">

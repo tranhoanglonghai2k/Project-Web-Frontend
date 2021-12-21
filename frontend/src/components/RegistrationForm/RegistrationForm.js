@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Typography, Button } from "antd";
-import {register} from "../AuthService/AuthService ";
+import { register } from "../AuthService/AuthService ";
 import { useHistory } from "react-router-dom";
 import "./RegistrationForm.css";
 
@@ -150,7 +150,7 @@ const RegistrationForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input your nickn1ame!",
+                message: "Please input your nickname!",
                 whitespace: true,
               },
             ]}

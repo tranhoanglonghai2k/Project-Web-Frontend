@@ -10,6 +10,7 @@ import MyWord from "./pages/MyWord/MyWord";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Sign up/Signup";
 import MyInfo from "./pages/MyInfo/MyInfo";
+import MyPassword from "./pages/MyPassword/MyPassword";
 import MyComment from "./pages/MyComment/MyComment";
 import Card from "./pages/Card/Card";
 import Error from "./pages/Error/Error";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/myinfo" component={MyInfo} />
+          <Route path="/mypassword" component={MyPassword} />
           <Route path="/mycomment" component={MyComment} />
           <Route path="/:somestring" component={Error} />
         </Switch>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
 import Search from "../../components/Search/Search";
-import Loading from "../../components/Loading/Loading";
 
 function Home() {
   const { Content } = Layout;

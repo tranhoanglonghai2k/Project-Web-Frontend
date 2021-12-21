@@ -60,6 +60,12 @@ export const SelectLanguage = () => {
 
   return (
     <div>
+      <div>
+        <h3 className="title-comm">
+          <span className="title-holder title">Dịch đoạn văn</span>
+        </h3>
+      </div>
+
       <Form form={form}>
         <div className="container-language">
           <Form.Item>
