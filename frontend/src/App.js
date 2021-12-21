@@ -26,7 +26,7 @@ function App() {
           <Route path="/translate" component={Translate} />
           <Route path="/grammar" component={Grammar} />
           <Route path="/myword" component={MyWord} />
-          <Route path="/myword/card" component={Card} />
+          <Route path="/card" component={Card} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/myinfo" component={MyInfo} />

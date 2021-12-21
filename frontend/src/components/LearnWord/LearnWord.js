@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { List, Avatar, Button, Skeleton, Checkbox } from "antd";
-import { DeleteOutlined, ReloadOutlined } from "@ant-design/icons";
-import reqwest from "reqwest";
+import React from "react";
+import { Button, Checkbox, Table, Space } from "antd";
+import { DeleteOutlined, SoundFilled } from "@ant-design/icons";
 import "./LearnWord.css";
-
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
 function onChange(e) {
   console.log(`checked = ${e.target.value}`);
@@ -15,137 +11,82 @@ function onDelete(e) {
   console.log(`deleted = ${e.target.value}`);
 }
 
-const LearnWord = () => {
-  const [state, setState] = useState({
-    initLoading: true,
-    loading: false,
-    data: [],
-    list: [],
-  });
-  const check = localStorage.getItem("his") ? localStorage.getItem("his") : [];
-  console.log(check);
-  const arr = [];
-  useEffect(() => {
-    if (check.length > 0) {
-      for (let i = 0; i < check.length && i < 3; i++) {
-        arr.push(check[i]);
-      }
-    }
-    getData((res) => {
-      setState({
-        initLoading: false,
-        data: res.results,
-        list: res.results, // init 3 data
-      });
-    });
-  }, []);
+const columns = [
+  {
+    title: "Word",
+    dataIndex: "word",
+    key: "word",
+  },
+  {
+    title: "Spell",
+    dataIndex: "spell",
+    key: "spell",
+  },
+  {
+    title: "Mean",
+    dataIndex: "mean",
+    key: "mean",
+  },
 
-  const getData = (callback) => {
-    // use axios replace reqwest
-    reqwest({
-      url: fakeDataUrl,
-      type: "json",
-      method: "get",
-      contentType: "application/json",
-      success: (res) => {
-        callback(res);
-      },
-    });
-  };
-
-  const onLoadMore = () => {
-    setState({
-      loading: true,
-      list: state.data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        }))
-      ),
-    });
-    getData((res) => {
-      const data = state.data.concat(res.results);
-      setState(
-        {
-          data,
-          list: data,
-          loading: false,
-        },
-        () => {
-          window.dispatchEvent(new Event("resize"));
-        }
-      );
-    });
-  };
-
-  const { initLoading, loading, list } = state;
-  const loadMore =
-    !initLoading && !loading ? (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: 12,
-          height: 32,
-          lineHeight: "32px",
-        }}
-      >
-        <Button className="btn-default" onClick={onLoadMore}>
-          <ReloadOutlined />
+  {
+    title: "Action",
+    key: "action",
+    render: (text, record) => (
+      <Space size="middle">
+        <Checkbox onChange={onChange}>Chọn</Checkbox>
+        <Button className="btn-default" type="primary" onClick={onDelete}>
+          <DeleteOutlined />
         </Button>
-      </div>
-    ) : null;
+      </Space>
+    ),
+  },
+];
 
+const data = [
+  {
+    key: "1",
+    word: "John Brown",
+    spell: 32,
+    mean: "New York No. 1 Lake Park",
+  },
+  {
+    key: "2",
+    word: "Jim Green",
+    spell: 42,
+    mean: "London No. 1 Lake Park",
+  },
+  {
+    key: "3",
+    word: "Joe Black",
+    spell: 32,
+    mean: "Sidney No. 1 Lake Park",
+  },
+];
+
+function LearnWord() {
   return (
     <div>
       <div className="word-list">
         <h3 className="title-comm">
           <span className="title-holder title">Chọn từ</span>
         </h3>
+      </div>
 
-        <List
-          className="demo-loadmore-list"
-          loading={initLoading}
-          itemLayout="horizontal"
-          loadMore={loadMore}
-          dataSource={list}
-          renderItem={(item) =>
-            console.log(item) || (
-              <List.Item
-                actions={[
-                  <Checkbox onChange={onChange}>Chọn</Checkbox>,
-                  <Button
-                    className="btn-default"
-                    type="primary"
-                    onClick={onDelete}
-                  >
-                    <DeleteOutlined />
-                  </Button>,
-                ]}
-              >
-                <Skeleton avatar title={false} loading={item.loading} active>
-                  <List.Item.Meta
-                    title={item.name.last}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                  />
-                </Skeleton>
-              </List.Item>
-            )
-          }
-        />
+      <div>
+        <Table columns={columns} dataSource={data} />
       </div>
 
       <div className="btn-learn-word">
         <Button
           className="btn-default btn-learn mga"
           type="primary"
-          href="/myword/card"
+          href="/card"
         >
           Xác nhận
         </Button>
       </div>
     </div>
   );
-};
+}
 
 export default LearnWord;
