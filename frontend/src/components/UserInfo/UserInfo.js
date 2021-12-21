@@ -22,11 +22,17 @@ function UserInfo() {
 
   return (
     <div>
-      <Descriptions layout="vertical" size="small" title="User Info">
-        <Descriptions.Item label="UserName" labelStyle={{ fontSize: "20px" }}>
+      <Descriptions layout="vertical" size="small">
+        <Descriptions.Item
+          label="Tên người dùng"
+          labelStyle={{ fontSize: "20px", fontWeight: "bold" }}
+        >
           <span style={{ fontSize: "25px" }}>{info.name}</span>
         </Descriptions.Item>
-        <Descriptions.Item label="Email" labelStyle={{ fontSize: "20px" }}>
+        <Descriptions.Item
+          label="Email"
+          labelStyle={{ fontSize: "20px", fontWeight: "bold" }}
+        >
           <span style={{ fontSize: "25px" }}>{info.email}</span>
         </Descriptions.Item>
       </Descriptions>
