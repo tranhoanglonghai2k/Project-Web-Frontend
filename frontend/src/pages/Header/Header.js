@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Layout, Menu, Popconfirm, message } from "antd";
-import { Link, useHistory } from "react-router-dom";
+
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   HomeFilled,
   ZhihuSquareFilled,
@@ -12,6 +14,8 @@ import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
+
+  const history = useHistory();
   let check = false;
   if (localStorage.getItem("token")) {
     check = true;
@@ -20,6 +24,7 @@ function Header() {
   function confirm(e) {
     localStorage.removeItem("token");
     message.success("Đăng xuất thành công!!!");
+    history.push("/");
   }
 
   function cancel(e) {

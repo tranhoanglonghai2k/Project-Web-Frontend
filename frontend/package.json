@@ -18,6 +18,7 @@
     "react-router-dom": "5.1",
     "react-scripts": "^5.0.0",
     "react-speech": "^1.0.2",
+    "react-speech-kit": "^3.0.1",
     "react-speech-recognition": "^3.9.0",
     "reqwest": "^2.0.5",
     "web-vitals": "^1.0.1"

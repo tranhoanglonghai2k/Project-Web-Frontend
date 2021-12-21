@@ -32,7 +32,7 @@ function MyComment() {
                     <Link to="/myinfo">Thông tin</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
-                    <Link to="/myinfo/mycomment">Đóng góp</Link>
+                    <Link to="/mycomment">Đóng góp</Link>
                   </Menu.Item>
                 </Menu>
               </Sider>

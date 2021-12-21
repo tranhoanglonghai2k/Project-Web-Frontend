@@ -55,9 +55,16 @@
 }
 
 .font {
-  font-size: medium;
   font-size: 16px;
   color: black;
+}
+
+.speaker-icon {
+  font-size: 20px !important;
+}
+
+.speaker-icon:hover {
+  color: #1a90ff !important;
 }
 
 .paragraph {

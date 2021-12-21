@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useSpeechSynthesis } from "react-speech-kit";
 import { END_POINT } from "../../config";
 import axios from "axios";
 
 // import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
-import { AudioOutlined, HistoryOutlined } from "@ant-design/icons";
+import {
+  AudioOutlined,
+  HistoryOutlined,
+  SoundFilled,
+  FileImageOutlined,
+} from "@ant-design/icons";
 import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
 
@@ -12,6 +18,7 @@ function Search() {
   // localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const [list, setList] = useState([]);
+  const { speak } = useSpeechSynthesis();
 
   const word = {
     _id: "",
@@ -274,12 +281,28 @@ function Search() {
                 <div>
                   <span className="word-css cl-blue">Word:</span>
                   <span className="font mg-20">{output.word}</span>
+                  <span className="font">
+                    <SoundFilled
+                      className="speaker-icon"
+                      onClick={() => speak({ text: output.word })}
+                    />
+                  </span>
+                </div>
+
+                <div>
+                  <FileImageOutlined />
                 </div>
               </li>
               <li className="mg-20">
                 <div>
                   <span className="word-css cl-blue">Spell:</span>
                   <span className="font mg-20">{output.spell}</span>
+                  <span className="font">
+                    <SoundFilled
+                      className="speaker-icon"
+                      onClick={() => speak({ text: output.word })}
+                    />
+                  </span>
                 </div>
               </li>
               <li className="mg-20">
