@@ -36,7 +36,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="login-form">
+    <div>
       <h3 className="title-comm">
         <span className="title-holder title">Đăng nhập</span>
       </h3>
@@ -46,86 +46,87 @@ const LoginForm = () => {
           margin: "50px 0",
         }}
       >
-        <Form
-          form={form}
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            name="username"
-            onChange={handleChange}
-            rules={[
-              {
-                required: true,
-                message: "Please input your Username!",
-              },
-            ]}
+        <div className="login-form mga">
+          <Form
+            form={form}
+            name="normal_login"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
           >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
-              allowClear
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            onChange={handleChange}
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-              },
-            ]}
-          >
-            <Input.Password
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-              allowClear
-              iconRender={(visible) =>
-                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-              }
-            />
-          </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
+            <Form.Item
+              name="username"
+              onChange={handleChange}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your Username!",
+                },
+              ]}
+            >
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Username"
+                allowClear
+              />
             </Form.Item>
 
-            <a
-              href="https://www.google.com/"
-              className="link-css login-form-forgot"
+            <Form.Item
+              name="password"
+              onChange={handleChange}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your Password!",
+                },
+              ]}
             >
-              Forgot password
-            </a>
-          </Form.Item>
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              onClick={handleSubmit}
-            >
-              Log in
-            </Button>
+              <Input.Password
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                type="password"
+                placeholder="Password"
+                allowClear
+                iconRender={(visible) =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+              />
+            </Form.Item>
+            <Form.Item>
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
 
-            <div style={{ marginLeft: "15px", fontSize: "20px" }}>
-              Or
-              <Link
-                to="/signup"
-                style={{ marginLeft: "15px" }}
-                className="link-css"
+              <a
+                href="https://www.google.com/"
+                className="link-css login-form-forgot"
               >
-                Register now!
-              </Link>
-            </div>
-          </Form.Item>
-        </Form>
+                Forgot password
+              </a>
+            </Form.Item>
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                onClick={handleSubmit}
+              >
+                Log in
+              </Button>
+
+              <div style={{ marginLeft: "15px", fontSize: "20px" }}>
+                Or
+                <Link
+                  to="/signup"
+                  style={{ marginLeft: "15px" }}
+                  className="link-css"
+                >
+                  Register now!
+                </Link>
+              </div>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     </div>
   );

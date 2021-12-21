@@ -13,7 +13,7 @@ function Login() {
           style={{ padding: "0 50px", marginTop: "64px" }}
         >
           <div className="site-layout-background">
-            <div className="container login-form">
+            <div className="container">
               <LoginForm />
             </div>
           </div>

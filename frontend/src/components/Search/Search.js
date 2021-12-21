@@ -135,6 +135,7 @@ function Search() {
   }
 
   useEffect(() => {});
+
   const handleSubmit = (e) => {
     input.trim();
     input.toLowerCase();
@@ -245,6 +246,11 @@ function Search() {
           visible={isModalVisible}
           onOk={handleOk}
           onCancel={handleCancel}
+          footer={[
+            <Button type="primary" onClick={handleOk}>
+              Ok
+            </Button>,
+          ]}
         >
           <div className="overflow-scroll-gradient">
             <div className="overflow-scroll-gradient__scroller">
