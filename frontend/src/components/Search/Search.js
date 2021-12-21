@@ -72,6 +72,7 @@ function Search() {
   });
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -299,7 +300,29 @@ function Search() {
                   </div>
 
                   <div className="img-icon">
-                    <FileImageOutlined style={{ fontSize: "50px" }} />
+                    <FileImageOutlined
+                      style={{ fontSize: "50px" }}
+                      onClick={() => setVisible(true)}
+                    />
+
+                    <Modal
+                      title="Ảnh minh hoạ"
+                      centered
+                      visible={visible}
+                      onOk={() => setVisible(false)}
+                      onCancel={() => setVisible(false)}
+                      width="70%"
+                    >
+                      <div className="overflow-scroll-gradient">
+                        <div className="overflow-scroll-gradient__scroller">
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                        </div>
+                      </div>
+                    </Modal>
                   </div>
                 </div>
               </li>
