@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AuthService from "../AuthService/AuthService ";
-
+import {login as Login} from "../AuthService/AuthService ";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import {
@@ -13,6 +13,7 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
   const { Title } = Typography;
+  const history = useHistory();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -31,8 +32,9 @@ const LoginForm = () => {
       [array[2]]: values.target.value,
     });
   }
-  function handleSubmit(e) {
-    AuthService.login(login.username, login.password);
+  async function handleSubmit(e) {
+    await Login(login.username, login.password);
+    history.push("/");
   }
 
   return (

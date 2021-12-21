@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Typography, Button } from "antd";
-import AuthService from "../AuthService/AuthService ";
+import {register} from "../AuthService/AuthService ";
+import { useHistory } from "react-router-dom";
 import "./RegistrationForm.css";
 
 const formItemLayout = {
@@ -37,7 +38,7 @@ const tailFormItemLayout = {
 
 const RegistrationForm = () => {
   const { Title } = Typography;
-
+  const history = useHistory();
   const [form] = Form.useForm();
 
   const [regis, setRegis] = useState({
@@ -57,8 +58,9 @@ const RegistrationForm = () => {
     });
   }
 
-  function handleSubmit(e) {
-    AuthService.register(regis.username, regis.email, regis.password);
+  async function handleSubmit(e) {
+    await register(regis.username, regis.email, regis.password);
+    history.push("/");
   }
 
   const onFinish = (values) => {
