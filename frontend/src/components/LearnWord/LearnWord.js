@@ -34,6 +34,9 @@ const columns = [
     render: (text, record) => (
       <Space size="middle">
         <Checkbox onChange={onChange}>Chọn</Checkbox>
+        <div
+          style={{ width: "1px", height: "35px", border: "1px solid #ccc" }}
+        ></div>
         <Button className="btn-default" type="primary" onClick={onDelete}>
           <DeleteOutlined />
         </Button>
