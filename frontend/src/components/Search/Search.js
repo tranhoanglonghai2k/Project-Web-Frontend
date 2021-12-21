@@ -287,18 +287,20 @@ function Search() {
             <ul className="word cl-blue">
               <li className="mg-20">
                 <div>
-                  <span className="word-css cl-blue">Word:</span>
-                  <span className="font mg-20">{output.word}</span>
-                  <span className="font">
-                    <SoundFilled
-                      className="speaker-icon"
-                      onClick={() => speak({ text: output.word })}
-                    />
-                  </span>
-                </div>
+                  <div style={{ display: "inline-block" }}>
+                    <span className="word-css cl-blue">Word:</span>
+                    <span className="font mg-20">{output.word}</span>
+                    <span className="font">
+                      <SoundFilled
+                        className="speaker-icon"
+                        onClick={() => speak({ text: output.word })}
+                      />
+                    </span>
+                  </div>
 
-                <div>
-                  <FileImageOutlined />
+                  <div className="img-icon">
+                    <FileImageOutlined style={{ fontSize: "50px" }} />
+                  </div>
                 </div>
               </li>
               <li className="mg-20">
