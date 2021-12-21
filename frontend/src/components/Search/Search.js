@@ -15,7 +15,7 @@ import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
 
 function Search() {
-  localStorage.clear(); // NOTE: khi nào public thì xóa
+  // localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const [list, setList] = useState([]);
   const { speak } = useSpeechSynthesis();
