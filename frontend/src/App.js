@@ -30,7 +30,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/myinfo" component={MyInfo} />
-          <Route path="/myinfo/mycomment" component={MyComment} />
+          <Route path="/mycomment" component={MyComment} />
           <Route path="/:somestring" component={Error} />
         </Switch>
 
