@@ -74,6 +74,10 @@ function Search() {
     setIsModalVisible(false);
   };
 
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   const [lang, setLang] = useState("anhviet");
 
   const { Option } = Select;
@@ -240,6 +244,8 @@ function Search() {
         <Modal
           title="Lịch sử tra cứu"
           visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
           footer={[
             <Button type="primary" onClick={handleOk}>
               Ok
