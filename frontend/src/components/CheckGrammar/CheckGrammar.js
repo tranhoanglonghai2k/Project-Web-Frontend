@@ -6,7 +6,7 @@ import { END_POINT } from "../../config";
 import "./CheckGrammar.css";
 
 export const CheckGrammar = () => {
-  localStorage.clear(); // NOTE: khi nào public thì xóa
+  // localStorage.clear(); // NOTE: khi nào public thì xóa
 
   const { TextArea } = Input;
   const { Title, Text } = Typography;
@@ -23,68 +23,68 @@ export const CheckGrammar = () => {
   function handleSubmit() {
     axios
       .get(END_POINT + "/api/grammar-check", {
-        params:{text: input}
+        params: { text: input },
       })
       .then((res) => {
-        
-    let offset = [];
-    let length = [];
-    let replacements = [];
-    let message = [];
+        let offset = [];
+        let length = [];
+        let replacements = [];
+        let message = [];
 
+        if (res.data.text.matches.length > 0) {
+          res.data.text.matches.map((item) => {
+            offset.push(item.offset);
+            length.push(item.length);
+            replacements.push(item.replacements);
+            message.push(item.message);
+          });
+        }
 
-    if (res.data.text.matches.length > 0) {
-      res.data.text.matches.map((item) => {
-        offset.push(item.offset);
-        length.push(item.length);
-        replacements.push(item.replacements);
-        message.push(item.message);
-      });
-    }
+        let returnString = [];
+        let word = "";
+        let title = "";
+        let replacement = [];
+        for (let i = 0; i < input.length; i++) {
+          if (i == offset[0]) {
+            if (word.length > 0)
+              returnString.push(
+                new Object({
+                  word: word,
+                  title: title,
+                  replacement: replacement,
+                })
+              );
+            word = "";
+            title = message.shift();
+            for (let j = i; j < offset[0] + length[0]; j++) {
+              word += input[j];
+            }
+            i += length[0];
+            replacement = replacements.shift();
+            returnString.push(
+              new Object({ word: word, title: title, replacement: replacement })
+            );
+            offset.shift();
+            length.shift();
+            word = "";
+            title = "";
+            replacement = [];
+          } else {
+            word += input[i];
+          }
+        }
 
-    let returnString = [];
-    let word = "";
-    let title = "";
-    let replacement = [];
-    for (let i = 0; i < input.length; i++) {
-      if (i == offset[0]) {
-        if (word.length > 0)
+        if (word.length > 0) {
           returnString.push(
             new Object({ word: word, title: title, replacement: replacement })
           );
-        word = "";
-        title = message.shift();
-        for (let j = i; j < offset[0] + length[0]; j++) {
-          word += input[j];
         }
-        i += length[0];
-        replacement = replacements.shift();
-        returnString.push(
-          new Object({ word: word, title: title, replacement: replacement })
-        );
-        offset.shift();
-        length.shift();
-        word = "";
-        title = "";
-        replacement = [];
-      } else {
-        word += input[i];
-      }
-    }
 
-    if (word.length > 0) {
-      returnString.push(
-        new Object({ word: word, title: title, replacement: replacement })
-      );
-    }
-
-    setOutput(returnString);
-    });
+        setOutput(returnString);
+      });
     form
       .validateFields()
-      .then((values) => {
-
-      })
+      .then((values) => {})
       .catch((errorInfo) => {});
   }
 

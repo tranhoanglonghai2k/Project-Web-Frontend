@@ -5,18 +5,23 @@ import { Layout, Typography } from "antd";
 function Card() {
   const { Content } = Layout;
   const { Title } = Typography;
-
-  const cardData = [
-    {
-      front: {
-        text: "living outside, often in a tent",
-        image: "https://o.quizlet.com/RWRdgDus.uuqNDUrJ0ernA.jpg",
-      },
-      back: {
-        text: "Camping",
-      },
-    },
-  ];
+  const list_word = localStorage.getItem("word_card")
+    ? JSON.parse(localStorage.getItem("word_card"))
+    : [];
+  console.log("list_word", list_word);
+  let cardData = [];
+  for (let i = 0; i < list_word.length; i++) {
+    cardData.push(
+      new Object({
+        front: {
+          text: list_word[i].word,
+        },
+        back: {
+          text: list_word[i].mean,
+        },
+      })
+    );
+  }
 
   return (
     <Layout>

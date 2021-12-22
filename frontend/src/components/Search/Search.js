@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { END_POINT } from "../../config";
 import axios from "axios";
-
-// import Dictaphone from "../../components/SpeechRecognition/SpeechRecognition";
 import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
 import {
   AudioOutlined,
@@ -100,10 +98,10 @@ function Search() {
 
   const [input, setInput] = useState("");
   const [output, setOutput] = useState(word);
-  // const check =  torage.getItem("his")
-  //   ? JSON.stringify(localStorage.getItem("his"))
-  //   : "";
-  const [his, setHis] = useState([]);
+  let check = localStorage.getItem("his_search")
+    ? JSON.parse(localStorage.getItem("his_search"))
+    : [];
+  const [his, setHis] = useState(check);
   useEffect(() => {
     const request_lang = lang === "anhviet" ? "en" : "vi";
     if (input.length > 0) {
@@ -141,7 +139,7 @@ function Search() {
   }
   useEffect(() => {
     localStorage.setItem("his_search", JSON.stringify(his));
-    console.log("his", localStorage.getItem("his_search"));
+    console.log("his_search", JSON.stringify(his));
   }, [his]);
   const handleSubmit = (e) => {
     input.trim();

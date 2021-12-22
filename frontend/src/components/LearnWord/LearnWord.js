@@ -1,16 +1,8 @@
-import React from "react";
-import { Button, Checkbox, Table, Space } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Checkbox, Table, Space, Divider } from "antd";
 import { DeleteOutlined, SoundFilled } from "@ant-design/icons";
 import "./LearnWord.css";
-
-function onChange(e) {
-  console.log(`checked = ${e.target.value}`);
-}
-
-function onDelete(e) {
-  console.log(`deleted = ${e.target.value}`);
-}
-
+import { prettyDOM } from "@testing-library/react";
 const columns = [
   {
     title: "Word",
@@ -18,52 +10,62 @@ const columns = [
     key: "word",
   },
   {
-    title: "Spell",
-    dataIndex: "spell",
-    key: "spell",
-  },
-  {
     title: "Mean",
     dataIndex: "mean",
     key: "mean",
   },
-
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <Space size="middle">
-        <Checkbox onChange={onChange}>Chọn</Checkbox>
-        <Button className="btn-default" type="primary" onClick={onDelete}>
-          <DeleteOutlined />
-        </Button>
-      </Space>
-    ),
-  },
 ];
 
-const data = [
-  {
-    key: "1",
-    word: "John Brown",
-    spell: 32,
-    mean: "New York No. 1 Lake Park",
-  },
-  {
-    key: "2",
-    word: "Jim Green",
-    spell: 42,
-    mean: "London No. 1 Lake Park",
-  },
-  {
-    key: "3",
-    word: "Joe Black",
-    spell: 32,
-    mean: "Sidney No. 1 Lake Park",
-  },
-];
+function onSubmit(e) {
+  // localStorage.setItem("word_card", selectedRows);
+}
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
 
+    localStorage.setItem("word_card", JSON.stringify(selectedRows));
+    console.log("wordcard", localStorage.getItem("word_card"));
+  },
+  // getCheckboxProps: (record) => ({
+  //   disabled: record.name === "Disabled User",
+  //   // Column configuration not to be checked
+  //   name: record.name,
+  // }),
+};
+
+let check = localStorage.getItem("his_search")
+  ? JSON.parse(localStorage.getItem("his_search"))
+  : [];
 function LearnWord() {
+  const [table, setTable] = useState({
+    loading: false,
+    data: [],
+  });
+  const [selectionType, setSelectionType] = useState("checkbox");
+  useEffect(() => {
+    check = localStorage.getItem("his_search")
+      ? JSON.parse(localStorage.getItem("his_search"))
+      : [];
+  }, [localStorage.getItem("his_search")]);
+  useEffect(async () => {
+    let data1 = [];
+    setTable({ data: [], loading: true });
+    for (let i = 0; i < check.length; i++) {
+      await data1.push(
+        new Object({
+          key: i + "",
+          word: check[i].word,
+          mean: check[i].mean,
+        })
+      );
+    }
+    setTable({ loading: false, data: data1 });
+  }, []);
+
   return (
     <div>
       <div className="word-list">
@@ -73,11 +75,20 @@ function LearnWord() {
       </div>
 
       <div>
-        <Table columns={columns} dataSource={data} />
+        <Table
+          rowSelection={{
+            type: selectionType,
+            ...rowSelection,
+          }}
+          columns={columns}
+          dataSource={table.data}
+          loading={table.loading}
+        />
       </div>
 
       <div className="btn-learn-word">
         <Button
+          onClick={onSubmit}
           className="btn-default btn-learn mga"
           type="primary"
           href="/card"
