@@ -21,6 +21,7 @@ const LoginForm = () => {
     password: "",
   });
   const [form] = Form.useForm();
+  const [loading,setLoading] = useState(false);
 
   function handleChange(values) {
     const id = values.target.id;

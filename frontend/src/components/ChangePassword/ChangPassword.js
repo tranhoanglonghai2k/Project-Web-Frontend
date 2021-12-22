@@ -1,9 +1,47 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
+import axios from "axios";
+import { END_POINT } from "../../config";
+import { useHistory } from "react-router-dom";
 
 function ChangPassword() {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const history = useHistory();
   const onFinish = (values) => {
     console.log("Success:", values);
+    axios
+      .post(
+        END_POINT + "/users/change-password",
+        {
+          oldPassword: values.currentpassword,
+          newPassword: values.newpassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.message);
+        if (res.status === 200) {
+          localStorage.removeItem("token");
+          axios
+            .post(
+              END_POINT + "/users/me/logout",
+              {},
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            )
+            .then((res) => {
+              console.log(res.data.message);
+              history.push("/login");
+            });
+        }
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -70,7 +108,7 @@ function ChangPassword() {
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
+                if (!value || getFieldValue("newpassword") === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(
