@@ -101,9 +101,10 @@ const LoginForm = () => {
 
               <a
                 href="https://www.google.com/"
+                target="_blank"
                 className="link-css login-form-forgot"
               >
-                Forgot password
+                Quên mật khẩu
               </a>
             </Form.Item>
             <Form.Item>
@@ -113,17 +114,17 @@ const LoginForm = () => {
                 className="login-form-button"
                 onClick={handleSubmit}
               >
-                Log in
+                Đăng nhập
               </Button>
 
               <div style={{ marginLeft: "15px", fontSize: "20px" }}>
-                Or
+                Hoặc
                 <Link
                   to="/signup"
                   style={{ marginLeft: "15px" }}
                   className="link-css"
                 >
-                  Register now!
+                  Đăng ký ngay!!!
                 </Link>
               </div>
             </Form.Item>

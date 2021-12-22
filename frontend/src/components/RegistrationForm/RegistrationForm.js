@@ -160,7 +160,7 @@ const RegistrationForm = () => {
 
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit" onClick={handleSubmit}>
-              Sign up
+              Đăng ký
             </Button>
           </Form.Item>
         </Form>

@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Typography } from "antd";
+import { Layout, Menu } from "antd";
 import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
-import ChangPassword from "../../components/ChangePassword/ChangPassword";
-// import "./MyInfo.css";
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
 
 function MyComment() {
   const { Content, Sider } = Layout;
-  const { Title } = Typography;
 
   return (
     <div>
@@ -41,7 +39,7 @@ function MyComment() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                <ChangPassword />
+                <ChangePassword />
               </Content>
             </Layout>
           </div>
