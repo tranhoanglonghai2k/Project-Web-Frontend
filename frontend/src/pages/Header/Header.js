@@ -26,21 +26,23 @@ function Header() {
   function confirm(e) {
     localStorage.removeItem("token");
     axios
-      .post(END_POINT + "/users/me/logout",{}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        END_POINT + "/users/me/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
-        console.log(res.data.message);
-        message.success("Đăng xuất thành công!!!");
+        message.success("Đăng xuất thành công!!!", 2);
         history.push("/");
       });
   }
 
   function cancel(e) {
-    console.log(e);
-    message.error("Đăng xuất thất bại!!!");
+    message.error("Đăng xuất thất bại!!!", 2);
   }
 
   return (
