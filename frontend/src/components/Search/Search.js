@@ -69,7 +69,13 @@ function Search() {
     means: [],
   });
 
+  const [con, setCon] = useState({
+    loading: false,
+    data: [],
+  });
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -141,12 +147,16 @@ function Search() {
     localStorage.setItem("his_search", JSON.stringify(his));
     console.log("his_search", JSON.stringify(his));
   }, [his]);
-  const handleSubmit = (e) => {
+
+  useEffect(() => {}, [con]);
+
+  const handleSubmit = async (e) => {
     input.trim();
     input.toLowerCase();
     const request_lang = lang === "anhviet" ? "en" : "vi";
     setTable({ loading: true });
-    axios
+    setCon({ loading: true });
+    await axios
       .get(END_POINT + "/api/search-word", {
         params: { lang: request_lang, word: input },
       })
@@ -189,6 +199,39 @@ function Search() {
           return [...pre, update];
         });
       });
+
+    await axios
+      .get(END_POINT + "/api/get-contribution", {
+        params: {
+          word_id: output._id,
+          type: request_lang,
+        },
+      })
+      .then((res) => {
+        let data = res.data.list;
+        const dataSource = [];
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            dataSource.push(
+              lang === "anhviet"
+                ? new Object({
+                    key: i + "",
+                    examples: data[i].content,
+                    examplesVn: data[i].content_mean,
+                  })
+                : new Object({
+                    key: i + "",
+                    examples: data[i].content,
+                    examplesEn: data[i].content_mean,
+                  })
+            );
+            console.log(dataSource);
+          }
+        }
+        setCon({ loading: false, data: dataSource });
+      });
+
+    localStorage.setItem("his", JSON.stringify(his));
   };
 
   const onSelect = (data) => {
@@ -197,6 +240,12 @@ function Search() {
 
   return (
     <div>
+      <div>
+        <h3 className="title-comm">
+          <span className="title-holder title">Tra từ</span>
+        </h3>
+      </div>
+
       <Form onSubmit={handleSubmit} className="search-form">
         <div className="container-search">
           <div className="select">
@@ -277,18 +326,42 @@ function Search() {
             <ul className="word cl-blue">
               <li className="mg-20">
                 <div>
-                  <span className="word-css cl-blue">Word:</span>
-                  <span className="font mg-20">{output.word}</span>
-                  <span className="font">
-                    <SoundFilled
-                      className="speaker-icon"
-                      onClick={() => speak({ text: output.word })}
-                    />
-                  </span>
-                </div>
+                  <div style={{ display: "inline-block" }}>
+                    <span className="word-css cl-blue">Word:</span>
+                    <span className="font mg-20">{output.word}</span>
+                    <span className="font">
+                      <SoundFilled
+                        className="speaker-icon"
+                        onClick={() => speak({ text: output.word })}
+                      />
+                    </span>
+                  </div>
 
-                <div>
-                  <FileImageOutlined />
+                  <div className="img-icon">
+                    <FileImageOutlined
+                      style={{ fontSize: "50px" }}
+                      onClick={() => setVisible(true)}
+                    />
+
+                    <Modal
+                      title="Ảnh minh hoạ"
+                      centered
+                      visible={visible}
+                      onOk={() => setVisible(false)}
+                      onCancel={() => setVisible(false)}
+                      width="70%"
+                    >
+                      <div className="overflow-scroll-gradient">
+                        <div className="overflow-scroll-gradient__scroller">
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                          <h1>Hải đẹp trai</h1>
+                        </div>
+                      </div>
+                    </Modal>
+                  </div>
                 </div>
               </li>
               <li className="mg-20">
@@ -338,12 +411,26 @@ function Search() {
                   </div>
                 </div>
               </li>
+              <li className="mg-20">
+                <div>
+                  <span className=" word-css cl-blue">Contribution:</span>
+                  <div className="table-example">
+                    <Table
+                      dataSource={con.data}
+                      columns={lang === "anhviet" ? columns : columnsEn}
+                      loading={con.loading}
+                      size="small"
+                      className="paragraph font mg-20"
+                    />
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         )}
       </Form>
 
-      {output._id && (
+      {localStorage.getItem("token") && output._id && (
         <div style={{ marginTop: "50px" }}>
           <div className="box-word">
             <div style={{ margin: "10px 0" }}>
@@ -351,7 +438,11 @@ function Search() {
             </div>
 
             <div style={{ width: "80%", margin: "10px 0" }}>
-              <ContributionFrom word_id={output._id} lang={lang} />
+              <ContributionFrom
+                word={output.word}
+                word_id={output._id}
+                lang={lang}
+              />
             </div>
           </div>
         </div>

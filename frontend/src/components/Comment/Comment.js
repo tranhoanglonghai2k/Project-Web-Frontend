@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Tag, Space } from "antd";
+import { END_POINT } from "../../config";
+import axios from "axios";
 
+const token = JSON.parse(localStorage.getItem("token"));
 const columns = [
   {
     title: "Word",
@@ -8,51 +11,64 @@ const columns = [
     key: "word",
   },
   {
-    title: "Spell",
-    dataIndex: "spell",
-    key: "spell",
-  },
-  {
     title: "Example",
-    dataIndex: "example",
-    key: "example",
+    dataIndex: "content",
+    key: "content",
   },
 
   {
     title: "Mean of Example",
-    dataIndex: "meanofexample",
-    key: "meanofexample",
-  },
-];
-
-const data = [
-  {
-    key: "1",
-    word: "John Brown",
-    spell: 32,
-    example: "New York No. 1 Lake Park",
-    meanofexample: ["nice", "developer"],
+    dataIndex: "content_mean",
+    key: "content_mean",
   },
   {
-    key: "2",
-    word: "Jim Green",
-    spell: 42,
-    example: "London No. 1 Lake Park",
-    meanofexample: ["loser"],
-  },
-  {
-    key: "3",
-    word: "Joe Black",
-    spell: 32,
-    example: "Sidney No. 1 Lake Park",
-    meanofexample: ["cool", "teacher"],
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
   },
 ];
 
 function Comment() {
+  const [table, setTable] = useState({
+    loading: false,
+    data: [],
+  });
+
+  useEffect(() => {
+    setTable({ loading:true});
+    axios
+      .get(END_POINT + "/api/get-my-contribution", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        let data = res.data.list;
+        const dataSource = [];
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            dataSource.push(
+              new Object({
+                key: i + "",
+                word:data[i].word,
+                content: data[i].content,
+                content_mean: data[i].content_mean,
+                date : data[i].day
+              })
+            );
+            console.log(dataSource);
+          }
+        }
+        setTable({ loading: false, data: dataSource});
+      });
+  }, []);
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table
+        loading={table.loading}
+        columns={columns}
+        dataSource={table.data}
+      />
     </div>
   );
 }

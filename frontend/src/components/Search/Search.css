@@ -67,6 +67,17 @@
   color: #1a90ff !important;
 }
 
+.img-icon {
+  display: inline-block;
+  float: right;
+  color: #000;
+}
+
+.img-icon:hover {
+  color: #1a90ff !important;
+  cursor: pointer;
+}
+
 .paragraph {
   font-variant: inherit;
 }

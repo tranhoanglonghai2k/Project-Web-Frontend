@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import {login as Login} from "../AuthService/AuthService ";
+import { login as Login } from "../AuthService/AuthService ";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Form, Input, Button, Checkbox, Typography } from "antd";
+import { Form, Input, Button, Checkbox } from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -12,7 +12,6 @@ import {
 import "./LoginForm.css";
 
 const LoginForm = () => {
-  const { Title } = Typography;
   const history = useHistory();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -22,6 +21,7 @@ const LoginForm = () => {
     password: "",
   });
   const [form] = Form.useForm();
+  const [loading,setLoading] = useState(false);
 
   function handleChange(values) {
     const id = values.target.id;
@@ -101,9 +101,10 @@ const LoginForm = () => {
 
               <a
                 href="https://www.google.com/"
+                target="_blank"
                 className="link-css login-form-forgot"
               >
-                Forgot password
+                Quên mật khẩu
               </a>
             </Form.Item>
             <Form.Item>
@@ -113,17 +114,17 @@ const LoginForm = () => {
                 className="login-form-button"
                 onClick={handleSubmit}
               >
-                Log in
+                Đăng nhập
               </Button>
 
               <div style={{ marginLeft: "15px", fontSize: "20px" }}>
-                Or
+                Hoặc
                 <Link
                   to="/signup"
                   style={{ marginLeft: "15px" }}
                   className="link-css"
                 >
-                  Register now!
+                  Đăng ký ngay!!!
                 </Link>
               </div>
             </Form.Item>

@@ -25,13 +25,16 @@ function MyComment() {
               <Sider style={{ backgroundColor: "#fff" }} width={200}>
                 <Menu
                   mode="inline"
-                  defaultSelectedKeys={["2"]}
+                  defaultSelectedKeys={["3"]}
                   style={{ height: "100%" }}
                 >
                   <Menu.Item key="1" icon={<UserOutlined />}>
                     <Link to="/myinfo">Thông tin</Link>
                   </Menu.Item>
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
+                    <Link to="/mypassword">Đổi mật khẩu</Link>
+                  </Menu.Item>
+                  <Menu.Item key="3" icon={<LaptopOutlined />}>
                     <Link to="/mycomment">Đóng góp</Link>
                   </Menu.Item>
                 </Menu>

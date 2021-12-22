@@ -10,11 +10,13 @@ import {
   BookFilled,
   ProfileFilled,
 } from "@ant-design/icons";
+import axios from "axios";
+import { END_POINT } from "../../config";
 import "./Header.css";
 
 function Header() {
   const { Header } = Layout;
-
+  const token = JSON.parse(localStorage.getItem("token"));
   const history = useHistory();
   let check = false;
   if (localStorage.getItem("token")) {
@@ -23,8 +25,17 @@ function Header() {
 
   function confirm(e) {
     localStorage.removeItem("token");
-    message.success("Đăng xuất thành công!!!");
-    history.push("/");
+    axios
+      .post(END_POINT + "/users/me/logout",{}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.message);
+        message.success("Đăng xuất thành công!!!");
+        history.push("/");
+      });
   }
 
   function cancel(e) {

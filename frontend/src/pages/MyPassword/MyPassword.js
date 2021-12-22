@@ -1,17 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Typography } from "antd";
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from "@ant-design/icons";
-import "./MyInfo.css";
-import UserInfo from "../../components/UserInfo/UserInfo";
+import { Layout, Menu } from "antd";
+import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
 
-function MyInfo() {
+function MyComment() {
   const { Content, Sider } = Layout;
-  const { Title } = Typography;
 
   return (
     <div>
@@ -22,14 +16,14 @@ function MyInfo() {
         >
           <div className="site-layout-background">
             <h3 className="title-comm">
-              <span className="title-holder title">Thông tin cá nhân</span>
+              <span className="title-holder title">Mật khẩu của tôi</span>
             </h3>
 
             <Layout style={{ padding: "24px 0", backgroundColor: "#fff" }}>
               <Sider style={{ backgroundColor: "#fff" }} width={200}>
                 <Menu
                   mode="inline"
-                  defaultSelectedKeys={["1"]}
+                  defaultSelectedKeys={["2"]}
                   style={{ height: "100%" }}
                 >
                   <Menu.Item key="1" icon={<UserOutlined />}>
@@ -45,7 +39,7 @@ function MyInfo() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                <UserInfo />
+                <ChangePassword />
               </Content>
             </Layout>
           </div>
@@ -55,4 +49,4 @@ function MyInfo() {
   );
 }
 
-export default MyInfo;
+export default MyComment;
