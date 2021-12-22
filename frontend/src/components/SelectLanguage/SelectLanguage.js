@@ -100,19 +100,13 @@ export const SelectLanguage = () => {
                 onClick={handleSubmit}
                 icon={<ZhihuSquareFilled />}
               >
-                Dịch
+                <span>Dịch</span>
               </Button>
             </Form.Item>
-            {/* <Form.Item>
-              <Button
-                className="btn-default"
-                onClick={() => speak({ text: input.value })}
-              >
-                Speech
-              </Button>
-            </Form.Item> */}
 
-            <div className="output-translate mgt-30">{output}</div>
+            <div className="output-translate mgt-30">
+              <div className="output mg-20">{output}</div>
+            </div>
           </Form.Item>
         </div>
       </Form>

@@ -3,6 +3,7 @@ import { Form, Input, Button } from "antd";
 import axios from "axios";
 import { END_POINT } from "../../config";
 import { useHistory } from "react-router-dom";
+import "./ChangePassword.css";
 
 function ChangPassword() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -127,7 +128,11 @@ function ChangPassword() {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit" className="btn-default">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="btn-default btn-changePassword"
+          >
             Xác nhận
           </Button>
         </Form.Item>

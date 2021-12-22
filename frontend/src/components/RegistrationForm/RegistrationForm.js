@@ -159,8 +159,13 @@ const RegistrationForm = () => {
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
-              Đăng ký
+            <Button
+              className="btn-default btn-submit btn-registration"
+              type="primary"
+              htmlType="submit"
+              onClick={handleSubmit}
+            >
+              <span style={{ fontSize: "18px" }}>Đăng ký</span>
             </Button>
           </Form.Item>
         </Form>

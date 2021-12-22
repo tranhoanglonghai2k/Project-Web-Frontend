@@ -21,7 +21,7 @@ const LoginForm = () => {
     password: "",
   });
   const [form] = Form.useForm();
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(values) {
     const id = values.target.id;
@@ -111,13 +111,20 @@ const LoginForm = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                className="login-form-button"
+                className="login-form-button btn-default"
+                style={{ fontSize: "20px", height: "40px" }}
                 onClick={handleSubmit}
               >
-                Đăng nhập
+                <span>Đăng nhập</span>
               </Button>
 
-              <div style={{ marginLeft: "15px", fontSize: "20px" }}>
+              <div
+                style={{
+                  marginLeft: "15px",
+                  fontSize: "20px",
+                  // display: "inline-block",
+                }}
+              >
                 Hoặc
                 <Link
                   to="/signup"
