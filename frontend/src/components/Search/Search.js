@@ -203,9 +203,11 @@ function Search() {
           }
         }
         if (isExist === 0) {
-          await setHis((pre) => {
-            return [update, ...pre];
-          });
+          if (update.mean) {
+            await setHis((pre) => {
+              return [update, ...pre];
+            });
+          }
         }
         isExist = 0;
       });
