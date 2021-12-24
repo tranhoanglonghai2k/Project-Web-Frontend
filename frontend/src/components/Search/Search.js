@@ -86,6 +86,10 @@ function Search() {
     setIsModalVisible(false);
   };
 
+  const handleDelete = () => {
+    alert("Xoá lịch sử");
+  };
+
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -307,10 +311,14 @@ function Search() {
           onOk={handleOk}
           onCancel={handleCancel}
           footer={[
-            <Button type="primary">
+            <Button
+              type="primary"
+              className="btn-default"
+              onClick={handleDelete}
+            >
               <DeleteOutlined />
             </Button>,
-            <Button type="primary" onClick={handleOk}>
+            <Button type="primary" className="btn-default" onClick={handleOk}>
               Ok
             </Button>,
           ]}
