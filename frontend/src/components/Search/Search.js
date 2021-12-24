@@ -8,6 +8,7 @@ import {
   HistoryOutlined,
   SoundFilled,
   FileImageOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
@@ -299,6 +300,9 @@ function Search() {
           onOk={handleOk}
           onCancel={handleCancel}
           footer={[
+            <Button type="primary">
+              <DeleteOutlined />
+            </Button>,
             <Button type="primary" onClick={handleOk}>
               Ok
             </Button>,
