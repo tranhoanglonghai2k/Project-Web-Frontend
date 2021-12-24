@@ -8,6 +8,7 @@ import {
   HistoryOutlined,
   SoundFilled,
   FileImageOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import ContributionFrom from "../Contribution/ContributionFrom";
 import "./Search.css";
@@ -83,6 +84,10 @@ function Search() {
 
   const handleOk = () => {
     setIsModalVisible(false);
+  };
+
+  const handleDelete = () => {
+    alert("Xoá lịch sử");
   };
 
   const handleCancel = () => {
@@ -308,7 +313,14 @@ function Search() {
           onOk={handleOk}
           onCancel={handleCancel}
           footer={[
-            <Button type="primary" onClick={handleOk}>
+            <Button
+              type="primary"
+              className="btn-default"
+              onClick={handleDelete}
+            >
+              <DeleteOutlined />
+            </Button>,
+            <Button type="primary" className="btn-default" onClick={handleOk}>
               Ok
             </Button>,
           ]}
