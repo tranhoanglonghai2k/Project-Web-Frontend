@@ -87,7 +87,7 @@ function Search() {
   };
 
   const handleDelete = () => {
-    alert("Xoá lịch sử");
+    setHis([]);
   };
 
   const handleCancel = () => {

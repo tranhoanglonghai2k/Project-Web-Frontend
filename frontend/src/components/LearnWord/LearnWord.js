@@ -16,9 +16,6 @@ const columns = [
   },
 ];
 
-function onSubmit(e) {
-  // localStorage.setItem("word_card", selectedRows);
-}
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     console.log(
@@ -28,13 +25,7 @@ const rowSelection = {
     );
 
     localStorage.setItem("word_card", JSON.stringify(selectedRows));
-    console.log("wordcard", localStorage.getItem("word_card"));
   },
-  // getCheckboxProps: (record) => ({
-  //   disabled: record.name === "Disabled User",
-  //   // Column configuration not to be checked
-  //   name: record.name,
-  // }),
 };
 
 let check = localStorage.getItem("his_search")
@@ -57,10 +48,7 @@ function LearnWord() {
     let mean = [];
     for (let i = 0; i < check.length; i++) {
       if (check[i].mean.length > 5) {
-        for (let j = 0; j < 5; j++) {
-          mean[j] = check[i].mean[j];
-        }
-        check[i].mean = mean;
+        check[i].mean.splice(4);
       }
       await data1.push(
         new Object({
@@ -95,7 +83,6 @@ function LearnWord() {
 
       <div className="btn-learn-word">
         <Button
-          onClick={onSubmit}
           className="btn-default btn-learn mga"
           type="primary"
           href="/card"
