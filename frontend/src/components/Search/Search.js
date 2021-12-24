@@ -196,9 +196,19 @@ function Search() {
           return { ...output, ...data.word };
         });
         let update = new Object({ word: input, mean: data.word.means });
-        await setHis((pre) => {
-          return [...pre, update];
-        });
+        let isExist = 0;
+        for (let i = 0; i < his.length; i++) {
+          if (his[i].word === update.word) {
+            isExist = 1;
+            break;
+          }
+        }
+        if (isExist === 0) {
+          await setHis((pre) => {
+            return [update, ...pre];
+          });
+        }
+        isExist = 0;
       });
 
     await axios
@@ -226,13 +236,10 @@ function Search() {
                     examplesEn: data[i].content_mean,
                   })
             );
-            console.log(dataSource);
           }
         }
         setCon({ loading: false, data: dataSource });
       });
-
-    localStorage.setItem("his", JSON.stringify(his));
   };
 
   const onSelect = (data) => {
