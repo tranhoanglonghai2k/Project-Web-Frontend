@@ -296,7 +296,7 @@ function Search() {
             icon={<HistoryOutlined className="icon-default" />}
             size="large"
             onClick={showModal}
-            className="btn-default btn-history mga"
+            className="btn-default btn-history mga easing-variables"
           />
         </div>
 

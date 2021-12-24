@@ -67,7 +67,7 @@ export const SelectLanguage = () => {
         <div className="container-language">
           <Form.Item>
             <Select
-              style={{ width: 160 }}
+              style={{ width: 160, marginRight: "5px" }}
               className="language-input"
               name="lang1"
               value={lang1}
@@ -76,7 +76,11 @@ export const SelectLanguage = () => {
               <Option value="Anh">Anh</Option>
               <Option value="Việt">Việt</Option>
             </Select>
-            <Select style={{ width: 160 }} name="lang2" value={lang2}>
+            <Select
+              style={{ width: 160, marginLeft: "5px" }}
+              name="lang2"
+              value={lang2}
+            >
               <Option value="Việt">Việt</Option>
               <Option value="Anh">Anh</Option>
             </Select>
@@ -100,19 +104,13 @@ export const SelectLanguage = () => {
                 onClick={handleSubmit}
                 icon={<ZhihuSquareFilled />}
               >
-                Dịch
+                <span>Dịch</span>
               </Button>
             </Form.Item>
-            {/* <Form.Item>
-              <Button
-                className="btn-default"
-                onClick={() => speak({ text: input.value })}
-              >
-                Speech
-              </Button>
-            </Form.Item> */}
 
-            <div className="output-translate mgt-30">{output}</div>
+            <div className="output-translate mgt-30">
+              <div className="output mg-20">{output}</div>
+            </div>
           </Form.Item>
         </div>
       </Form>

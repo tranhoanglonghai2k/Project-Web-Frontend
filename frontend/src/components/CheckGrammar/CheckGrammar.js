@@ -123,11 +123,11 @@ export const CheckGrammar = () => {
 
             <Form.Item>
               <Button
-                className="btn-default btn-submit"
+                className="btn-default btn-submit "
                 htmlType="submit"
                 icon={<CheckCircleFilled />}
               >
-                Kiểm tra
+                <span>Kiểm tra</span>
               </Button>
             </Form.Item>
 
