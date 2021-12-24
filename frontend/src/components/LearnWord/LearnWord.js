@@ -54,7 +54,14 @@ function LearnWord() {
   useEffect(async () => {
     let data1 = [];
     setTable({ data: [], loading: true });
+    let mean = [];
     for (let i = 0; i < check.length; i++) {
+      if (check[i].mean.length > 5) {
+        for (let j = 0; j < 5; j++) {
+          mean[j] = check[i].mean[j];
+        }
+        check[i].mean = mean;
+      }
       await data1.push(
         new Object({
           key: i + "",
