@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Table, Space, Divider } from "antd";
-import { DeleteOutlined, SoundFilled } from "@ant-design/icons";
+import { Button, Table } from "antd";
 import "./LearnWord.css";
-import { prettyDOM } from "@testing-library/react";
+// import { prettyDOM } from "@testing-library/react";
+
 const columns = [
   {
     title: "Word",
