@@ -1,5 +1,6 @@
 import React from "react";
-import { FlashcardComponent } from "react-flashcard";
+// import { FlashcardComponent } from "react-flashcard";
+import {FlashcardComponent} from "./FlashCard"
 import { Layout, Typography } from "antd";
 
 function Card() {
