@@ -127,8 +127,8 @@
   display: block;
   width: 0;
   height: 0;
-  border-top: 23px solid transparent;
-  border-bottom: 22px solid transparent;
+  /* border-top: 23px solid transparent; */
+  /* border-bottom: 22px solid transparent; */
   border-left: 15px solid #56bbe7;
 }
 .title-holder:after {
@@ -142,8 +142,8 @@
   display: block;
   width: 0;
   height: 0;
-  border-top: 23px solid transparent;
-  border-bottom: 22px solid transparent;
+  /* border-top: 23px solid transparent; */
+  /* border-bottom: 22px solid transparent; */
   border-right: 15px solid #56bbe7;
 }
 
