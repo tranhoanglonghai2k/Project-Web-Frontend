@@ -287,7 +287,7 @@ function Search() {
                 onSearch={handleSubmit}
                 size="large"
                 placeholder="Tra Từ"
-                suffix={suffix}
+                // suffix={suffix}
                 allowClear
                 enterButton
                 style={{ width: "100%" }}
@@ -358,7 +358,7 @@ function Search() {
                     </span>
                   </div>
 
-                  <div className="img-icon">
+                  {/* <div className="img-icon">
                     <FileImageOutlined
                       style={{ fontSize: "50px" }}
                       onClick={() => setVisible(true)}
@@ -382,7 +382,7 @@ function Search() {
                         </div>
                       </div>
                     </Modal>
-                  </div>
+                  </div> */}
                 </div>
               </li>
               <li className="mg-20">
