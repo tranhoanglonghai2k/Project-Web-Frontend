@@ -109,42 +109,13 @@
   height: 45px;
   background-color: #56bbe7;
   height: auto;
+  border-radius: 15px;
   line-height: 45px;
   padding: 0px 20px;
   position: relative;
   text-align: center;
   display: inline-block;
   min-width: 280px;
-}
-.title-holder:before {
-  content: "";
-  position: absolute;
-  right: -15px;
-  border-width: 0px;
-  bottom: 0px;
-  border-style: solid;
-  border-color: #5c9efe transparent;
-  display: block;
-  width: 0;
-  height: 0;
-  /* border-top: 23px solid transparent; */
-  /* border-bottom: 22px solid transparent; */
-  border-left: 15px solid #56bbe7;
-}
-.title-holder:after {
-  content: "";
-  position: absolute;
-  left: -15px;
-  border-width: 0px;
-  bottom: 0px;
-  border-style: solid;
-  border-color: #5c9efe transparent;
-  display: block;
-  width: 0;
-  height: 0;
-  /* border-top: 23px solid transparent; */
-  /* border-bottom: 22px solid transparent; */
-  border-right: 15px solid #56bbe7;
 }
 
 @media screen and (max-width: 1150px) {
