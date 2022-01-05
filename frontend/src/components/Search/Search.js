@@ -11,6 +11,7 @@ import {
   Modal,
   Button,
   message,
+  notification,
 } from "antd";
 import {
   AudioOutlined,
@@ -103,8 +104,18 @@ function Search() {
     setIsModalVisible(false);
   };
 
-  const warning = () => {
-    message.warning("Hoặc bạn đang chọn sai chế độ tra cứu!!!", 2);
+  const notificationError = (type) => {
+    notification[type]({
+      description: "Không có từ này trong từ điển!!!",
+      duration: 3,
+    });
+  };
+
+  const notificationWarning = (type) => {
+    notification[type]({
+      description: "Hoặc là bạn đang để sai chế độ tra cứu!!!",
+      duration: 3,
+    });
   };
 
   const [lang, setLang] = useState("anhviet");
@@ -232,8 +243,8 @@ function Search() {
           }
           isExist = 0;
         } else {
-          message.error("Không có từ này trong từ điển!!!", 2);
-          setTimeout(warning, 2000);
+          notificationError("error");
+          notificationWarning("warning");
         }
       });
 
