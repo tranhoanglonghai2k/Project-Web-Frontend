@@ -3,13 +3,16 @@ import { Table, Button, Space, Modal, Form, Input } from "antd";
 import { END_POINT } from "../../config";
 import axios from "axios";
 
-const token = JSON.parse(localStorage.getItem("token"));
-
 function Comment() {
+  const token = JSON.parse(localStorage.getItem("token"));
   const [table, setTable] = useState({
     loading: false,
     data: [],
   });
+  const [form,setForm] = useState({
+    content : "",
+    content_mean: ""
+  })
   const [update, setUpdate] = useState(false);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,8 +21,18 @@ function Comment() {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleOk = async (id,type) => {
+    console.log(form)
     setIsModalVisible(false);
+    // await axios.post(END_POINT + '/api/update-contribution',{
+    //   word_id: id, type: type,content:form.content,content_mean:form.content_mean
+    // },{
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }).then((res) => {
+    //   setUpdate(!update);
+    // });
   };
 
   const handleCancel = () => {
@@ -68,13 +81,11 @@ function Comment() {
     {
       title: "Action",
       dataIndex: "action",
-      render: (text, record) => (
+      render: (_, record) => (
+        
         <Space size="middle">
           <a
             onClick={showModal}
-            // onClick={() => {
-            //   console.log(record.word);
-            // }}
           >
             Update
           </a>
@@ -93,7 +104,7 @@ function Comment() {
                 htmlType="submit"
                 type="primary"
                 className="btn-default"
-                onClick={handleOk}
+                onClick={handleOk(record.id, record.type)}
               >
                 Xác Nhận
               </Button>,
@@ -116,6 +127,8 @@ function Comment() {
                 <Form.Item
                   label="Example"
                   name="Example"
+                  onChange={(value)=>setForm((prevState)=>({...form,content:value.target.value}))}
+                  // initialValue={record.content}
                   rules={[
                     {
                       required: true,
@@ -129,6 +142,8 @@ function Comment() {
                 <Form.Item
                   label="Mean"
                   name="Mean"
+                  // initialValue={record.content_mean}
+                  onChange={(value)=>setForm((prevState)=>({...form,content_mean:value.target.value}))}
                   rules={[
                     {
                       required: true,
@@ -164,7 +179,7 @@ function Comment() {
             dataSource.push(
               new Object({
                 key: i + "",
-                id: data[i].word_id,
+                id: data[i]._id,
                 type: data[i].type,
                 word: data[i].word,
                 content: data[i].content,
