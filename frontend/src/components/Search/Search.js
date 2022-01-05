@@ -232,7 +232,6 @@ function Search() {
           }
           isExist = 0;
         } else {
-          // alert("Không có từ này trong từ điển");
           message.error("Không có từ này trong từ điển!!!", 2);
           setTimeout(warning, 2000);
         }
