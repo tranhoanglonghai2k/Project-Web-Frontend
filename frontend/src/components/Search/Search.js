@@ -2,7 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { END_POINT } from "../../config";
 import axios from "axios";
-import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
+import {
+  Form,
+  Select,
+  Input,
+  AutoComplete,
+  Table,
+  Modal,
+  Button,
+  message,
+  notification,
+} from "antd";
 import {
   AudioOutlined,
   HistoryOutlined,
@@ -92,6 +102,20 @@ function Search() {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const notificationError = (type) => {
+    notification[type]({
+      description: "Không có từ này trong từ điển!!!",
+      duration: 5,
+    });
+  };
+
+  const notificationWarning = (type) => {
+    notification[type]({
+      description: "Hoặc là bạn đang để sai chế độ tra cứu!!!",
+      duration: 5,
+    });
   };
 
   const [lang, setLang] = useState("anhviet");
@@ -218,6 +242,9 @@ function Search() {
             }
           }
           isExist = 0;
+        } else {
+          notificationError("error");
+          notificationWarning("warning");
         }
       });
 
