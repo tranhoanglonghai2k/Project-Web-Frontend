@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu, Typography } from "antd";
-import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  LaptopOutlined,
+  CommentOutlined,
+} from "@ant-design/icons";
 import Comment from "../../components/Comment/Comment";
 // import "./MyInfo.css";
 
@@ -34,7 +38,7 @@ function MyComment() {
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
                     <Link to="/mypassword">Đổi mật khẩu</Link>
                   </Menu.Item>
-                  <Menu.Item key="3" icon={<LaptopOutlined />}>
+                  <Menu.Item key="3" icon={<CommentOutlined />}>
                     <Link to="/mycomment">Đóng góp</Link>
                   </Menu.Item>
                 </Menu>

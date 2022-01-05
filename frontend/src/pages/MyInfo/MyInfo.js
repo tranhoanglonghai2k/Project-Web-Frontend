@@ -4,7 +4,7 @@ import { Layout, Menu, Typography } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
-  NotificationOutlined,
+  CommentOutlined,
 } from "@ant-design/icons";
 import "./MyInfo.css";
 import UserInfo from "../../components/UserInfo/UserInfo";
@@ -38,7 +38,7 @@ function MyInfo() {
                   <Menu.Item key="2" icon={<LaptopOutlined />}>
                     <Link to="/mypassword">Đổi mật khẩu</Link>
                   </Menu.Item>
-                  <Menu.Item key="3" icon={<LaptopOutlined />}>
+                  <Menu.Item key="3" icon={<CommentOutlined />}>
                     <Link to="/mycomment">Đóng góp</Link>
                   </Menu.Item>
                 </Menu>

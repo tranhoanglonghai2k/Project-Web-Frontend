@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Tag, Space } from "antd";
+import { Table, Button, Space, Modal, Form, Input } from "antd";
 import { END_POINT } from "../../config";
 import axios from "axios";
 
@@ -11,6 +11,21 @@ function Comment() {
     data: [],
   });
   const [update, setUpdate] = useState(false);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   const handleDelete = async (id, type) => {
     console.log(token, id, type);
     await axios
@@ -55,8 +70,79 @@ function Comment() {
       dataIndex: "action",
       render: (text, record) => (
         <Space size="middle">
+          <a
+            onClick={showModal}
+            // onClick={() => {
+            //   console.log(record.word);
+            // }}
+          >
+            Update
+          </a>
+
+          <Modal
+            title="Cập nhật"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={[
+              <Button className="btn-default" onClick={handleCancel}>
+                Huỷ
+              </Button>,
+              <Button
+                key="submit"
+                htmlType="submit"
+                type="primary"
+                className="btn-default"
+                onClick={handleOk}
+              >
+                Xác Nhận
+              </Button>,
+            ]}
+          >
+            <div style={{ width: "80%" }}>
+              <Form
+                name="basic"
+                labelCol={{
+                  span: 8,
+                }}
+                wrapperCol={{
+                  span: 16,
+                }}
+                initialValues={{
+                  remember: true,
+                }}
+                autoComplete="off"
+              >
+                <Form.Item
+                  label="Example"
+                  name="Example"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your Example!",
+                    },
+                  ]}
+                >
+                  <Input allowClear />
+                </Form.Item>
+
+                <Form.Item
+                  label="Mean"
+                  name="Mean"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your Mean!",
+                    },
+                  ]}
+                >
+                  <Input allowClear />
+                </Form.Item>
+              </Form>
+            </div>
+          </Modal>
+
           <a onClick={() => handleDelete(record.id, record.type)}>Delete</a>
-          <a onClick={() => {console.log(record.word)}}>Update</a>
         </Space>
       ),
     },
