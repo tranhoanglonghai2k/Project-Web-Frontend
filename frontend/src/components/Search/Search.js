@@ -103,6 +103,10 @@ function Search() {
     setIsModalVisible(false);
   };
 
+  const warning = () => {
+    message.warning("Hoặc bạn đang chọn sai chế độ tra cứu!!!", 2);
+  };
+
   const [lang, setLang] = useState("anhviet");
 
   const { Option } = Select;
@@ -230,6 +234,7 @@ function Search() {
         } else {
           // alert("Không có từ này trong từ điển");
           message.error("Không có từ này trong từ điển!!!", 2);
+          setTimeout(warning, 2000);
         }
       });
 
