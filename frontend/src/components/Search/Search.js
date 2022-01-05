@@ -161,32 +161,36 @@ function Search() {
     const request_lang = lang === "anhviet" ? "en" : "vi";
     setTable({ loading: true });
     setCon({ loading: true });
+    let id;
     await axios
       .get(END_POINT + "/api/search-word", {
         params: { lang: request_lang, word: input },
       })
       .then(async (res) => {
         let data = res.data;
-
-        const dataSource = [];
-        const meanSource = [];
-        if (data.word.examples && data.word.examples.length > 0) {
-          for (let i = 0; i < data.word.examples.length; i++) {
-            dataSource.push(
-              lang === "anhviet"
-                ? new Object({
-                    key: i + "",
-                    examples: data.word.examples[i],
-                    examplesVn: data.word.examplesVn[i],
-                  })
-                : new Object({
-                    key: i + "",
-                    examples: data.word.examples[i],
-                    examplesEn: data.word.examplesEn[i],
-                  })
-            );
+        if (!Object.prototype.hasOwnProperty.call(data, "auto")) {
+          id = data.word._id;
+          let dataSource = [];
+          let meanSource = [];
+          if (data.word.examples && data.word.examples.length > 0) {
+            for (let i = 0; i < data.word.examples.length; i++) {
+              dataSource.push(
+                lang === "anhviet"
+                  ? new Object({
+                      key: i + "",
+                      examples: data.word.examples[i],
+                      examplesVn: data.word.examplesVn[i],
+                    })
+                  : new Object({
+                      key: i + "",
+                      examples: data.word.examples[i],
+                      examplesEn: data.word.examplesEn[i],
+                    })
+              );
+            }
           }
           for (let i = 0; i < data.word.means.length; i++) {
+            console.log(data.word.means[i]);
             meanSource.push(
               new Object({
                 key: i + "",
@@ -194,33 +198,33 @@ function Search() {
               })
             );
           }
-        }
-        setTable({ loading: false, data: dataSource, mean: meanSource });
-        setOutput((output) => {
-          return { ...output, ...data.word };
-        });
-        let update = new Object({ word: input, mean: data.word.means });
-        let isExist = 0;
-        for (let i = 0; i < his.length; i++) {
-          if (his[i].word === update.word) {
-            isExist = 1;
-            break;
+          setTable({ loading: false, data: dataSource, mean: meanSource });
+          setOutput((output) => {
+            return { ...output, ...data.word };
+          });
+          let update = new Object({ word: input, mean: data.word.means });
+          let isExist = 0;
+          for (let i = 0; i < his.length; i++) {
+            if (his[i].word === update.word) {
+              isExist = 1;
+              break;
+            }
           }
-        }
-        if (isExist === 0) {
-          if (update.mean) {
-            await setHis((pre) => {
-              return [update, ...pre];
-            });
+          if (isExist === 0) {
+            if (update.mean) {
+              await setHis((pre) => {
+                return [update, ...pre];
+              });
+            }
           }
+          isExist = 0;
         }
-        isExist = 0;
       });
 
     await axios
       .get(END_POINT + "/api/get-contribution", {
         params: {
-          word_id: output._id,
+          word_id: id,
           type: request_lang,
         },
       })
