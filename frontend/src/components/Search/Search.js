@@ -107,14 +107,14 @@ function Search() {
   const notificationError = (type) => {
     notification[type]({
       description: "Không có từ này trong từ điển!!!",
-      duration: 3,
+      duration: 5,
     });
   };
 
   const notificationWarning = (type) => {
     notification[type]({
       description: "Hoặc là bạn đang để sai chế độ tra cứu!!!",
-      duration: 3,
+      duration: 5,
     });
   };
 
