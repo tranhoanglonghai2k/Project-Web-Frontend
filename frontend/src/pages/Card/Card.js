@@ -1,7 +1,7 @@
 import React from "react";
-// import { FlashcardComponent } from "react-flashcard";
 import {FlashcardComponent} from "./FlashCard"
 import { Layout, Typography } from "antd";
+import { useHistory } from "react-router-dom";
 
 function Card() {
   const { Content } = Layout;
@@ -10,6 +10,7 @@ function Card() {
     ? JSON.parse(localStorage.getItem("word_card"))
     : [];
   console.log("list_word", list_word);
+  const history = useHistory();
   let cardData = [];
   for (let i = 0; i < list_word.length; i++) {
     cardData.push(
@@ -36,7 +37,7 @@ function Card() {
               <span className="title-holder title">Học từ mới</span>
             </h3>
 
-            <FlashcardComponent dataSource={cardData} />
+            <FlashcardComponent dataSource={cardData} onFinish={()=>history.push("/myword")}/>
           </div>
         </div>
       </Content>
