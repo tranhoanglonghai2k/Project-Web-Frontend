@@ -2,7 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { END_POINT } from "../../config";
 import axios from "axios";
-import { Form, Select, Input, AutoComplete, Table, Modal, Button } from "antd";
+import {
+  Form,
+  Select,
+  Input,
+  AutoComplete,
+  Table,
+  Modal,
+  Button,
+  message,
+} from "antd";
 import {
   AudioOutlined,
   HistoryOutlined,
@@ -218,6 +227,9 @@ function Search() {
             }
           }
           isExist = 0;
+        } else {
+          // alert("Không có từ này trong từ điển");
+          message.error("Không có từ này trong từ điển!!!", 2);
         }
       });
 
