@@ -98,7 +98,7 @@ function Header() {
                   icon={<BookFilled className="icon-default" />}
                 >
                   <Link to="/myword">
-                    <span>Từ của tôi</span>
+                    <span>Học từ vựng</span>
                   </Link>
                 </Menu.Item>
 
@@ -158,15 +158,33 @@ function Header() {
 
                   <Menu.Item
                     key="2"
-                    icon={<BookFilled className="icon-default" />}
+                    icon={<ZhihuSquareFilled className="icon-default" />}
                   >
-                    <Link to="/myword">
-                      <span>Từ của tôi</span>
+                    <Link to="/translate">
+                      <span>Dịch</span>
                     </Link>
                   </Menu.Item>
 
                   <Menu.Item
                     key="3"
+                    icon={<CheckCircleFilled className="icon-default" />}
+                  >
+                    <Link to="/grammar">
+                      <span>Ngữ pháp</span>
+                    </Link>
+                  </Menu.Item>
+
+                  <Menu.Item
+                    key="4"
+                    icon={<BookFilled className="icon-default" />}
+                  >
+                    <Link to="/myword">
+                      <span>Học từ vựng</span>
+                    </Link>
+                  </Menu.Item>
+
+                  <Menu.Item
+                    key="5"
                     // icon={}
                   >
                     <Link to="/login">
@@ -175,7 +193,7 @@ function Header() {
                   </Menu.Item>
 
                   <Menu.Item
-                    key="4"
+                    key="6"
                     // icon={}
                   >
                     <Link to="/signup">
