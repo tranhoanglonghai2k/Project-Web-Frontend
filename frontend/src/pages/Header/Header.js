@@ -51,7 +51,7 @@ function Header() {
         {check ? (
           <Header
             id="header"
-            style={{ position: "fixed", zIndex: 1, width: "100%" }}
+            style={{ position: "fixed", zIndex: 100, width: "100%" }}
           >
             <div className="header-content-default">
               <div className="logo">
@@ -132,7 +132,7 @@ function Header() {
           <div>
             <Header
               id="header"
-              style={{ position: "fixed", zIndex: 1, width: "100%" }}
+              style={{ position: "fixed", zIndex: 100, width: "100%" }}
             >
               <div className="header-content-default">
                 <div className="logo">
