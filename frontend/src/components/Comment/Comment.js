@@ -19,42 +19,42 @@ function Comment() {
 
   const showModal = () => {
     setIsModalVisible(true);
-  };
+};
 
-  const handleOk = async (id,type) => {
-    console.log(form)
+const handleOk = async (id,type) => {
+  console.log(form)
     setIsModalVisible(false);
-    // await axios.post(END_POINT + '/api/update-contribution',{
-    //   word_id: id, type: type,content:form.content,content_mean:form.content_mean
-    // },{
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // }).then((res) => {
-    //   setUpdate(!update);
-    // });
-  };
+  // await axios.post(END_POINT + '/api/update-contribution',{
+  //   word_id: id, type: type,content:form.content,content_mean:form.content_mean
+  // },{
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // }).then((res) => {
+  //   setUpdate(!update);
+  // });
+};
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+const handleCancel = () => {
+  setIsModalVisible(false);
+};
 
-  const handleDelete = async (id, type) => {
-    console.log(token, id, type);
-    await axios
-      .post(
-        END_POINT + "/api/remove-contribution",
-        { word_id: id, type: type },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        setUpdate(!update);
-      });
-  };
+const handleDelete = async (id, type) => {
+  console.log(token, id, type);
+  await axios
+    .post(
+      END_POINT + "/api/remove-contribution",
+      { word_id: id, type: type },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((res) => {
+      setUpdate(!update);
+    });
+};
 
   const columns = [
     {
@@ -81,85 +81,87 @@ function Comment() {
     {
       title: "Action",
       dataIndex: "action",
-      render: (_, record) => (
+      render: (_, record) => {
         
-        <Space size="middle">
-          <a
-            onClick={showModal}
-          >
-            Update
-          </a>
+        return(
+          <Space size="middle">
+            <a
+              onClick={showModal}
+            >
+              Update
+            </a>
 
-          <Modal
-            title="Cập nhật"
-            visible={isModalVisible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={[
-              <Button className="btn-default" onClick={handleCancel}>
-                Huỷ
-              </Button>,
-              <Button
-                key="submit"
-                htmlType="submit"
-                type="primary"
-                className="btn-default"
-                onClick={handleOk(record.id, record.type)}
-              >
-                Xác Nhận
-              </Button>,
-            ]}
-          >
-            <div style={{ width: "80%" }}>
-              <Form
-                name="basic"
-                labelCol={{
-                  span: 8,
-                }}
-                wrapperCol={{
-                  span: 16,
-                }}
-                initialValues={{
-                  remember: true,
-                }}
-                autoComplete="off"
-              >
-                <Form.Item
-                  label="Example"
-                  name="Example"
-                  onChange={(value)=>setForm((prevState)=>({...form,content:value.target.value}))}
-                  // initialValue={record.content}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Example!",
-                    },
-                  ]}
+            <Modal
+              title="Cập nhật"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+              footer={[
+                <Button className="btn-default" onClick={handleCancel}>
+                  Huỷ
+                </Button>,
+                <Button
+                  key="submit"
+                  htmlType="submit"
+                  type="primary"
+                  className="btn-default"
+                  onClick={handleOk(record.id, record.type)}
                 >
-                  <Input allowClear />
-                </Form.Item>
-
-                <Form.Item
-                  label="Mean"
-                  name="Mean"
-                  // initialValue={record.content_mean}
-                  onChange={(value)=>setForm((prevState)=>({...form,content_mean:value.target.value}))}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Mean!",
-                    },
-                  ]}
+                  Xác Nhận
+                </Button>,
+              ]}
+            >
+              <div style={{ width: "80%" }}>
+                <Form
+                  name="basic"
+                  labelCol={{
+                    span: 8,
+                  }}
+                  wrapperCol={{
+                    span: 16,
+                  }}
+                  initialValues={{
+                    remember: true,
+                  }}
+                  autoComplete="off"
                 >
-                  <Input allowClear />
-                </Form.Item>
-              </Form>
-            </div>
-          </Modal>
+                  <Form.Item
+                    label="Example"
+                    name="Example"
+                    onChange={(value)=>setForm((prevState)=>({...form,content:value.target.value}))}
+                    // initialValue={record.content}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Example!",
+                      },
+                    ]}
+                  >
+                    <Input allowClear />
+                  </Form.Item>
 
-          <a onClick={() => handleDelete(record.id, record.type)}>Delete</a>
-        </Space>
-      ),
+                  <Form.Item
+                    label="Mean"
+                    name="Mean"
+                    // initialValue={record.content_mean}
+                    onChange={(value)=>setForm((prevState)=>({...form,content_mean:value.target.value}))}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Mean!",
+                      },
+                    ]}
+                  >
+                    <Input allowClear />
+                  </Form.Item>
+                </Form>
+              </div>
+            </Modal>
+
+            <a onClick={() => handleDelete(record.id, record.type)}>Delete</a>
+          </Space>
+        )
+      },
     },
   ];
 

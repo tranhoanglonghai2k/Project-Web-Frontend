@@ -7,6 +7,7 @@ import {
   CommentOutlined,
 } from "@ant-design/icons";
 import Comment from "../../components/Comment/Comment";
+import EditableTable from "../../components/Comment/EditableTable"
 // import "./MyInfo.css";
 
 function MyComment() {
@@ -45,7 +46,7 @@ function MyComment() {
               </Sider>
 
               <Content style={{ padding: "0 24px", minHeight: 280 }}>
-                <Comment />
+                <EditableTable />
               </Content>
             </Layout>
           </div>
