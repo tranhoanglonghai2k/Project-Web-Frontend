@@ -109,22 +109,19 @@ function Header() {
                     <span>Thông tin</span>
                   </Link>
                 </Menu.Item>
-                <Menu.Item
-                    key="6"
-                    // icon={}
+
+                <Menu.Item key="6">
+                  <Popconfirm
+                    title="Bạn chắc chưa?"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText="Yes"
+                    cancelText="No"
                   >
-                <Popconfirm
-                  title="Bạn chắc chưa?"
-                  onConfirm={confirm}
-                  onCancel={cancel}
-                  okText="Yes"
-                  cancelText="No"
-                >
-                  
-                  <Menu.Item key="6" className="logout">
-                    <span>Đăng xuất</span>
-                  </Menu.Item>
-                </Popconfirm>
+                    <Menu.Item key="6" style={{ height: "80px" }}>
+                      <span className="logout">Đăng xuất</span>
+                    </Menu.Item>
+                  </Popconfirm>
                 </Menu.Item>
               </Menu>
             </div>
