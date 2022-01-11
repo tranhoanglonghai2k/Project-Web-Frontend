@@ -118,9 +118,9 @@ function Header() {
                     okText="Yes"
                     cancelText="No"
                   >
-                    <Menu.Item key="6" style={{ height: "80px" }}>
-                      <span className="logout">Đăng xuất</span>
-                    </Menu.Item>
+                    <div style={{ height: "80px" }} className="logout">
+                      <span>Đăng xuất</span>
+                    </div>
                   </Popconfirm>
                 </Menu.Item>
               </Menu>
