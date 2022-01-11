@@ -74,14 +74,12 @@ const EditableTable = () => {
   const save = async (key) => {
     try {
       const row = await form.validateFields();
-      console.log(row);
       const newData = [...table.data];
       const index = newData.findIndex((item) => key === item.key);
 
       if (index > -1) {
         let item = newData[index];
         newData.splice(index, 1, { ...item, ...row });
-        console.log(newData[index]);
         item = newData[index];
         await axios
           .post(
@@ -105,13 +103,10 @@ const EditableTable = () => {
       } else {
         setEditingKey("");
       }
-    } catch (errInfo) {
-      console.log("Validate Failed:", errInfo);
-    }
+    } catch (errInfo) {}
   };
 
   const handleDelete = async (id, type) => {
-    console.log(token, id, type);
     await axios
       .post(
         END_POINT + "/api/remove-contribution",
@@ -152,7 +147,6 @@ const EditableTable = () => {
       key: "date",
     },
     {
-      //   title: "Action",
       dataIndex: "action",
       render: (_, record) => {
         return (
@@ -163,7 +157,6 @@ const EditableTable = () => {
       },
     },
     {
-      //   title: "Edit",
       dataIndex: "edit",
       render: (_, record) => {
         const editable = isEditing(record);

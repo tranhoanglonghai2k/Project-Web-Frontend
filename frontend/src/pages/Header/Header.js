@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Layout, Menu, Popconfirm, message } from "antd";
-
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {
@@ -122,8 +121,9 @@ function Header() {
                   cancelText="No"
                 >
                   
-                    <span className="logout">Đăng xuất</span>
-                  
+                  <Menu.Item key="6" className="logout">
+                    <span>Đăng xuất</span>
+                  </Menu.Item>
                 </Popconfirm>
                 </Menu.Item>
               </Menu>
@@ -184,19 +184,13 @@ function Header() {
                     </Link>
                   </Menu.Item>
 
-                  <Menu.Item
-                    key="5"
-                    // icon={}
-                  >
+                  <Menu.Item key="5">
                     <Link to="/login">
                       <span>Đăng nhập</span>
                     </Link>
                   </Menu.Item>
 
-                  <Menu.Item
-                    key="6"
-                    // icon={}
-                  >
+                  <Menu.Item key="6">
                     <Link to="/signup">
                       <span>Đăng ký</span>
                     </Link>

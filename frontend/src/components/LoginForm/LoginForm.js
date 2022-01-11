@@ -13,9 +13,7 @@ import "./LoginForm.css";
 
 const LoginForm = () => {
   const history = useHistory();
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+  const onFinish = (values) => {};
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -122,7 +120,6 @@ const LoginForm = () => {
                 style={{
                   marginLeft: "15px",
                   fontSize: "20px",
-                  // display: "inline-block",
                 }}
               >
                 Hoặc

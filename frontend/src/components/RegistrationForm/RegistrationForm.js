@@ -63,9 +63,7 @@ const RegistrationForm = () => {
     history.push("/");
   }
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+  const onFinish = (values) => {};
 
   return (
     <div>

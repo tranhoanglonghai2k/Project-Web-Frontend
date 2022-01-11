@@ -18,12 +18,6 @@ const columns = [
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
-
     localStorage.setItem("word_card", JSON.stringify(selectedRows));
   },
 };

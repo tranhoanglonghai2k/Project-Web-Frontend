@@ -9,52 +9,50 @@ function Comment() {
     loading: false,
     data: [],
   });
-  const [form,setForm] = useState({
-    content : "",
-    content_mean: ""
-  })
+  const [form, setForm] = useState({
+    content: "",
+    content_mean: "",
+  });
   const [update, setUpdate] = useState(false);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
-};
+  };
 
-const handleOk = async (id,type) => {
-  console.log(form)
+  const handleOk = async (id, type) => {
     setIsModalVisible(false);
-  // await axios.post(END_POINT + '/api/update-contribution',{
-  //   word_id: id, type: type,content:form.content,content_mean:form.content_mean
-  // },{
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // }).then((res) => {
-  //   setUpdate(!update);
-  // });
-};
+    // await axios.post(END_POINT + '/api/update-contribution',{
+    //   word_id: id, type: type,content:form.content,content_mean:form.content_mean
+    // },{
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }).then((res) => {
+    //   setUpdate(!update);
+    // });
+  };
 
-const handleCancel = () => {
-  setIsModalVisible(false);
-};
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
-const handleDelete = async (id, type) => {
-  console.log(token, id, type);
-  await axios
-    .post(
-      END_POINT + "/api/remove-contribution",
-      { word_id: id, type: type },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-    .then((res) => {
-      setUpdate(!update);
-    });
-};
+  const handleDelete = async (id, type) => {
+    await axios
+      .post(
+        END_POINT + "/api/remove-contribution",
+        { word_id: id, type: type },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        setUpdate(!update);
+      });
+  };
 
   const columns = [
     {
@@ -82,14 +80,9 @@ const handleDelete = async (id, type) => {
       title: "Action",
       dataIndex: "action",
       render: (_, record) => {
-        
-        return(
+        return (
           <Space size="middle">
-            <a
-              onClick={showModal}
-            >
-              Update
-            </a>
+            <a onClick={showModal}>Update</a>
 
             <Modal
               title="Cập nhật"
@@ -128,7 +121,12 @@ const handleDelete = async (id, type) => {
                   <Form.Item
                     label="Example"
                     name="Example"
-                    onChange={(value)=>setForm((prevState)=>({...form,content:value.target.value}))}
+                    onChange={(value) =>
+                      setForm((prevState) => ({
+                        ...form,
+                        content: value.target.value,
+                      }))
+                    }
                     // initialValue={record.content}
                     rules={[
                       {
@@ -144,7 +142,12 @@ const handleDelete = async (id, type) => {
                     label="Mean"
                     name="Mean"
                     // initialValue={record.content_mean}
-                    onChange={(value)=>setForm((prevState)=>({...form,content_mean:value.target.value}))}
+                    onChange={(value) =>
+                      setForm((prevState) => ({
+                        ...form,
+                        content_mean: value.target.value,
+                      }))
+                    }
                     rules={[
                       {
                         required: true,
@@ -160,7 +163,7 @@ const handleDelete = async (id, type) => {
 
             <a onClick={() => handleDelete(record.id, record.type)}>Delete</a>
           </Space>
-        )
+        );
       },
     },
   ];

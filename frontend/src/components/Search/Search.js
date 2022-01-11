@@ -174,7 +174,6 @@ function Search() {
   }
   useEffect(() => {
     localStorage.setItem("his_search", JSON.stringify(his));
-    console.log("his_search", JSON.stringify(his));
   }, [his]);
 
   const [add,setAdd] = useState(true)
@@ -218,7 +217,6 @@ function Search() {
             }
           }
           for (let i = 0; i < data.word.means.length; i++) {
-            console.log(data.word.means[i]);
             meanSource.push(
               new Object({
                 key: i + "",

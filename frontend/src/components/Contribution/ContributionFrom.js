@@ -5,38 +5,32 @@ import { END_POINT } from "../../config";
 
 const ContributionFrom = ({ word,word_id, lang, setAdd }) => {
   const onFinish = (values) => {
-    console.log("Success:", values);
     const type = lang == "anhviet" ? "en" : "vi";
     const token = JSON.parse(localStorage.getItem("token"));
     axios
-      .post(END_POINT + "/api/add-contribution", {
-        word_id: word_id,
-        word:word,
-        type: type,
-        content: values.Example,
-        content_mean: values.Mean,
-      },{
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .post(
+        END_POINT + "/api/add-contribution",
+        {
+          word_id: word_id,
+          word: word,
+          type: type,
+          content: values.Example,
+          content_mean: values.Mean,
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         values.Example = "";
         values.Mean = "";
         setAdd(pre=> !pre);
-        console.log(res.message);
       });
-    console.log({
-      word_id: word_id,
-      type: type,
-      content: values.Example,
-      content_mean: values.Mean,
-    });
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => {};
 
   return (
     <Form
