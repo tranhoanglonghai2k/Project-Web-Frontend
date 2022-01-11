@@ -3,7 +3,7 @@ import { Form, Input, Button } from "antd";
 import axios from "axios";
 import { END_POINT } from "../../config";
 
-const ContributionFrom = ({ word,word_id, lang }) => {
+const ContributionFrom = ({ word,word_id, lang, setAdd }) => {
   const onFinish = (values) => {
     console.log("Success:", values);
     const type = lang == "anhviet" ? "en" : "vi";
@@ -23,6 +23,7 @@ const ContributionFrom = ({ word,word_id, lang }) => {
       .then((res) => {
         values.Example = "";
         values.Mean = "";
+        setAdd(pre=> !pre);
         console.log(res.message);
       });
     console.log({

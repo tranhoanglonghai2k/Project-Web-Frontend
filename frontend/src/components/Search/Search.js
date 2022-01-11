@@ -177,7 +177,11 @@ function Search() {
     console.log("his_search", JSON.stringify(his));
   }, [his]);
 
-  useEffect(() => {}, [con]);
+  const [add,setAdd] = useState(true)
+  useEffect(() => {
+    if(output.word.length > 0)
+      handleSubmit();
+  }, [add]);
 
   const handleSubmit = async (e) => {
     input.trim();
@@ -389,31 +393,6 @@ function Search() {
                     </span>
                   </div>
 
-                  {/* <div className="img-icon">
-                    <FileImageOutlined
-                      style={{ fontSize: "50px" }}
-                      onClick={() => setVisible(true)}
-                    />
-
-                    <Modal
-                      title="Ảnh minh hoạ"
-                      centered
-                      visible={visible}
-                      onOk={() => setVisible(false)}
-                      onCancel={() => setVisible(false)}
-                      width="70%"
-                    >
-                      <div className="overflow-scroll-gradient">
-                        <div className="overflow-scroll-gradient__scroller">
-                          <h1>Hải đẹp trai</h1>
-                          <h1>Hải đẹp trai</h1>
-                          <h1>Hải đẹp trai</h1>
-                          <h1>Hải đẹp trai</h1>
-                          <h1>Hải đẹp trai</h1>
-                        </div>
-                      </div>
-                    </Modal>
-                  </div> */}
                 </div>
               </li>
               <li className="mg-20">
@@ -494,6 +473,7 @@ function Search() {
                 word={output.word}
                 word_id={output._id}
                 lang={lang}
+                setAdd={setAdd}
               />
             </div>
           </div>
