@@ -50,6 +50,11 @@
 
 .logout {
   font-size: 20px !important;
+  color: #fff !important;
+}
+
+.logout:hover {
+  color: #2c90ff !important;
 }
 
 .icon-default {

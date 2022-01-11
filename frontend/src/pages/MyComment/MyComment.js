@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Typography } from "antd";
+import { Layout, Menu } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
   CommentOutlined,
 } from "@ant-design/icons";
-import Comment from "../../components/Comment/Comment";
-import EditableTable from "../../components/Comment/EditableTable"
-// import "./MyInfo.css";
+import EditableTable from "../../components/Comment/EditableTable";
 
 function MyComment() {
   const { Content, Sider } = Layout;
-  const { Title } = Typography;
 
   return (
     <div>

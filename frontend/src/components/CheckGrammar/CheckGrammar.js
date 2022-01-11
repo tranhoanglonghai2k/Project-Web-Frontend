@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Input, Button, Typography, Popover } from "antd";
+import { Form, Input, Button, Popover } from "antd";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { END_POINT } from "../../config";
 import "./CheckGrammar.css";
 
 export const CheckGrammar = () => {
-  // localStorage.clear(); // NOTE: khi nào public thì xóa
-
   const { TextArea } = Input;
-  const { Title, Text } = Typography;
 
   const [form] = Form.useForm();
 
