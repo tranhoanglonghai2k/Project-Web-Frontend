@@ -39,7 +39,6 @@ function App() {
         <BackTop />
         <Footer />
       </Router>
-      )
     </div>
   );
 }
