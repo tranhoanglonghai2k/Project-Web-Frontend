@@ -3,10 +3,11 @@ import { Form, Input, Button } from "antd";
 import axios from "axios";
 import { END_POINT } from "../../config";
 
-const ContributionFrom = ({ word,word_id, lang, setAdd }) => {
+const ContributionFrom = ({ word, word_id, lang, setAdd }) => {
   const onFinish = (values) => {
     const type = lang == "anhviet" ? "en" : "vi";
     const token = JSON.parse(localStorage.getItem("token"));
+
     axios
       .post(
         END_POINT + "/api/add-contribution",
@@ -26,7 +27,7 @@ const ContributionFrom = ({ word,word_id, lang, setAdd }) => {
       .then((res) => {
         values.Example = "";
         values.Mean = "";
-        setAdd(pre=> !pre);
+        setAdd((pre) => !pre);
       });
   };
 

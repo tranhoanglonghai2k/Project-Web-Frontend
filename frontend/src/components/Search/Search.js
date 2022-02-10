@@ -176,10 +176,9 @@ function Search() {
     localStorage.setItem("his_search", JSON.stringify(his));
   }, [his]);
 
-  const [add,setAdd] = useState(true)
+  const [add, setAdd] = useState(true);
   useEffect(() => {
-    if(output.word.length > 0)
-      handleSubmit();
+    if (output.word.length > 0) handleSubmit();
   }, [add]);
 
   const handleSubmit = async (e) => {
@@ -390,7 +389,6 @@ function Search() {
                       />
                     </span>
                   </div>
-
                 </div>
               </li>
               <li className="mg-20">
