@@ -4,6 +4,8 @@ import axios from "axios";
 import { END_POINT } from "../../config";
 
 const ContributionFrom = ({ word, word_id, lang, setAdd }) => {
+  const [form] = Form.useForm();
+
   const onFinish = (values) => {
     const type = lang == "anhviet" ? "en" : "vi";
     const token = JSON.parse(localStorage.getItem("token"));
@@ -28,6 +30,7 @@ const ContributionFrom = ({ word, word_id, lang, setAdd }) => {
         values.Example = "";
         values.Mean = "";
         setAdd((pre) => !pre);
+        form.resetFields();
       });
   };
 
@@ -35,6 +38,7 @@ const ContributionFrom = ({ word, word_id, lang, setAdd }) => {
 
   return (
     <Form
+      form={form}
       name="basic"
       labelCol={{
         span: 8,
